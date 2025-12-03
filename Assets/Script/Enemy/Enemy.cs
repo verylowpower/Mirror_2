@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
+    public System.Action onEnemyDeath;
 
     [Header("Stats")]
     [SerializeField] protected float health = 10f;
@@ -22,6 +23,8 @@ public class Enemy : MonoBehaviour
     [Header("NavMesh")]
     protected NavMeshAgent agent;
     [SerializeField] protected float moveSpeed = 3f;
+
+
 
     protected virtual void Awake()
     {
@@ -52,6 +55,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void KillEnemy()
     {
+        onEnemyDeath?.Invoke();
         Destroy(gameObject);
     }
 

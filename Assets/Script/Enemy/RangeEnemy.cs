@@ -7,10 +7,25 @@ public class RangeEnemy : Enemy
     [SerializeField] private float stopDistance = 2f;
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private GameObject bulletPF;
-    [SerializeField] private GameObject bulletHolder;
+    //[SerializeField] private Transform bulletHolder;
 
     private Transform player;
     private float lastAttackTime;
+
+    // protected override void Awake()
+    // {
+    //     if (bulletHolder == null)
+    //     {
+    //         GameObject holder = GameObject.Find("BulletHolder");
+    //         if (holder != null)
+    //             bulletHolder = holder.transform;
+    //         else
+    //         {
+    //             holder = new GameObject("BulletHolder");
+    //             bulletHolder = holder.transform;
+    //         }
+    //     }
+    // }
 
     protected override void Start()
     {
@@ -60,7 +75,9 @@ public class RangeEnemy : Enemy
         Vector2 dir = (player.position - transform.position).normalized;
 
         GameObject b = Instantiate(bulletPF, transform.position, Quaternion.identity);
-        b.transform.SetParent(bulletHolder.transform);
+
+        // if (bulletHolder != null)
+        //     b.transform.SetParent(bulletHolder);
 
         Bullet bullet = b.GetComponent<Bullet>();
         if (bullet != null)
