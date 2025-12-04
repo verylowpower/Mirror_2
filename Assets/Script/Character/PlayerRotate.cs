@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterRotate : MonoBehaviour
+public class PlayerRotate : MonoBehaviour
 {
     void Update()
     {

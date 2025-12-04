@@ -31,8 +31,8 @@ public class RangeEnemy : Enemy
     {
         base.Start();
 
-        if (Player.instance != null)
-            player = Player.instance.transform;
+        if (PlayerController.instance != null)
+            player = PlayerController.instance.transform;
     }
 
     private void Update()

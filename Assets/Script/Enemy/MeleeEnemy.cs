@@ -21,7 +21,7 @@ public class EnemyMelee : Enemy
     protected override void Start()
     {
         base.Start();
-        player = Player.instance.transform;
+        player = PlayerController.instance.transform;
     }
 
     private void Update()

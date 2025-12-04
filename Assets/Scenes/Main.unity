@@ -468,6 +468,12 @@ GameObject:
   - component: {fileID: 1753078710}
   - component: {fileID: 1753078712}
   - component: {fileID: 1753078711}
+  - component: {fileID: 1753078717}
+  - component: {fileID: 1753078716}
+  - component: {fileID: 1753078715}
+  - component: {fileID: 1753078714}
+  - component: {fileID: 1753078713}
+  - component: {fileID: 1753078718}
   m_Layer: 0
   m_Name: Char
   m_TagString: Player
@@ -523,7 +529,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.33784264, b: 0.33784264, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -636,6 +642,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   moveSpeed: 5
+  lookDir: {x: 1, y: 0}
+--- !u!114 &1753078713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753078706}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c6f17d053b7bf4889d0453c4aff49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUI
+  healthBar: {fileID: 0}
+  expBar: {fileID: 0}
+  deathScreen: {fileID: 0}
+--- !u!114 &1753078714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753078706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9dc6fa7f64b3c46bea2509b089aaaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageReceiver
+  hurtBoxRadius: 0.3
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &1753078715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753078706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e088df736a6f3884fa7aed5b8d61f3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterRotate
+--- !u!114 &1753078716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753078706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa87ec55cb2a2804585a8b2c71a43401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 100
+  iFrameTime: 0.3
+  spriteRenderer: {fileID: 1753078707}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.05
+--- !u!114 &1753078717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753078706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c63c522590f54946a4569b14513ba59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerExperience
+  expToNextLevel: 100
+--- !u!114 &1753078718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753078706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b199483e9b2c36f47bb4fa871f717c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  bulletPrefab: {fileID: 141672215420518351, guid: 9ed8e26cac847f540986e96dcc4679c7, type: 3}
+  bulletHolder: {fileID: 6031226313521022464}
+  bulletSpeed: 10
 --- !u!1 &2072878362
 GameObject:
   m_ObjectHideFlags: 0
