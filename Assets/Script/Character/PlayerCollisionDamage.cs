@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerDamageReceiver : MonoBehaviour
+public class PlayerCollisionDamage : MonoBehaviour
 {
     [SerializeField] private float hurtBoxRadius = 0.3f;
     [SerializeField] private LayerMask enemyMask;
@@ -18,7 +18,6 @@ public class PlayerDamageReceiver : MonoBehaviour
         if (hit == null) return;
 
         Enemy enemy = hit.GetComponent<Enemy>();
-
         if (enemy != null)
         {
             health.TakeDamage(enemy.Damage);

@@ -13,7 +13,6 @@ public class EnemyMelee : Enemy
     {
         base.Awake();
 
-
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
@@ -28,9 +27,7 @@ public class EnemyMelee : Enemy
     {
         if (player == null || agent == null) return;
 
-
         agent.SetDestination(player.position);
-
 
         float distance = Vector2.Distance(transform.position, player.position);
 
@@ -46,9 +43,10 @@ public class EnemyMelee : Enemy
 
         lastAttackTime = Time.time;
 
-        Debug.Log($"Enemy melee ATTACK! Damage = {damage}");
-
-
-        // PlayerHealth.instance.TakeDamage(damage);
+        PlayerDamageReceiver receiver = player.GetComponent<PlayerDamageReceiver>();
+        if (receiver != null)
+        {
+            receiver.TakeDamage(damage);
+        }
     }
 }

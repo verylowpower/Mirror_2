@@ -76,15 +76,10 @@ public class RangeEnemy : Enemy
 
         GameObject b = Instantiate(bulletPF, transform.position, Quaternion.identity);
 
-        // if (bulletHolder != null)
-        //     b.transform.SetParent(bulletHolder);
-
         Bullet bullet = b.GetComponent<Bullet>();
-        if (bullet != null)
-            bullet.SetDirection(dir);
-
-        Destroy(b, 5f);
+        bullet.Initialize(Damage, dir, true);   
     }
+
 
     private void FlipTowards(Vector3 target)
     {

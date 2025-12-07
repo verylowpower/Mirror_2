@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Color flashColor = Color.white;
     [SerializeField] private float flashDuration = 0.05f;
 
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
     private bool isIFrame = false;
     private Color originalColor;
 
@@ -28,13 +28,13 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         if (isIFrame) return;
-
+        Debug.Log("Run");
         currentHealth = Mathf.Clamp(currentHealth - dmg, 0, maxHealth);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        Debug.Log("Player HP = " + currentHealth);
 
         StartCoroutine(IFrameRoutine());
         StartCoroutine(FlashEffect());
-
         if (currentHealth <= 0)
             OnDeath?.Invoke();
     }

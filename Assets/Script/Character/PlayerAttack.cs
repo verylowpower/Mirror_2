@@ -4,7 +4,8 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletHolder;
-    [SerializeField] private float bulletSpeed = 10f;
+    //[SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private int bulletDamage = 10;
 
     private Camera cam;
 
@@ -37,9 +38,8 @@ public class PlayerAttack : MonoBehaviour
 
         GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder);
 
-        Rigidbody2D rb = b.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = dir * bulletSpeed;
 
-        Destroy(b, 5f);
+        Bullet bullet = b.GetComponent<Bullet>();
+        bullet.Initialize(bulletDamage, dir, false);
     }
 }

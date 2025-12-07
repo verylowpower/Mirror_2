@@ -24,8 +24,6 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     [SerializeField] protected float moveSpeed = 3f;
 
-
-
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
