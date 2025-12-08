@@ -24,6 +24,12 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     [SerializeField] protected float moveSpeed = 3f;
 
+    [Header("EXP")]
+    [SerializeField] private int expDropMin = 1;
+    [SerializeField] private int expDropMax = 3;
+    [SerializeField] private GameObject expPrefab;
+
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -53,9 +59,21 @@ public class Enemy : MonoBehaviour
 
     public virtual void KillEnemy()
     {
+        DropExp();
         onEnemyDeath?.Invoke();
         Destroy(gameObject);
     }
+
+    private void DropExp()
+    {
+        if (expPrefab == null) return;
+
+        int amount = Random.Range(expDropMin, expDropMax + 1);
+
+        GameObject obj = Instantiate(expPrefab, transform.position, Quaternion.identity);
+        obj.GetComponent<Experience>().expAmount = amount;
+    }
+
 
     protected virtual IEnumerator FlashHit()
     {

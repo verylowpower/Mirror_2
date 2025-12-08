@@ -162,6 +162,9 @@ MonoBehaviour:
   flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashTime: 0.1
   moveSpeed: 3
+  expDropMin: 1
+  expDropMax: 3
+  expPrefab: {fileID: 5134385481576080254, guid: c0ba6c0dd6445274ab7b174b18b2a44b, type: 3}
   attackRange: 3
   stopDistance: 2
   attackCooldown: 1
