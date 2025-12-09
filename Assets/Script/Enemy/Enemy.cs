@@ -62,6 +62,8 @@ public class Enemy : MonoBehaviour
         DropExp();
         onEnemyDeath?.Invoke();
         Destroy(gameObject);
+        GameController.instance.AddKill();
+
     }
 
     private void DropExp()

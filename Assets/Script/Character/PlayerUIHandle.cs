@@ -3,9 +3,12 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    [Header("Bars")]
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider expBar;
-    [SerializeField] private GameObject deathScreen;
+
+    // [Header("Death Screen")]
+    // [SerializeField] private GameObject deathScreen;
 
     private PlayerHealth health;
     private PlayerExperience exp;
@@ -18,18 +21,22 @@ public class PlayerUI : MonoBehaviour
 
     private void OnEnable()
     {
+        // Health
         health.OnHealthChanged += UpdateHealthUI;
-        health.OnDeath += ShowDeathScreen;
+        //health.OnDeath += ShowDeathScreen;
 
+        // EXP
         exp.OnExpChanged += UpdateExpUI;
-        exp.OnLevelUp += (_) => { /* show level up UI */ };
+        exp.OnLevelUp += OnLevelUpUI;
     }
 
     private void OnDisable()
     {
         health.OnHealthChanged -= UpdateHealthUI;
-        health.OnDeath -= ShowDeathScreen;
+        //health.OnDeath -= ShowDeathScreen;
+
         exp.OnExpChanged -= UpdateExpUI;
+        exp.OnLevelUp -= OnLevelUpUI;
     }
 
     void UpdateHealthUI(int cur, int max)
@@ -42,8 +49,14 @@ public class PlayerUI : MonoBehaviour
         expBar.value = (float)cur / max;
     }
 
-    void ShowDeathScreen()
+    void OnLevelUpUI(int newLevel)
     {
-        deathScreen.SetActive(true);
+
     }
+
+    // void ShowDeathScreen()
+    // {
+    //     if (deathScreen != null)
+    //         deathScreen.SetActive(true);
+    // }
 }

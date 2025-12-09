@@ -12,7 +12,6 @@ public class GUIController : MonoBehaviour
     void Start()
     {
         PlayerExperience.instance.OnLevelUp += UpdateLevelText;
-        PlayerExperience.instance.OnExpChanged += UpdateLevelText;
 
         GameController.instance.TimeChange += UpdateGameTime;
         GameController.instance.KilledEnemy += UpdatePointText;
@@ -25,10 +24,7 @@ public class GUIController : MonoBehaviour
     void OnDestroy()
     {
         if (PlayerExperience.instance != null)
-        {
             PlayerExperience.instance.OnLevelUp -= UpdateLevelText;
-            PlayerExperience.instance.OnExpChanged -= UpdateLevelText;
-        }
 
         if (GameController.instance != null)
         {
@@ -40,11 +36,6 @@ public class GUIController : MonoBehaviour
     private void UpdateLevelText(int newLevel)
     {
         levelText.text = "Level: " + newLevel;
-    }
-
-    private void UpdateLevelText(long exp, long expToNext)
-    {
-        levelText.text = "Level: " + PlayerExperience.instance.GetLevel();
     }
 
     private void UpdateGameTime()
