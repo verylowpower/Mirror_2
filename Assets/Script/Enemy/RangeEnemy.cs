@@ -77,7 +77,7 @@ public class RangeEnemy : Enemy
         GameObject b = Instantiate(bulletPF, transform.position, Quaternion.identity);
 
         Bullet bullet = b.GetComponent<Bullet>();
-        bullet.Initialize(Damage, dir, true);   
+        bullet.Initialize(Damage, dir, true, bulletSpeed);
     }
 
 

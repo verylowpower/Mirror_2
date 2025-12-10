@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public static PlayerAttack instance;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletHolder;
-    //[SerializeField] private float bulletSpeed = 10f;
-    [SerializeField] private int bulletDamage = 10;
+    [SerializeField] public int bulletDamage = 10;
+    [SerializeField] public float bulletSpeed;
 
     private Camera cam;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -40,6 +46,6 @@ public class PlayerAttack : MonoBehaviour
 
 
         Bullet bullet = b.GetComponent<Bullet>();
-        bullet.Initialize(bulletDamage, dir, false);
+        bullet.Initialize(bulletDamage, dir, false, bulletSpeed);
     }
 }

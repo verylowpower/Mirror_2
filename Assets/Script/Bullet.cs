@@ -2,32 +2,31 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f;
+    private float speed;
     private Vector2 dir;
-
     private int damage;
     private bool isEnemyBullet = false;
 
-    public void Initialize(int dmg, Vector2 direction, bool enemyBullet)
+    public void Initialize(int dmg, Vector2 direction, bool enemyBullet, float bulletSpeed)
     {
         damage = dmg;
         dir = direction.normalized;
         isEnemyBullet = enemyBullet;
+        speed = bulletSpeed;
 
         Destroy(gameObject, 5f);
     }
 
-    private void Update()
+    void Update()
     {
         transform.position += (Vector3)(dir * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (isEnemyBullet)
         {
-            // Enemy -> Player
-            PlayerDamageReceiver player = collision.GetComponent<PlayerDamageReceiver>();
+            var player = collision.GetComponent<PlayerDamageReceiver>();
             if (player != null)
             {
                 player.TakeDamage(damage);
@@ -36,8 +35,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            // Player -> Enemy
-            Enemy enemy = collision.GetComponent<Enemy>();
+            var enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.ChangeHealth(damage);

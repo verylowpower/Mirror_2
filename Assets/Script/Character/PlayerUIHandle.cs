@@ -7,8 +7,6 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider expBar;
 
-    // [Header("Death Screen")]
-    // [SerializeField] private GameObject deathScreen;
 
     private PlayerHealth health;
     private PlayerExperience exp;
@@ -23,7 +21,6 @@ public class PlayerUI : MonoBehaviour
     {
         // Health
         health.OnHealthChanged += UpdateHealthUI;
-        //health.OnDeath += ShowDeathScreen;
 
         // EXP
         exp.OnExpChanged += UpdateExpUI;
@@ -33,7 +30,7 @@ public class PlayerUI : MonoBehaviour
     private void OnDisable()
     {
         health.OnHealthChanged -= UpdateHealthUI;
-        //health.OnDeath -= ShowDeathScreen;
+
 
         exp.OnExpChanged -= UpdateExpUI;
         exp.OnLevelUp -= OnLevelUpUI;
@@ -54,9 +51,5 @@ public class PlayerUI : MonoBehaviour
 
     }
 
-    // void ShowDeathScreen()
-    // {
-    //     if (deathScreen != null)
-    //         deathScreen.SetActive(true);
-    // }
+
 }

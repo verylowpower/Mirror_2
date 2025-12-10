@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
     [SerializeField] protected float health = 10f;
     [SerializeField] protected int damage = 5;
+
+    [SerializeField] protected int bulletSpeed = 5;
     public int Damage => damage;
     public float Health => health;
 

@@ -4,19 +4,23 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
+
+    public static PlayerHealth instance;
     public event Action OnDeath;
     public event Action<int, int> OnHealthChanged;
 
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] public int maxHealth = 100;
     [SerializeField] private float iFrameTime = 0.3f;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color flashColor = Color.white;
     [SerializeField] private float flashDuration = 0.05f;
+    public bool isKilled = false;
 
-    [SerializeField] private int currentHealth;
+    [SerializeField] public int currentHealth;
     private bool isIFrame = false;
     private Color originalColor;
 
+    void Awake() => instance = this;
     private void Start()
     {
         currentHealth = maxHealth;
@@ -28,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         if (isIFrame) return;
-        Debug.Log("Run");
+
         currentHealth = Mathf.Clamp(currentHealth - dmg, 0, maxHealth);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
         Debug.Log("Player HP = " + currentHealth);
@@ -36,7 +40,10 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(IFrameRoutine());
         StartCoroutine(FlashEffect());
         if (currentHealth <= 0)
+        {
             OnDeath?.Invoke();
+            DeathHandler.instance.HandlePlayerDeath();
+        }
     }
 
     IEnumerator IFrameRoutine()
@@ -51,5 +58,12 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer.color = flashColor;
         yield return new WaitForSeconds(flashDuration);
         spriteRenderer.color = originalColor;
+    }
+
+    public void KillPlayer()
+    {
+        //isKilled = true;
+        DeathHandler.instance.HandlePlayerDeath();
+        Destroy(gameObject);
     }
 }

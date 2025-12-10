@@ -16,12 +16,7 @@ public class PlayerExperience : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else Destroy(gameObject);
+        instance = this;
     }
 
 
@@ -54,6 +49,12 @@ public class PlayerExperience : MonoBehaviour
         OnLevelUp?.Invoke(level);
 
         OnExpChanged?.Invoke(totalExp, expToNextLevel);
+
+        if (!PlayerBuffManager.instance.buffUIActive)
+        {
+            RandomSystem.instance.RandomBuff();
+            PlayerBuffManager.instance.buffUIActive = true;
+        }
     }
 
     public int GetLevel() => level;
