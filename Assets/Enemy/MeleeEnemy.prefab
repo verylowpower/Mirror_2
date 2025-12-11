@@ -36,7 +36,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.71, y: -1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 4070383645940323317, guid: 90295fdeba89dc144bec87be5fcd74bc, type: 3}
   m_Color: {r: 0.21947552, g: 0.5943396, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,17 +159,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea7f3a0c795eb440b76ae8933ac8fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMelee
-  health: 200
+  health: 100
   damage: 1
   bulletSpeed: 0
   spriteRender: {fileID: 4854916531184408208}
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  flashTime: 0.5
-  moveSpeed: 3
+  flashTime: 0.2
+  moveSpeed: 4
   expDropMin: 9
   expDropMax: 10
   expPrefab: {fileID: 5134385481576080254, guid: c0ba6c0dd6445274ab7b174b18b2a44b, type: 3}
-  attackRange: 0.8
+  attackRange: 1
   attackCooldown: 1
 --- !u!114 &6209130347478929699
 MonoBehaviour:
@@ -217,17 +217,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.009001881, y: -0.022504546}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32786572, y: 0.28885776}
   m_EdgeRadius: 0
 --- !u!61 &-183419697768104027
 BoxCollider2D:
@@ -263,17 +263,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.016503382, y: -0.0060011744}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.25285062, y: 0.18983796}
   m_EdgeRadius: 0
 --- !u!114 &8515042246971291846
 MonoBehaviour:

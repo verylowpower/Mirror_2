@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcb6f634467dfbd4d892fb4483fc6c12, type: 3}
-  m_Name: WaveData
+  m_Name: WaveData 1
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   groups:
+  - prefab: {fileID: 7692079736621992185, guid: 01d011aeda5136344ac622a382cd8671, type: 3}
+    count: 20
   - prefab: {fileID: 58038812358715777, guid: 144a01e02dfcfb74883a06f762beb5bb, type: 3}
-    count: 15
+    count: 25
