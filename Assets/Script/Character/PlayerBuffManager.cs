@@ -16,7 +16,6 @@ public class PlayerBuffManager : MonoBehaviour
 
     public void AddBuff(string buffID, Buff buffData)
     {
-        // Nếu đang có buff này → reset duration
         if (activeBuffs.ContainsKey(buffID))
         {
             activeBuffs[buffID].roomsLeft = buffData.Duration;
@@ -24,10 +23,10 @@ public class PlayerBuffManager : MonoBehaviour
             return;
         }
 
-        // Apply effect
+     
         buffData.ApplyEffect?.Invoke();
 
-        // Nếu buff có duration theo room → lưu vào danh sách
+   
         if (buffData.Duration > 0)
         {
             activeBuffs[buffID] = new ActiveBuff(buffData.Duration, buffData.RemoveEffect);
@@ -36,7 +35,6 @@ public class PlayerBuffManager : MonoBehaviour
         Debug.Log($"Buff {buffID} applied ({buffData.Duration} rooms)");
     }
 
-    // GỌI HÀM NÀY mỗi lần đổi sang room mới
     public void OnEnterNewRoom()
     {
         List<string> expired = new();

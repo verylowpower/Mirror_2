@@ -9,7 +9,6 @@ public class BuffLibrary : MonoBehaviour
     {
         Sprite dummyIcon = null;
 
-        // HEALTH BUFFS (vĩnh viễn)
         AllBuffs["H1"] = new Buff("H1", "Increase Health 1", "Health +1", dummyIcon, 0, 20,
             () => { PlayerHealth.instance.maxHealth += 2; },
             () => { PlayerHealth.instance.maxHealth -= 2; }
@@ -27,25 +26,24 @@ public class BuffLibrary : MonoBehaviour
             "H2"
         );
 
-        // FIRE RATE BUFFS (tồn tại 3 room)
         AllBuffs["B1"] = new Buff("B1", "Faster Fire Rate 1", "Fire Rate +1", dummyIcon, 3, 10,
-            () => { PlayerAttack.instance.bulletSpeed -= 0.1f; },
-            () => { PlayerAttack.instance.bulletSpeed += 0.1f; }
+            () => { PlayerAttack.instance.fireRate += 1f; },
+            () => { PlayerAttack.instance.fireRate -= 1f; }
         );
 
         AllBuffs["B2"] = new Buff("B2", "Faster Fire Rate 2", "Fire Rate +2", dummyIcon, 3, 10,
-            () => { PlayerAttack.instance.bulletSpeed -= 0.2f; },
-            () => { PlayerAttack.instance.bulletSpeed += 0.2f; },
+            () => { PlayerAttack.instance.fireRate += 2f; },
+            () => { PlayerAttack.instance.fireRate -= 2f; },
             "B1"
         );
 
         AllBuffs["B3"] = new Buff("B3", "Faster Fire Rate 3", "Fire Rate +3", dummyIcon, 3, 10,
-            () => { PlayerAttack.instance.bulletSpeed -= 0.2f; },
-            () => { PlayerAttack.instance.bulletSpeed += 0.2f; },
+            () => { PlayerAttack.instance.fireRate += 3f; },
+            () => { PlayerAttack.instance.fireRate -= 3f; },
             "B2"
         );
 
-        // BULLET DAMAGE BUFFS (5 room)
+
         AllBuffs["BD1"] = new Buff("BD1", "Bullet Damage 1", "Bullet Dmg +25%", dummyIcon, 5, 50,
             () => { PlayerAttack.instance.bulletDamage += 2; },
             () => { PlayerAttack.instance.bulletDamage -= 2; }
@@ -63,9 +61,6 @@ public class BuffLibrary : MonoBehaviour
             "BD2"
         );
 
-        // -------------------
-        // PLAYER SPEED BUFFS (3 room)
-        // -------------------
         AllBuffs["S1"] = new Buff("S1", "Move Speed 1", "Speed +20%", dummyIcon, 3, 5,
             () => { PlayerController.instance.moveSpeed += 0.2f; },
             () => { PlayerController.instance.moveSpeed -= 0.2f; }
@@ -83,7 +78,6 @@ public class BuffLibrary : MonoBehaviour
             "S2"
         );
 
-        // COLLECT RADIUS BUFF (2 room)
         AllBuffs["CR1"] = new Buff("CR1", "Collect Radius 1", "Pickup Radius +20%", dummyIcon, 2, 10,
             () => { PlayerExperience.instance.collectRadius += 0.2f; },
             () => { PlayerExperience.instance.collectRadius -= 0.2f; }
@@ -100,5 +94,51 @@ public class BuffLibrary : MonoBehaviour
             () => { PlayerExperience.instance.collectRadius -= 1.5f; },
             "CR2"
         );
+
+        AllBuffs["ICE1"] = new Buff(
+        "ICE1",
+        "Ice Bullet",
+        "Bullets slow enemies",
+        dummyIcon,
+        5, 100,
+        () => { PlayerAttack.instance.hasIceBuff = true; },
+        () => { PlayerAttack.instance.hasIceBuff = false; }
+        );
+
+        AllBuffs["BURN1"] = new Buff(
+        "BURN1",
+        "Burn Bullet",
+        "Bullets apply burning DoT",
+        dummyIcon,
+        5, 100,
+        () => { PlayerAttack.instance.hasBurnBuff = true; },
+        () => { PlayerAttack.instance.hasBurnBuff = false; }
+        );
+
+        AllBuffs["LIGHT1"] = new Buff(
+            "LIGHT1",
+            "Lightning Bullet",
+            "Bullets chain lightning on hit",
+            dummyIcon,
+            5, 100,
+            () => { PlayerAttack.instance.hasLightningBuff = true; },
+            () => { PlayerAttack.instance.hasLightningBuff = false; }
+        );
+
+        AllBuffs["SPREAD1"] = new Buff(
+            "SPREAD1", "Spread Shot", "Shoot 3 bullets in a cone",
+            dummyIcon, 3, 50,
+            () => { PlayerAttack.instance.hasSpreadShot = true; },
+            () => { PlayerAttack.instance.hasSpreadShot = false; }
+        );
+
+        AllBuffs["PIERCE1"] = new Buff(
+            "PIERCE1", "Piercing Shot", "Bullets pierce enemies",
+            dummyIcon, 3, 50,
+            () => { PlayerAttack.instance.pierceCount += 2; },
+            () => { PlayerAttack.instance.pierceCount -= 2; }
+        );
+
+
     }
 }

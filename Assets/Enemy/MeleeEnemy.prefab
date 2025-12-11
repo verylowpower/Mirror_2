@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6209130347478929699}
   - component: {fileID: -8439582180134410766}
   - component: {fileID: -183419697768104027}
+  - component: {fileID: 8515042246971291846}
+  - component: {fileID: 4628518997686384834}
   m_Layer: 7
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -157,12 +159,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea7f3a0c795eb440b76ae8933ac8fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMelee
-  health: 100
-  damage: 5
+  health: 200
+  damage: 1
   bulletSpeed: 0
   spriteRender: {fileID: 4854916531184408208}
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  flashTime: 0.1
+  flashTime: 0.5
   moveSpeed: 3
   expDropMin: 9
   expDropMax: 10
@@ -273,3 +275,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8515042246971291846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58038812358715777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09069d6dcaee49d44aaf08f97a7d10ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBuffReceiver
+--- !u!114 &4628518997686384834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58038812358715777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c003e8c24e0e7c49be1f55d3295ebe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyIceEffect

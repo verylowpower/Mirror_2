@@ -15,7 +15,7 @@ public class BuffSlot : MonoBehaviour
     {
         buffID = buff.ID;
         nameText.text = buff.Name;
-        //        decsText.text = buff.Description;
+        //decsText.text = buff.Description;
 
         if (iconImg != null && buff.Icon != null)
         {

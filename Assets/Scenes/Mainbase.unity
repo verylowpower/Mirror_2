@@ -2849,6 +2849,12 @@ MonoBehaviour:
   bulletHolder: {fileID: 6031226313521022464}
   bulletDamage: 10
   bulletSpeed: 4
+  fireRate: 2
+  hasIceBuff: 0
+  slow: 0.5
+  slowTime: 3
+  hasBurnBuff: 0
+  hasLightningBuff: 0
 --- !u!114 &1753078719
 MonoBehaviour:
   m_ObjectHideFlags: 0

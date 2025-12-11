@@ -1,12 +1,32 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerAttack : MonoBehaviour
 {
     public static PlayerAttack instance;
+
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletHolder;
+
+    [Header("Bullet Stats")]
     [SerializeField] public int bulletDamage = 10;
     [SerializeField] public float bulletSpeed;
+
+    [Header("Fire Rate")]
+    public float fireRate = 5f;
+    private float nextShootTime = 0f;
+
+    [Header("Bullet Buffs")]
+    public bool hasIceBuff = false;
+    public float slow;
+    public float slowTime;
+    public bool hasBurnBuff = false;
+    public bool hasLightningBuff = false;
+
+    [Header("Special Bullet Behavior")]
+    public bool hasSpreadShot = false;
+    public int pierceCount = 0;
+
 
     private Camera cam;
 
@@ -31,8 +51,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time >= nextShootTime)
+        {
+            nextShootTime = Time.time + (1f / fireRate);
             Shoot();
+        }
     }
 
     private void Shoot()
@@ -40,12 +63,40 @@ public class PlayerAttack : MonoBehaviour
         Vector3 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0f;
 
-        Vector2 dir = (mouseWorld - transform.position).normalized;
+        Vector2 baseDir = (mouseWorld - transform.position).normalized;
 
-        GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder);
+        // Tạo list buff
+        List<IBulletBuff> buffs = new();
 
+        bool allowIce = hasIceBuff && !hasBurnBuff;
+        bool allowBurn = hasBurnBuff && !hasIceBuff;
 
-        Bullet bullet = b.GetComponent<Bullet>();
-        bullet.Initialize(bulletDamage, dir, false, bulletSpeed);
+        if (allowIce) buffs.Add(new IceBulletBuff(slow, slowTime));
+        if (allowBurn) buffs.Add(new BurnBulletBuff(3, 1f));
+        if (hasLightningBuff) buffs.Add(new LightningBulletBuff(2, 3));
+
+        if (hasSpreadShot)
+        {
+            float angle = 15f; 
+
+            ShootBullet(Quaternion.Euler(0, 0, -angle) * baseDir, buffs);
+            ShootBullet(baseDir, buffs);
+            ShootBullet(Quaternion.Euler(0, 0, angle) * baseDir, buffs);
+        }
+        else
+        {
+            ShootBullet(baseDir, buffs);
+        }
     }
+
+    private void ShootBullet(Vector2 dir, List<IBulletBuff> buffs)
+    {
+        GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder);
+        Bullet bullet = b.GetComponent<Bullet>();
+        bullet.pierceRemaining = pierceCount;
+
+        bullet.Initialize(bulletDamage, dir, false, bulletSpeed, buffs);
+    }
+
+
 }

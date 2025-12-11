@@ -17,14 +17,14 @@ public class Enemy : MonoBehaviour
     public float Health => health;
 
     [Header("Visual")]
-    [SerializeField] protected SpriteRenderer spriteRender;
+    [SerializeField] public SpriteRenderer spriteRender;
     [SerializeField] protected Color flashColor = Color.white;
     protected Color originColor;
     [SerializeField] protected float flashTime = 0.1f;
 
     [Header("NavMesh")]
     protected NavMeshAgent agent;
-    [SerializeField] protected float moveSpeed = 3f;
+    [SerializeField] public float moveSpeed = 3f;
 
     [Header("EXP")]
     [SerializeField] private int expDropMin = 1;
@@ -87,43 +87,5 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(flashTime);
         spriteRender.color = originColor;
     }
-
-
-    //EFFECT
-    // public virtual void ApplyBurn(float dmgPerSec, float duration)
-    // {
-    //     StartCoroutine(DmgOverTime(dmgPerSec, duration));
-    // }
-
-    // public virtual void ApplySlow(float slowDownNumber, float duration)
-    // {
-    //     StartCoroutine(SlowSpeed(slowDownNumber, duration));
-    // }
-
-    // private IEnumerator DmgOverTime(float dmgPerSec, float duration)
-    // {
-    //     float interval = 1f;
-    //     float elapsed = 0f;
-
-    //     while (elapsed < duration)
-    //     {
-    //         ChangeHealth(dmgPerSec);
-    //         yield return new WaitForSeconds(interval);
-    //         elapsed += interval;
-    //     }
-    // }
-
-    // private IEnumerator SlowSpeed(float slowDownNumber, float duration)
-    // {
-    //     if (isSlowed) yield break;
-
-    //     isSlowed = true;
-    //     movementSpeed -= slowDownNumber;
-    //     StartCoroutine(FlashWhenHit(spriteRender, originColor, slowColor, duration));
-    //     yield return new WaitForSeconds(duration);
-    //     movementSpeed += slowDownNumber;
-    //     isSlowed = false;
-    // }
-
 
 }
