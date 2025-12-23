@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1385630384160647717}
   - component: {fileID: 1438239470876939010}
   - component: {fileID: 9049783620750865620}
+  - component: {fileID: 2812789927805624014}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -84,8 +85,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.56648004, b: 0.1745283, a: 1}
+  m_Sprite: {fileID: 5921125815867792477, guid: c4c992ea53b5da2459514904f175647f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -215,8 +216,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0.007987994, y: 0.04526562}
+  m_Radius: 1.0485122
 --- !u!114 &9049783620750865620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +230,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e39f6090724e4a4a8aadeb042afa2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Extensions.AgentOverride2d
+--- !u!114 &2812789927805624014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047246462351101219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab693b4cc134f034ea7f525632347e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangeEnemy
+  health: 100
+  damage: 10
+  bulletSpeed: 10
+  spriteRender: {fileID: 2560071828246914314, guid: 01d011aeda5136344ac622a382cd8671, type: 3}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashTime: 0.1
+  moveSpeed: 3
+  expDropMin: 1
+  expDropMax: 3
+  expPrefab: {fileID: 5134385481576080254, guid: c0ba6c0dd6445274ab7b174b18b2a44b, type: 3}
+  attackRange: 3
+  stopDistance: 2
+  attackCooldown: 1
+  bulletPF: {fileID: 141672215420518351, guid: 9ed8e26cac847f540986e96dcc4679c7, type: 3}
