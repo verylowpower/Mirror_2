@@ -11,25 +11,41 @@ public class Bullet : MonoBehaviour
 
     private List<IBulletBuff> bulletBuffs;
 
-    public void Initialize(int dmg, Vector2 direction, bool enemyBullet, float bulletSpeed, List<IBulletBuff> buffs)
+    Rigidbody2D rb;
+    Animator animator;
+    Collider2D col;
+
+    bool isExploding = false;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        col = GetComponent<Collider2D>();
+    }
+
+    public void Initialize(
+        int dmg,
+        Vector2 direction,
+        bool enemyBullet,
+        float bulletSpeed,
+        List<IBulletBuff> buffs)
     {
         damage = dmg;
         dir = direction.normalized;
         isEnemyBullet = enemyBullet;
         speed = bulletSpeed;
-
         bulletBuffs = buffs;
+
+        rb.linearVelocity = dir * speed;
 
         Destroy(gameObject, 5f);
     }
 
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.position += (Vector3)(dir * speed * Time.deltaTime);
-    }
+        if (isExploding) return;
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
         if (!isEnemyBullet)
         {
             Enemy enemy = collision.GetComponent<Enemy>();
@@ -46,7 +62,11 @@ public class Bullet : MonoBehaviour
                     return;
                 }
 
-                Destroy(gameObject);
+                Explode();
+            }
+            else if (collision.CompareTag("Enemy") || collision.CompareTag("Wall"))
+            {
+                Explode();
             }
         }
         else
@@ -55,9 +75,21 @@ public class Bullet : MonoBehaviour
             if (player != null)
             {
                 player.TakeDamage(damage);
-                Destroy(gameObject);
+                Explode();
             }
         }
     }
 
+    void Explode()
+    {
+        isExploding = true;
+
+        rb.linearVelocity = Vector2.zero;
+        col.enabled = false;
+
+        if (animator != null)
+            animator.SetTrigger("Impact");
+
+        Destroy(gameObject, 0.4f);
+    }
 }

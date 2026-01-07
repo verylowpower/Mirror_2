@@ -7,6 +7,8 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletHolder;
+    public bool IsAttacking { get; private set; }
+
 
     [Header("Bullet Stats")]
     [SerializeField] public int bulletDamage = 10;
@@ -51,10 +53,19 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time >= nextShootTime)
+        if (Input.GetMouseButton(0))
         {
-            nextShootTime = Time.time + (1f / fireRate);
-            Shoot();
+            IsAttacking = true;
+
+            if (Time.time >= nextShootTime)
+            {
+                nextShootTime = Time.time + (1f / fireRate);
+                Shoot();
+            }
+        }
+        else
+        {
+            IsAttacking = false;
         }
     }
 
@@ -77,7 +88,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (hasSpreadShot)
         {
-            float angle = 15f; 
+            float angle = 15f;
 
             ShootBullet(Quaternion.Euler(0, 0, -angle) * baseDir, buffs);
             ShootBullet(baseDir, buffs);

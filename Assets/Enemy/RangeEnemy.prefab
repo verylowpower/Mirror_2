@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 3863708834350905231}
   - component: {fileID: -8956881901581851022}
   - component: {fileID: 3963606410838025424}
+  - component: {fileID: 3290301398978727132}
   m_Layer: 7
   m_Name: RangeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,8 +85,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6649837281549969832, guid: d7f5daa7676ecea479cb735864a08f07, type: 3}
-  m_Color: {r: 0, g: 0.5084076, b: 0.8207547, a: 1}
+  m_Sprite: {fileID: 6908314464923391357, guid: d6425ea694ac57244bf7125b00bcc8a9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -169,7 +170,7 @@ MonoBehaviour:
   attackRange: 3
   stopDistance: 2
   attackCooldown: 1
-  bulletPF: {fileID: 141672215420518351, guid: 9ed8e26cac847f540986e96dcc4679c7, type: 3}
+  bulletPF: {fileID: 141672215420518351, guid: 60598504065e6c6439c059137f18d7b0, type: 3}
 --- !u!66 &-8956881901581851022
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -251,3 +252,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.21133333}
   m_Radius: 0.5
+--- !u!95 &3290301398978727132
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692079736621992185}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b74a3fdf9cee794d86a2340c923058e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

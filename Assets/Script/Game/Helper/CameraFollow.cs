@@ -11,3 +11,4 @@ public class CameraFollow : MonoBehaviour
         _camera.transform.position = _target.transform.position + new Vector3(0, 0, -zPosition);
     }
 }
+ 
