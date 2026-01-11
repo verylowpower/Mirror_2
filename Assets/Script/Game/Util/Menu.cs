@@ -25,7 +25,6 @@ public class Menu : MonoBehaviour
     {
         input.Enable();
 
-        // Auto focus button đầu tiên
         if (firstButton != null)
             EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
     }
@@ -41,7 +40,6 @@ public class Menu : MonoBehaviour
             audioSource.PlayOneShot(clickSound);
     }
 
-    // ===== GAMEPAD CONFIRM =====
     private void OnConfirm(InputAction.CallbackContext ctx)
     {
         GameObject selected = EventSystem.current.currentSelectedGameObject;
@@ -54,8 +52,6 @@ public class Menu : MonoBehaviour
             btn.onClick.Invoke();
         }
     }
-
-    // ===== BUTTON EVENTS =====
     public void StartButton()
     {
         SceneManager.LoadScene(1);

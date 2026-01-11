@@ -15,23 +15,20 @@ public class RandomSystem : MonoBehaviour
     {
         Time.timeScale = 0;
 
-        // Tạo danh sách buff hợp lệ
+
         List<Buff> available = new();
 
         foreach (var kvp in BuffLibrary.AllBuffs)
         {
             Buff buff = kvp.Value;
 
-            // Không random buff đang active
             if (PlayerBuffManager.instance.IsBuffActive(buff.ID))
                 continue;
 
 
-            // Không random buff player đã nhận vĩnh viễn
             if (PlayerBuffManager.instance.unlockedBuffs.Contains(buff.ID))
                 continue;
 
-            // Yêu cầu buff trước đó
             if (!string.IsNullOrEmpty(buff.RequirementBuffID) &&
                 !PlayerBuffManager.instance.unlockedBuffs.Contains(buff.RequirementBuffID))
                 continue;
@@ -47,10 +44,9 @@ public class RandomSystem : MonoBehaviour
             return;
         }
 
-        // Chọn 3 buff theo trọng số
+ 
         List<Buff> selected = PickWeightedBuffs(available, 3);
 
-        // Hiển thị buff
         string[] ids = selected.ConvertAll(b => b.ID).ToArray();
 
         buffUI.ShowBuffs(ids, selectedBuffID =>
@@ -64,7 +60,6 @@ public class RandomSystem : MonoBehaviour
     {
         List<Buff> result = new();
 
-        // Copy pool vì sẽ remove khi chọn
         List<Buff> temp = new(pool);
 
         for (int i = 0; i < count && temp.Count > 0; i++)

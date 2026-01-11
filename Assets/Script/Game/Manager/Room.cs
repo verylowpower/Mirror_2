@@ -81,7 +81,7 @@ public class Room : MonoBehaviour
 
     private void RoomCleared()
     {
-        // mở cửa, spawn reward, camera unlock...
+    
         PlayerBuffManager.instance.OnEnterNewRoom();
     }
 
