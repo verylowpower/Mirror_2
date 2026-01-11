@@ -28,7 +28,7 @@ public class EnemyMelee : Enemy
         if (player == null || agent == null) return;
 
         agent.SetDestination(player.position);
-
+        FlipTowards(player.position);
         float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance <= attackRange)
@@ -48,5 +48,11 @@ public class EnemyMelee : Enemy
         {
             receiver.TakeDamage(damage);
         }
+    }
+    private void FlipTowards(Vector3 target)
+    {
+        if (spriteRender == null) return;
+
+        spriteRender.flipX = (target.x < transform.position.x);
     }
 }

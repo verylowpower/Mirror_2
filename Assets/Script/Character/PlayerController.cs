@@ -14,18 +14,47 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     Vector2 lookDir = Vector2.down;
 
+    public Vector2 aimInput;
+    public bool usingGamepad;
+
+
     private void Awake()
     {
+
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
+        DontDestroyOnLoad(gameObject);
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
         inputActions = new PlayerInputAction();
-        inputActions.Input.PlayerInput.performed += ctx =>
+
+        inputActions.Input.Move.performed += ctx =>
             moveInput = ctx.ReadValue<Vector2>();
 
-        inputActions.Input.PlayerInput.canceled += _ =>
+        inputActions.Input.Move.canceled += _ =>
             moveInput = Vector2.zero;
+
+        inputActions.Input.Aim.performed += ctx =>
+        {
+            aimInput = ctx.ReadValue<Vector2>();
+            usingGamepad = ctx.control.device is Gamepad;
+        };
+
+        inputActions.Input.Aim.canceled += _ =>
+        {
+            aimInput = Vector2.zero;
+        };
+
+        inputActions.Input.Shoot.performed += _ => PlayerAttack.instance.Shoot();
+
+
     }
 
     private void OnEnable() => inputActions.Enable();
@@ -50,14 +79,9 @@ public class PlayerController : MonoBehaviour
         if (isMoving)
         {
             lookDir = moveInput.normalized;
+        }
 
-            animator.SetFloat("MoveX", lookDir.x);
-            animator.SetFloat("MoveY", lookDir.y);
-        }
-        else
-        {
-            animator.SetFloat("MoveX", lookDir.x);
-            animator.SetFloat("MoveY", lookDir.y);
-        }
+        animator.SetFloat("MoveX", lookDir.x);
+        animator.SetFloat("MoveY", lookDir.y);
     }
 }

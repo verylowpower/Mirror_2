@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 6908314464923391357, guid: d6425ea694ac57244bf7125b00bcc8a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -141,8 +141,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.4226667
-  m_BaseOffset: 0.71133333
+  m_Height: 1.08
+  m_BaseOffset: 0.52
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3863708834350905231
@@ -161,7 +161,7 @@ MonoBehaviour:
   damage: 10
   bulletSpeed: 10
   spriteRender: {fileID: 2560071828246914314}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashTime: 0.1
   moveSpeed: 3
   expDropMin: 1
@@ -250,8 +250,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
-  m_Radius: 0.5
+  m_Offset: {x: -0.062062263, y: -0.07947171}
+  m_Radius: 0.41665947
 --- !u!95 &3290301398978727132
 Animator:
   serializedVersion: 7

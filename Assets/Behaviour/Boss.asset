@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Name: Boss Blackboard
   m_EditorClassIdentifier: Unity.Behavior.Authoring::Unity.Behavior.BehaviorBlackboardAuthoringAsset
   AssetID:
-    m_Value0: 0
-    m_Value1: 0
+    m_Value0: 4955596798539760270
+    m_Value1: 1475975151932422251
   m_Variables:
   - rid: 7922131041325678801
   - rid: 7922131041325678841
@@ -113,7 +113,7 @@ MonoBehaviour:
         AuthoringAssetID:
           m_Value0: 4955596798539760270
           m_Value1: 1475975151932422251
-        m_DebugInfo: {fileID: 0}
+        m_DebugInfo: {fileID: 6399057068135140658}
         BlackboardReference:
           rid: 7922131041325678910
         BlackboardGroupReferences: []
@@ -125,7 +125,7 @@ MonoBehaviour:
           rid: 7922131041325678912
         m_EndedNodes:
           rid: 7922131041325678913
-        m_VersionTimestamp: 638956886511735730
+        m_VersionTimestamp: 639037774681183959
     - rid: 7922131041325678910
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Nodes:
   - rid: 7922131041325678798
   - rid: 7922131041325678874
-  m_VersionTimestamp: 638956886511735730
+  m_VersionTimestamp: 639037774681183959
   m_DebugInfo: {fileID: 6399057068135140658}
   m_RuntimeGraph: {fileID: -316946658704535345}
   AssetID:

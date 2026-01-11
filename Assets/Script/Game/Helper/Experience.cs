@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Experience : MonoBehaviour
 {
+    public static Experience instance;
     public int expAmount = 1;
     public float moveSpeed = 5f;
 

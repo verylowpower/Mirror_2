@@ -1,38 +1,65 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class BuffSlot : MonoBehaviour
 {
+    [Header("UI")]
     public TextMeshProUGUI nameText;
-    public TextMeshProUGUI decsText;
+    public TextMeshProUGUI descText;
     public Image iconImg;
 
-    private string buffID;
-    private System.Action<string> onClick;
+    [Header("Highlight")]
+    [SerializeField] private GameObject highlight;
 
-    public void Setup(Buff buff, System.Action<string> callback)
+
+    private string buffID;
+    private Action<string> onSelect;
+
+    private Button button;
+
+    void Awake()
+    {
+        button = GetComponent<Button>();
+    }
+
+    public void Setup(Buff buff, Action<string> callback)
     {
         buffID = buff.ID;
         nameText.text = buff.Name;
-        //decsText.text = buff.Description;
+
+        if (descText != null)
+            descText.text = buff.Description;
 
         if (iconImg != null && buff.Icon != null)
-        {
             iconImg.sprite = buff.Icon;
+
+        onSelect = callback;
+
+        if (button != null)
+        {
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(Select);
         }
 
-        onClick = callback;
-        GetComponent<Button>().onClick.RemoveAllListeners();
-        GetComponent<Button>().onClick.AddListener(OnClick);
-
+        Highlight(false);
     }
 
 
-    public void OnClick()
+    public void Highlight(bool value)
     {
-        //Debug.Log("Selected: " + buffID);
-        onClick?.Invoke(buffID);
+        if (highlight != null)
+            highlight.SetActive(value);
 
+   
+        transform.localScale = value ? Vector3.one * 1.05f : Vector3.one;
+    }
+
+   
+    public void Select()
+    {
+        // Debug.Log("Selected buff: " + buffID);
+        onSelect?.Invoke(buffID);
     }
 }

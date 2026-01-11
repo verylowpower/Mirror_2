@@ -1,25 +1,34 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class GUIController : MonoBehaviour
 {
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI pointText;
+    public TextMeshProUGUI waveText;
 
     private float time;
 
-    void Start()
+    IEnumerator Start()
     {
-        PlayerExperience.instance.OnLevelUp += UpdateLevelText;
+        yield return new WaitUntil(() =>
+            PlayerExperience.instance != null &&
+            GameController.instance != null
+        );
 
+        PlayerExperience.instance.OnLevelUp += UpdateLevelText;
         GameController.instance.TimeChange += UpdateGameTime;
         GameController.instance.KilledEnemy += UpdatePointText;
+
+        Room.OnWaveStarted += UpdateWaveText;
 
         UpdateLevelText(PlayerExperience.instance.GetLevel());
         UpdatePointText();
         UpdateGameTime();
     }
+
 
     void OnDestroy()
     {
@@ -31,11 +40,14 @@ public class GUIController : MonoBehaviour
             GameController.instance.TimeChange -= UpdateGameTime;
             GameController.instance.KilledEnemy -= UpdatePointText;
         }
+
+        Room.OnWaveStarted -= UpdateWaveText;
     }
+
 
     private void UpdateLevelText(int newLevel)
     {
-        levelText.text = "Level: " + newLevel;
+        levelText.text = $"Level: {newLevel}";
     }
 
     private void UpdateGameTime()
@@ -50,6 +62,27 @@ public class GUIController : MonoBehaviour
 
     private void UpdatePointText()
     {
-        pointText.text = "Score: " + GameController.instance.enemyKilled;
+        pointText.text = $"Score: {GameController.instance.enemyKilled}";
     }
+
+    private Coroutine waveRoutine;
+
+    private void UpdateWaveText(int currentWave, int totalWave)
+    {
+        if (waveRoutine != null)
+            StopCoroutine(waveRoutine);
+
+        waveRoutine = StartCoroutine(ShowWaveText(currentWave, totalWave));
+    }
+
+    private IEnumerator ShowWaveText(int currentWave, int totalWave)
+    {
+        waveText.text = $"WAVE {currentWave}/{totalWave}";
+        waveText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+
+        waveText.gameObject.SetActive(false);
+    }
+
 }

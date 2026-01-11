@@ -1,11 +1,11 @@
-using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-
     public static PlayerHealth instance;
+
     public event Action OnDeath;
     public event Action<int, int> OnHealthChanged;
 
@@ -14,18 +14,35 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color flashColor = Color.white;
     [SerializeField] private float flashDuration = 0.05f;
-    public bool isKilled = false;
 
-    [SerializeField] public int currentHealth;
+    public int currentHealth;
     private bool isIFrame = false;
     private Color originalColor;
 
-    void Awake() => instance = this;
+    void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
-        currentHealth = maxHealth;
         originalColor = spriteRenderer.color;
 
+        // if (GameController.instance != null && GameController.instance.playerHealth > 0)
+        // {
+        //     SetHealth((int)GameController.instance.playerHealth);
+        // }
+        // else
+        // {
+        currentHealth = maxHealth;
+        //}
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+    public void SetHealth(int value)
+    {
+        currentHealth = Mathf.Clamp(value, 0, maxHealth);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
@@ -35,10 +52,10 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth - dmg, 0, maxHealth);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-        Debug.Log("Player HP = " + currentHealth);
 
         StartCoroutine(IFrameRoutine());
         StartCoroutine(FlashEffect());
+
         if (currentHealth <= 0)
         {
             OnDeath?.Invoke();
@@ -58,12 +75,5 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer.color = flashColor;
         yield return new WaitForSeconds(flashDuration);
         spriteRenderer.color = originalColor;
-    }
-
-    public void KillPlayer()
-    {
-        //isKilled = true;
-        DeathHandler.instance.HandlePlayerDeath();
-        Destroy(gameObject);
     }
 }

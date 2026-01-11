@@ -9,8 +9,8 @@ public class PlayerExperience : MonoBehaviour
     public event Action<long, long> OnExpChanged;
 
     private long expToNextLevel;
-    private long totalExp = 0;
-    private int level = 1;
+    public long totalExp = 0;
+    public int level = 1;
 
     public float collectRadius = 3f;
 
@@ -56,6 +56,17 @@ public class PlayerExperience : MonoBehaviour
             PlayerBuffManager.instance.buffUIActive = true;
         }
     }
+
+    public void SetData(long exp, int lvl)
+    {
+        totalExp = exp;
+        level = lvl;
+
+        expToNextLevel = ExpTable.GetExpRequired(level);
+        OnExpChanged?.Invoke(totalExp, expToNextLevel);
+        OnLevelUp?.Invoke(level);
+    }
+
 
     public int GetLevel() => level;
     public long GetExp() => totalExp;

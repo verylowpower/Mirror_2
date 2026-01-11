@@ -37,7 +37,6 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
 
-        // 2D setup
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }

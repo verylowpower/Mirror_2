@@ -4,7 +4,7 @@ using UnityEngine;
 public class RandomSystem : MonoBehaviour
 {
     public static RandomSystem instance;
-    public Buff_GUI buff_UI;
+    public Buff_GUI buffUI;
 
     void Awake()
     {
@@ -53,7 +53,7 @@ public class RandomSystem : MonoBehaviour
         // Hiển thị buff
         string[] ids = selected.ConvertAll(b => b.ID).ToArray();
 
-        buff_UI.ShowBuffs(ids, selectedBuffID =>
+        buffUI.ShowBuffs(ids, selectedBuffID =>
         {
             OnBuffSelected(selectedBuffID);
         });
@@ -108,7 +108,7 @@ public class RandomSystem : MonoBehaviour
             PlayerBuffManager.instance.unlockedBuffs.Add(buff.ID);
         }
 
-        buff_UI.HideAll();
+        buffUI.HideAll();
         PlayerBuffManager.instance.buffUIActive = false;
         Time.timeScale = 1;
     }

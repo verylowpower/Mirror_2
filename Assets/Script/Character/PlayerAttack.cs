@@ -9,38 +9,38 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform bulletHolder;
     public bool IsAttacking { get; private set; }
 
-
     [Header("Bullet Stats")]
-    [SerializeField] public int bulletDamage = 10;
-    [SerializeField] public float bulletSpeed;
+    public int bulletDamage = 10;
+    public float bulletSpeed;
 
     [Header("Fire Rate")]
     public float fireRate = 5f;
     private float nextShootTime = 0f;
 
     [Header("Bullet Buffs")]
-    public bool hasIceBuff = false;
+    public bool hasIceBuff;
     public float slow;
     public float slowTime;
-    public bool hasBurnBuff = false;
-    public bool hasLightningBuff = false;
+    public bool hasBurnBuff;
+    public bool hasLightningBuff;
 
     [Header("Special Bullet Behavior")]
-    public bool hasSpreadShot = false;
-    public int pierceCount = 0;
+    public bool hasSpreadShot;
+    public int pierceCount;
 
-
-    private Camera cam;
 
     void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
     }
 
     private void Start()
     {
-        cam = Camera.main;
-
         if (bulletHolder == null)
         {
             GameObject holder = GameObject.Find("PlayerBullets");
@@ -69,27 +69,33 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
-        Vector3 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorld.z = 0f;
+        Vector2 baseDir;
+        if (PlayerController.instance.usingGamepad && PlayerController.instance.aimInput.sqrMagnitude > 0.1f)
+        {
+            baseDir = PlayerController.instance.aimInput.normalized;
+        }
+        else
+        {
+            Camera cam = Camera.main;
+            if (cam == null) return;
 
-        Vector2 baseDir = (mouseWorld - transform.position).normalized;
+            Vector3 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorld.z = 0f;
 
-        // Tạo list buff
+            baseDir = (mouseWorld - transform.position).normalized;
+        }
         List<IBulletBuff> buffs = new();
-
         bool allowIce = hasIceBuff && !hasBurnBuff;
         bool allowBurn = hasBurnBuff && !hasIceBuff;
 
         if (allowIce) buffs.Add(new IceBulletBuff(slow, slowTime));
         if (allowBurn) buffs.Add(new BurnBulletBuff(3, 1f));
         if (hasLightningBuff) buffs.Add(new LightningBulletBuff(2, 3));
-
         if (hasSpreadShot)
         {
             float angle = 15f;
-
             ShootBullet(Quaternion.Euler(0, 0, -angle) * baseDir, buffs);
             ShootBullet(baseDir, buffs);
             ShootBullet(Quaternion.Euler(0, 0, angle) * baseDir, buffs);
@@ -100,14 +106,12 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+
     private void ShootBullet(Vector2 dir, List<IBulletBuff> buffs)
     {
         GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder);
         Bullet bullet = b.GetComponent<Bullet>();
         bullet.pierceRemaining = pierceCount;
-
         bullet.Initialize(bulletDamage, dir, false, bulletSpeed, buffs);
     }
-
-
 }

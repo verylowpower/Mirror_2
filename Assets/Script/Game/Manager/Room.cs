@@ -1,9 +1,12 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    public static event System.Action<int, int> OnWaveStarted;
+
     [Header("Room Area")]
     [SerializeField] private Collider2D roomArea;
     [SerializeField] private Transform enemyHolder;
@@ -24,7 +27,7 @@ public class Room : MonoBehaviour
         {
             activated = true;
             StartCoroutine(StartWave(currentWave));
-            Debug.Log("SpawnManager.instance = " + SpawnManager.instance);
+            //Debug.Log("SpawnManager.instance = " + SpawnManager.instance);
 
         }
     }
@@ -33,8 +36,12 @@ public class Room : MonoBehaviour
     {
         if (waveIndex >= waves.Count) yield break;
 
+        OnWaveStarted?.Invoke(waveIndex + 1, waves.Count);
+
         WaveData wave = waves[waveIndex];
-        Debug.Log($"[ROOM] Start Wave {waveIndex + 1}");
+
+
+        //Debug.Log($"[ROOM] Start Wave {waveIndex + 1}");
 
         foreach (var group in wave.groups)
         {
