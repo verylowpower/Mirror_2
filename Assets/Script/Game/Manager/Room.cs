@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    public static Room instance;
     public static event System.Action<int, int> OnWaveStarted;
 
     [Header("Room Area")]
@@ -15,9 +16,11 @@ public class Room : MonoBehaviour
     [SerializeField] private List<WaveData> waves;
     [SerializeField] private float spawnInterval = 0.3f;
 
-    private int currentWave = 0;
+    public int currentWave = 0;
     private int enemiesAlive = 0;
     private bool activated = false;
+
+    void Awake() => instance = this;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -81,7 +84,7 @@ public class Room : MonoBehaviour
 
     private void RoomCleared()
     {
-    
+
         PlayerBuffManager.instance.OnEnterNewRoom();
     }
 

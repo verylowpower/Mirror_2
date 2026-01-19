@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
@@ -7,18 +6,58 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenu;
     public bool isPaused;
 
-    void Start()
+    private SaveLoadManager saveLoad;
+
+    void Awake()
     {
         instance = this;
+        saveLoad = FindObjectOfType<SaveLoadManager>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
-            Time.timeScale = isPaused ? 0 : 1;
-            pauseMenu.SetActive(isPaused);
+            if (!isPaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
         }
+    }
+
+    private void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+
+        SaveGame();
+    }
+
+    private void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+    }
+
+    private void SaveGame()
+    {
+        GameProgress progress = new GameProgress
+        {
+            id = 1,
+            currentWave = Room.instance.currentWave,
+            //hasBuff = PlayerBuffManager.instance.buffUIActive,
+            currentLevel = PlayerExperience.instance.GetLevel(),
+            playerHealth = PlayerHealth.instance.currentHealth,
+            // bossDefeated = GameController.instance.BossDefeated,
+            playerPosition = PlayerController.instance.transform.position
+        };
+
+        saveLoad.SaveProgress(progress);
     }
 }
