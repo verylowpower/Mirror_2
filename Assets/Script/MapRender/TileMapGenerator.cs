@@ -4,9 +4,19 @@ public class TileMapGenerator : MonoBehaviour
 {
     public int width = 50;
     public int height = 50;
-    public float noiseScale = 0.1f;
+    public float noiseScale = 0.05f;
+
+    [Range(0f, 1f)]
+    public float wallChance = 0.05f;
+
+    [Header("Spawn Safe Area")]
+    public Transform spawnPoint;
+    public float spawnSafeRadius = 5f;
 
     public Color mapBound = Color.yellow;
+
+    [Header("QuestData")]
+    [SerializeField] QuestData startQuest;
 
     public TileMapData Generate()
     {
@@ -16,12 +26,32 @@ public class TileMapGenerator : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                float noise = Mathf.PerlinNoise(
-                    x * noiseScale,
-                    y * noiseScale
+                Vector2 tileWorldPos = new Vector2(
+                    x + transform.position.x,
+                    y + transform.position.y
                 );
 
-                bool walkable = noise > 0.4f;
+                bool isNearSpawn =
+                    spawnPoint != null &&
+                    Vector2.Distance(tileWorldPos, spawnPoint.position) < spawnSafeRadius;
+
+                bool walkable;
+
+                if (isNearSpawn)
+                {
+                    walkable = true;
+                }
+                else
+                {
+                    float noise = Mathf.PerlinNoise(
+                        tileWorldPos.x * noiseScale,
+                        tileWorldPos.y * noiseScale
+                    );
+
+                    walkable =
+                        noise > 0.55f ||
+                        Random.value > wallChance;
+                }
 
                 mapData.tiles[x, y] = new TileData
                 {
@@ -29,6 +59,7 @@ public class TileMapGenerator : MonoBehaviour
                     walkable = walkable
                 };
             }
+            QuestManager.Instance.StartQuest(startQuest);
         }
 
         return mapData;
@@ -37,24 +68,17 @@ public class TileMapGenerator : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = mapBound;
-
-        // cho gizmo theo transform
         Gizmos.matrix = transform.localToWorldMatrix;
 
-        Vector3 center = new Vector3(
-            width / 2f,
-            height / 2f,
-            0f
+        Gizmos.DrawWireCube(
+            new Vector3(width * 0.5f, height * 0.5f, 0),
+            new Vector3(width, height, 0)
         );
 
-        Vector3 size = new Vector3(
-            width,
-            height,
-            0f
-        );
-
-        Gizmos.DrawWireCube(center, size);
+        if (spawnPoint != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(spawnPoint.position, spawnSafeRadius);
+        }
     }
-
-
 }

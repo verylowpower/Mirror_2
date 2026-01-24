@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
 {
     public System.Action onEnemyDeath;
 
+    [Header("ID")]
+    [SerializeField] protected string enemyId;
+
     [Header("Stats")]
     [SerializeField] protected float health = 10f;
     [SerializeField] protected int damage = 5;
@@ -62,6 +65,7 @@ public class Enemy : MonoBehaviour
     {
         DropExp();
         onEnemyDeath?.Invoke();
+        EnemyQuestCounter();
         Destroy(gameObject);
         GameController.instance.AddKill();
 
@@ -85,5 +89,13 @@ public class Enemy : MonoBehaviour
         spriteRender.color = flashColor;
         yield return new WaitForSeconds(flashTime);
         spriteRender.color = originColor;
+    }
+
+    public void EnemyQuestCounter()
+    {
+        QuestManager.Instance.NotifyEvent(
+           QuestType.KillEnemies,
+           enemyId,
+           1);
     }
 }

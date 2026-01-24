@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea7f3a0c795eb440b76ae8933ac8fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMelee
+  enemyId: 3
   health: 200
   damage: 5
   bulletSpeed: 0

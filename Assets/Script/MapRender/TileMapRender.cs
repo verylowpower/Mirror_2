@@ -55,12 +55,11 @@ public class TileMapRenderer : MonoBehaviour
     {
         if (blockCollider == null) return;
 
-        // 🔥 BẮT BUỘC CHO RUNTIME TILEMAP
         blockCollider.enabled = false;
         blockCollider.enabled = true;
 
         blockCollider.ProcessTilemapChanges();
 
-        Debug.Log("✅ Tilemap collider rebuilt");
+        Debug.Log("Tilemap collider rebuilt");
     }
 }

@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26876f9d7e9008c4889eac15e8f186e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss
+  enemyId: 4
   health: 1000
   damage: 5
   bulletSpeed: 5

@@ -125,7 +125,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: testtilemap_d_60
+      name: dirt
       rect:
         serializedVersion: 2
         x: 0
@@ -147,7 +147,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_61
+      name: dirt2
       rect:
         serializedVersion: 2
         x: 16
@@ -443,7 +443,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_75
+      name: grass1
       rect:
         serializedVersion: 2
         x: 0
@@ -465,7 +465,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_76
+      name: crack1
       rect:
         serializedVersion: 2
         x: 16
@@ -792,7 +792,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_90
+      name: grass2
       rect:
         serializedVersion: 2
         x: 0
@@ -814,7 +814,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_91
+      name: crack2
       rect:
         serializedVersion: 2
         x: 16
@@ -1125,7 +1125,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_105
+      name: grass3
       rect:
         serializedVersion: 2
         x: 0
@@ -1147,7 +1147,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_106
+      name: dirtGrass1
       rect:
         serializedVersion: 2
         x: 16
@@ -1459,7 +1459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_120
+      name: grass4
       rect:
         serializedVersion: 2
         x: 0
@@ -1481,7 +1481,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_121
+      name: DirtGrass2
       rect:
         serializedVersion: 2
         x: 16
@@ -1569,7 +1569,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_125
+      name: Wood
       rect:
         serializedVersion: 2
         x: 80
@@ -1822,7 +1822,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_136
+      name: DirtGrass3
       rect:
         serializedVersion: 2
         x: 16
@@ -1888,7 +1888,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_139
+      name: w
       rect:
         serializedVersion: 2
         x: 64
@@ -1910,7 +1910,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_140
+      name: wood2
       rect:
         serializedVersion: 2
         x: 80
@@ -1932,7 +1932,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: testtilemap_d_141
+      name: w2
       rect:
         serializedVersion: 2
         x: 96
@@ -3684,6 +3684,18 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
+      DirtGrass2: -1719225534
+      DirtGrass3: 1760605124
+      Wood: -237512733
+      crack1: -268049710
+      crack2: 1262926733
+      dirt: -1851422897
+      dirt2: 1402382361
+      dirtGrass1: 1023582418
+      grass1: 1244204181
+      grass2: -632188751
+      grass3: 2126528601
+      grass4: -1582938416
       testtilemap_d_0: 5895195920768516193
       testtilemap_d_1: -1809476300699865481
       testtilemap_d_10: -1920940785
@@ -3692,8 +3704,6 @@ TextureImporter:
       testtilemap_d_102: 1574511765
       testtilemap_d_103: 763348771
       testtilemap_d_104: -316927827
-      testtilemap_d_105: 2126528601
-      testtilemap_d_106: 1023582418
       testtilemap_d_107: 780458327
       testtilemap_d_108: -787155145
       testtilemap_d_109: -1374727642
@@ -3709,12 +3719,9 @@ TextureImporter:
       testtilemap_d_118: 233378778
       testtilemap_d_119: -995990728
       testtilemap_d_12: -1139327339
-      testtilemap_d_120: -1582938416
-      testtilemap_d_121: -1719225534
       testtilemap_d_122: 592341729
       testtilemap_d_123: 492632438
       testtilemap_d_124: 2920740
-      testtilemap_d_125: -237512733
       testtilemap_d_126: -1959355361
       testtilemap_d_127: -1506228198
       testtilemap_d_128: -1122405641
@@ -3726,13 +3733,9 @@ TextureImporter:
       testtilemap_d_133: 525841632
       testtilemap_d_134: 332622004
       testtilemap_d_135: -563675066
-      testtilemap_d_136: 1760605124
       testtilemap_d_137: 932562296
       testtilemap_d_138: -1556313202
-      testtilemap_d_139: -267867994
       testtilemap_d_14: 476019050
-      testtilemap_d_140: 96300161
-      testtilemap_d_141: -647332532
       testtilemap_d_142: -191653020
       testtilemap_d_143: -1659340741
       testtilemap_d_144: -233572308
@@ -3866,8 +3869,6 @@ TextureImporter:
       testtilemap_d_58: -1675541611
       testtilemap_d_59: 991125792
       testtilemap_d_6: -201208711
-      testtilemap_d_60: -1851422897
-      testtilemap_d_61: 1402382361
       testtilemap_d_62: -2132648144
       testtilemap_d_63: -1915584643
       testtilemap_d_64: 1894345588
@@ -3882,8 +3883,6 @@ TextureImporter:
       testtilemap_d_72: -1379928765
       testtilemap_d_73: 54690708
       testtilemap_d_74: -179767048
-      testtilemap_d_75: 1244204181
-      testtilemap_d_76: -268049710
       testtilemap_d_77: 307795884
       testtilemap_d_78: 1739689934
       testtilemap_d_79: 729550650
@@ -3899,8 +3898,6 @@ TextureImporter:
       testtilemap_d_88: -2066654087
       testtilemap_d_89: 1125887641
       testtilemap_d_9: 28270840
-      testtilemap_d_90: -632188751
-      testtilemap_d_91: 1262926733
       testtilemap_d_92: 346800993
       testtilemap_d_93: 1290599251
       testtilemap_d_94: 301625453
@@ -3909,6 +3906,9 @@ TextureImporter:
       testtilemap_d_97: -1724413161
       testtilemap_d_98: 1333263693
       testtilemap_d_99: 2074879223
+      w: -267867994
+      w2: -647332532
+      wood2: 96300161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
