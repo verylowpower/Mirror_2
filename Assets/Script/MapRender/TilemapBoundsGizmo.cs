@@ -21,7 +21,6 @@ public class TilemapBoundsGizmo : MonoBehaviour
         if (tilemap == null || tilemapRenderer == null)
             return;
 
-        // 🟩 LOCAL bounds (tilemap local space)
         Gizmos.color = localBoundsColor;
         Gizmos.matrix = transform.localToWorldMatrix;
         Gizmos.DrawWireCube(
@@ -29,7 +28,6 @@ public class TilemapBoundsGizmo : MonoBehaviour
             tilemap.localBounds.size
         );
 
-        // 🟨 WORLD bounds (renderer world space)
         Gizmos.color = worldBoundsColor;
         Gizmos.matrix = Matrix4x4.identity;
         Gizmos.DrawWireCube(

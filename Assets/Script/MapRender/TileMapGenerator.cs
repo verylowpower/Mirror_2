@@ -43,25 +43,19 @@ public class TileMapGenerator : MonoBehaviour
                 }
                 else
                 {
-                    float noise = Mathf.PerlinNoise(
-                        tileWorldPos.x * noiseScale,
-                        tileWorldPos.y * noiseScale
-                    );
-
+                    float noise = Mathf.PerlinNoise(tileWorldPos.x * noiseScale,tileWorldPos.y * noiseScale);
                     walkable =
                         noise > 0.55f ||
                         Random.value > wallChance;
                 }
-
                 mapData.tiles[x, y] = new TileData
                 {
                     type = walkable ? TileType.Ground : TileType.Wall,
                     walkable = walkable
                 };
             }
-            QuestManager.Instance.StartQuest(startQuest);
+            //QuestManager.instance.StartQuest(startQuest);
         }
-
         return mapData;
     }
 

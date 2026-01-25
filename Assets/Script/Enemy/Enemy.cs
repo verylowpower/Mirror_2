@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
 
     public void EnemyQuestCounter()
     {
-        QuestManager.Instance.NotifyEvent(
+        QuestManager.instance.NotifyEvent(
            QuestType.KillEnemies,
            enemyId,
            1);

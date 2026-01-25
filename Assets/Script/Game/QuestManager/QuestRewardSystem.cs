@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class QuestRewardSystem : MonoBehaviour
 {
-    public static QuestRewardSystem Instance;
+    public static QuestRewardSystem instance;
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
     public void GiveReward(QuestData quest)

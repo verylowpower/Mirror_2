@@ -16,7 +16,7 @@ MonoBehaviour:
   questName: Clear 1 Slime
   description: Kill 1 Slime enemy
   conditions:
-  - type: 0
+  - type: 1
     targetId: 1
     requiredAmount: 1
   nextQuest: {fileID: 0}

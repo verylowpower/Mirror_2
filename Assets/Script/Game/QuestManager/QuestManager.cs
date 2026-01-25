@@ -3,20 +3,21 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    public static QuestManager Instance;
-    //public bool startQuest;
+    public static QuestManager instance;
+    public bool IsQuestActive;
+    public bool IsQuestCompleted;
     List<QuestRuntime> activeQuests = new();
     HashSet<string> completedQuestIds = new();
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -29,7 +30,7 @@ public class QuestManager : MonoBehaviour
             return;
 
         activeQuests.Add(new QuestRuntime(data));
-        Debug.Log($"🟡 Quest started: {data.questName}");
+        Debug.Log($"Quest started: {data.questName}");
     }
 
     public void NotifyEvent(
@@ -50,12 +51,12 @@ public class QuestManager : MonoBehaviour
 
     void CompleteQuest(QuestRuntime quest)
     {
-        Debug.Log($"✅ Quest completed: {quest.data.questName}");
+        Debug.Log($"Quest completed: {quest.data.questName}");
 
         completedQuestIds.Add(quest.data.questId);
         activeQuests.Remove(quest);
 
-        QuestRewardSystem.Instance?.GiveReward(quest.data);
+        QuestRewardSystem.instance?.GiveReward(quest.data);
 
         if (quest.data.autoStartNext && quest.data.nextQuest != null)
         {
