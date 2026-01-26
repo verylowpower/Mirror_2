@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   dialogId: 1
   sentences:
-  - 1
+  - Quest start
   startQuest: {fileID: 11400000, guid: 9688aec74cc09d5409241d5dcb1f62d2, type: 2}
   completeQuestOnEnd: 0

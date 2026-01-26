@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

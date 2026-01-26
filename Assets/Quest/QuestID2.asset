@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 894b22dad8c871c4e946ed7483084c4a, type: 3}
-  m_Name: QuestID1
+  m_Name: QuestID2
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questId: 1
-  questName: Clear 1 Slime
-  description: Kill 1 Slime enemy
+  questName: Clear 1 Boss
+  description: Kill 1 Boss
   conditions:
   - type: 1
     targetId: 1
     requiredAmount: 1
-  nextQuest: {fileID: 11400000, guid: 9f7bf9ade919ff24ba6d4ca477e9513c, type: 2}
-  autoStartNext: 1
+  nextQuest: {fileID: 0}
+  autoStartNext: 0

@@ -14975,6 +14975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b76f16ffc50dd41838bc898ab42006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
+  IsQuestActive: 0
+  IsQuestCompleted: 0
 --- !u!4 &347061885
 Transform:
   m_ObjectHideFlags: 0
@@ -61678,8 +61680,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileMapGenerator
   width: 69
   height: 38
-  noiseScale: 0.1
-  wallChance: 0.058
+  noiseScale: 0.41
+  wallChance: 0.125
   spawnPoint: {fileID: 216107787}
   spawnSafeRadius: 5
   mapBound: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

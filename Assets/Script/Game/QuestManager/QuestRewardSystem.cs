@@ -39,24 +39,24 @@ public class QuestRewardSystem : MonoBehaviour
         }
     }
 
-    // void Reward_Kill10()
-    // {
-    //     Debug.Log("Reward: Increase player damage");
+    void Reward_Kill()
+    {
+        Debug.Log("Reward: Increase player damage");
 
-    //     PlayerStats.Instance?.AddDamage(2);
-    // }
+        //PlayerStats.Instance?.AddDamage(2);
+    }
 
-    // void Reward_UnlockSkill()
-    // {
-    //     Debug.Log("Reward: Unlock new skill");
+    void Reward_UnlockSkill()
+    {
+        Debug.Log("Reward: Unlock new skill");
 
-    //     SkillManager.Instance?.UnlockSkill("Fireball");
-    // }
+        //SkillManager.Instance?.UnlockSkill("Fireball");
+    }
 
-    // void Reward_SpawnBoss()
-    // {
-    //     Debug.Log("Reward: Spawn Boss");
+    void Reward_SpawnBoss()
+    {
+        Debug.Log("Reward: Spawn Boss");
 
-    //     BossSpawner.Instance?.SpawnBoss();
-    // }
+        //BossSpawner.Instance?.SpawnBoss();
+    }
 }
