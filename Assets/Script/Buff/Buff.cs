@@ -5,9 +5,7 @@ public class Buff
     public string ID;
     public string Name;
     public string Description;
-
     public Sprite Icon;
-
     public int Duration;      
     public int Weight;        
 

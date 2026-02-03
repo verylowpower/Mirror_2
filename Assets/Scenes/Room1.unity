@@ -1118,7 +1118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -147}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128190993
@@ -1143,15 +1143,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Buff 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd0cdefba992d8b4fa42e067a7c43d34, type: 2}
+  m_sharedMaterial: {fileID: 8211861909608390727, guid: dd0cdefba992d8b4fa42e067a7c43d34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1957,7 +1957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 122}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &223590939
@@ -15562,7 +15562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -147}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &395074008
@@ -15589,15 +15589,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd0cdefba992d8b4fa42e067a7c43d34, type: 2}
+  m_sharedMaterial: {fileID: 8211861909608390727, guid: dd0cdefba992d8b4fa42e067a7c43d34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -41606,7 +41606,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -361, y: -59.392014}
-  m_SizeDelta: {x: 231.0374, y: 148.7839}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &723798183
 MonoBehaviour:
@@ -41704,7 +41704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuffSlot
   nameText: {fileID: 395074008}
   descText: {fileID: 0}
-  iconImg: {fileID: 0}
+  iconImg: {fileID: 723798184}
   highlight: {fileID: 0}
 --- !u!114 &726814418
 MonoBehaviour:
@@ -62795,6 +62795,7 @@ GameObject:
   - component: {fileID: 1214732200}
   - component: {fileID: 1214732201}
   - component: {fileID: 1214732202}
+  - component: {fileID: 1214732203}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -62997,6 +62998,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509eeab62d3b9464db84e701bb653498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PersistentObject
+--- !u!114 &1214732203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214732194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c92c18c50a8320499d5dd9bb08dc1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PointCounter
+  point: 0
 --- !u!114 &1217207911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89727,7 +89741,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 8, y: -59.392014}
-  m_SizeDelta: {x: 231.0374, y: 148.7839}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1592070311
 MonoBehaviour:
@@ -89825,7 +89839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuffSlot
   nameText: {fileID: 128190993}
   descText: {fileID: 0}
-  iconImg: {fileID: 0}
+  iconImg: {fileID: 1592070312}
   highlight: {fileID: 0}
 --- !u!1 &1592586765
 GameObject:
@@ -90567,7 +90581,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1721021758}
   - component: {fileID: 1721021757}
-  - component: {fileID: 1721021759}
   - component: {fileID: 1721021760}
   m_Layer: 0
   m_Name: HUD Controller
@@ -90607,18 +90620,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1721021759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721021756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa4e5532a27429e41a100f41eb35bd16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DontDestroyOnLoadObject
 --- !u!114 &1721021760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94559,15 +94560,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Buff 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd0cdefba992d8b4fa42e067a7c43d34, type: 2}
+  m_sharedMaterial: {fileID: 8211861909608390727, guid: dd0cdefba992d8b4fa42e067a7c43d34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -94652,7 +94653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -147}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!213 &2055390767
@@ -94899,7 +94900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuffSlot
   nameText: {fileID: 2045296534}
   descText: {fileID: 0}
-  iconImg: {fileID: 0}
+  iconImg: {fileID: 2061603523}
   highlight: {fileID: 0}
 --- !u!224 &2061603521
 RectTransform:
@@ -94919,7 +94920,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 348, y: -59.392014}
-  m_SizeDelta: {x: 231.0374, y: 148.7839}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2061603522
 MonoBehaviour:

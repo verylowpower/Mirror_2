@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int damage = 5;
 
     [SerializeField] protected int bulletSpeed = 5;
+    [SerializeField] protected int point;
     public int Damage => damage;
     public float Health => health;
 
@@ -67,7 +68,7 @@ public class Enemy : MonoBehaviour
         onEnemyDeath?.Invoke();
         EnemyQuestCounter();
         Destroy(gameObject);
-        GameController.instance.AddKill();
+        PointCounter.instance.AddPoint(point);
 
     }
 

@@ -161,6 +161,7 @@ MonoBehaviour:
   health: 100
   damage: 10
   bulletSpeed: 10
+  point: 10
   spriteRender: {fileID: 2560071828246914314}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashTime: 0.1

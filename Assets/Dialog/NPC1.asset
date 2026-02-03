@@ -15,5 +15,5 @@ MonoBehaviour:
   dialogId: 1
   sentences:
   - Quest start
-  startQuest: {fileID: 11400000, guid: 9688aec74cc09d5409241d5dcb1f62d2, type: 2}
+  startQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
   completeQuestOnEnd: 0

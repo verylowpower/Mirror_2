@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class NPCInteract : MonoBehaviour
 {
+    [Header("NPC ID")]
+    public string iD;
     NPCDialog dialog;
     bool isPlayerNearby;
 
@@ -17,6 +19,7 @@ public class NPCInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             dialog.Interact();
+            NPCQuestCounter();
         }
     }
 
@@ -30,5 +33,13 @@ public class NPCInteract : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             isPlayerNearby = false;
+    }
+
+    public void NPCQuestCounter()
+    {
+        QuestManager.instance.NotifyEvent(
+           QuestType.TalkToNPC,
+           iD,
+           1);
     }
 }

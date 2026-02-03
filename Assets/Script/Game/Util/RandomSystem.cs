@@ -22,17 +22,15 @@ public class RandomSystem : MonoBehaviour
         {
             Buff buff = kvp.Value;
 
+            // if (!SkillTreeManager.Instance.IsSkillUnlocked(buff.ID))
+            //     continue;
             if (PlayerBuffManager.instance.IsBuffActive(buff.ID))
                 continue;
-
-
             if (PlayerBuffManager.instance.unlockedBuffs.Contains(buff.ID))
                 continue;
-
             if (!string.IsNullOrEmpty(buff.RequirementBuffID) &&
                 !PlayerBuffManager.instance.unlockedBuffs.Contains(buff.RequirementBuffID))
                 continue;
-
             available.Add(buff);
         }
 
@@ -44,7 +42,7 @@ public class RandomSystem : MonoBehaviour
             return;
         }
 
- 
+
         List<Buff> selected = PickWeightedBuffs(available, 3);
 
         string[] ids = selected.ConvertAll(b => b.ID).ToArray();

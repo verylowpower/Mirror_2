@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour
 
     public int enemyKilled;
 
-    public delegate void EnemyDied();
-    public event EnemyDied KilledEnemy;
+    // public delegate void EnemyDied();
+    // public event EnemyDied KilledEnemy;
 
     // [Header("CharacterStat")]
     // public int playerHealth;
@@ -39,11 +39,11 @@ public class GameController : MonoBehaviour
         TimeChange?.Invoke();
     }
 
-    public void AddKill()
-    {
-        enemyKilled++;
-        KilledEnemy?.Invoke();
-    }
+    // public void AddKill(int point)
+    // {
+    //     enemyKilled += point;
+    //     KilledEnemy?.Invoke();
+    // }
 
 
     // public void SavePlayerStats()

@@ -20,7 +20,9 @@ public class GUIController : MonoBehaviour
 
         PlayerExperience.instance.OnLevelUp += UpdateLevelText;
         GameController.instance.TimeChange += UpdateGameTime;
-        GameController.instance.KilledEnemy += UpdatePointText;
+        PointCounter.instance.OnPointChanged += UpdatePointText;
+        UpdatePointText();
+
 
         Room.OnWaveStarted += UpdateWaveText;
 
@@ -38,7 +40,7 @@ public class GUIController : MonoBehaviour
         if (GameController.instance != null)
         {
             GameController.instance.TimeChange -= UpdateGameTime;
-            GameController.instance.KilledEnemy -= UpdatePointText;
+            PointCounter.instance.OnPointChanged -= UpdatePointText;
         }
 
         Room.OnWaveStarted -= UpdateWaveText;
@@ -62,7 +64,7 @@ public class GUIController : MonoBehaviour
 
     private void UpdatePointText()
     {
-        pointText.text = $"Score: {GameController.instance.enemyKilled}";
+        pointText.text = $"Score: {PointCounter.instance.point}";
     }
 
     private Coroutine waveRoutine;

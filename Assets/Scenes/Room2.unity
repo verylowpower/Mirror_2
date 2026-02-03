@@ -169,9 +169,9 @@ MonoBehaviour:
   walkableTilemap: {fileID: 1051592952}
   blockTilemap: {fileID: 1114586981}
   decorTilemap: {fileID: 269710585}
-  groundTile: {fileID: 11400000, guid: 8bbb9973cf1ae3f41b6731c2c49575f3, type: 2}
-  wallTile: {fileID: 11400000, guid: b92ad43ba60e19643ad7a4b48eb85299, type: 2}
-  decorTile: {fileID: 11400000, guid: 5f2631ac36c386844905f0f54c392df9, type: 2}
+  groundTile: {fileID: 11400000, guid: 571ae7843294e1b4c95152affb452de5, type: 2}
+  wallTile: {fileID: 11400000, guid: d6daa32dc2ca14b4ea4b4a8cd13ae043, type: 2}
+  decorTile: {fileID: 11400000, guid: 4a1b1e0bca6e8a14a9787fa17e76e927, type: 2}
 --- !u!114 &6355965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26803,7 +26803,7 @@ GameObject:
   - component: {fileID: 225327735}
   - component: {fileID: 225327734}
   m_Layer: 0
-  m_Name: Grid (1)
+  m_Name: 'Grid '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -43,12 +43,11 @@ public class PlayerExperience : MonoBehaviour
     void LevelUp()
     {
         level++;
-
         expToNextLevel = ExpTable.GetExpRequired(level);
-
         OnLevelUp?.Invoke(level);
-
         OnExpChanged?.Invoke(totalExp, expToNextLevel);
+
+        PointCounter.instance.AddPoint(10);
 
         if (!PlayerBuffManager.instance.buffUIActive)
         {
