@@ -21,13 +21,13 @@ public class QuestRewardSystem : MonoBehaviour
 
         switch (quest.questId)
         {
-            // case "quest_kill_10":
-            //     Reward_Kill10();
-            //     break;
+            case "quest_kill":
+                Reward_Kill();
+                break;
 
-            // case "quest_unlock_skill":
-            //     Reward_UnlockSkill();
-            //     break;
+            case "quest_unlock_skill":
+                Reward_UnlockSkill(quest);
+                break;
 
             // case "quest_spawn_boss":
             //     Reward_SpawnBoss();
@@ -43,20 +43,13 @@ public class QuestRewardSystem : MonoBehaviour
     {
         Debug.Log("Reward: Increase player damage");
 
-        //PlayerStats.Instance?.AddDamage(2);
+        PlayerAttack.instance.bulletDamage += 2;
     }
 
-    void Reward_UnlockSkill()
+    void Reward_UnlockSkill(QuestData quest)
     {
         Debug.Log("Reward: Unlock new skill");
-
-        //SkillManager.Instance?.UnlockSkill("Fireball");
+        SkillTreeManager.instance.UnlockSkillByQuest(quest.rewardSkillId);
     }
 
-    void Reward_SpawnBoss()
-    {
-        Debug.Log("Reward: Spawn Boss");
-
-        //BossSpawner.Instance?.SpawnBoss();
-    }
 }

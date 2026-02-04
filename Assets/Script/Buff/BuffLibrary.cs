@@ -37,9 +37,6 @@ public class BuffLibrary : MonoBehaviour
         Sprite SPREAD1Icon = Resources.Load<Sprite>("BuffIcons/ExportedSprites/SPREAD1");
         Sprite PIERCE1Icon = Resources.Load<Sprite>("BuffIcons/ExportedSprites/PIERCE1");
 
-
-
-
         AllBuffs["H1"] = new Buff("H1", "Increase Health 1", "Health +1", H1Icon, 0, 20,
             () => { PlayerHealth.instance.maxHealth += 2; },
             () => { PlayerHealth.instance.maxHealth -= 2; }

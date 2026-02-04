@@ -4,37 +4,33 @@ using UnityEngine;
 public class PlayerBuffManager : MonoBehaviour
 {
     public static PlayerBuffManager instance;
-
     private Dictionary<string, ActiveBuff> activeBuffs = new();
-    public HashSet<string> unlockedBuffs = new();
+
     public bool buffUIActive = false;
 
     private void Awake()
     {
         instance = this;
     }
-
     public void AddBuff(string buffID, Buff buffData)
     {
-        if (activeBuffs.ContainsKey(buffID))
+        if (activeBuffs.TryGetValue(buffID, out ActiveBuff active))
         {
-            activeBuffs[buffID].roomsLeft = buffData.Duration;
+            active.roomsLeft = buffData.Duration;
             Debug.Log($"Buff {buffID} refreshed to {buffData.Duration} rooms");
             return;
         }
-
-     
         buffData.ApplyEffect?.Invoke();
-
-   
         if (buffData.Duration > 0)
         {
-            activeBuffs[buffID] = new ActiveBuff(buffData.Duration, buffData.RemoveEffect);
+            activeBuffs[buffID] = new ActiveBuff(
+                buffData.Duration,
+                buffData.RemoveEffect
+            );
         }
 
         Debug.Log($"Buff {buffID} applied ({buffData.Duration} rooms)");
     }
-
     public void OnEnterNewRoom()
     {
         List<string> expired = new();
@@ -51,17 +47,21 @@ public class PlayerBuffManager : MonoBehaviour
         {
             activeBuffs[id].onRemove?.Invoke();
             activeBuffs.Remove(id);
-
             Debug.Log($"Buff expired: {id}");
         }
     }
-
     public bool IsBuffActive(string buffID)
     {
         return activeBuffs.ContainsKey(buffID);
     }
+    public void ClearAllRuntimeBuffs()
+    {
+        foreach (var buff in activeBuffs.Values)
+            buff.onRemove?.Invoke();
 
-
+        activeBuffs.Clear();
+        Debug.Log("All runtime buffs cleared");
+    }
     private class ActiveBuff
     {
         public int roomsLeft;

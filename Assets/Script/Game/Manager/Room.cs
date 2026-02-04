@@ -20,6 +20,9 @@ public class Room : MonoBehaviour
     private int enemiesAlive = 0;
     private bool activated = false;
 
+    [Header("Gate")]
+    public GameObject gate;
+
     void Awake() => instance = this;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -38,24 +41,17 @@ public class Room : MonoBehaviour
     private IEnumerator StartWave(int waveIndex)
     {
         if (waveIndex >= waves.Count) yield break;
-
         OnWaveStarted?.Invoke(waveIndex + 1, waves.Count);
-
         WaveData wave = waves[waveIndex];
-
-
         //Debug.Log($"[ROOM] Start Wave {waveIndex + 1}");
-
         foreach (var group in wave.groups)
         {
             for (int i = 0; i < group.count; i++)
             {
                 Vector3 spawnPos = GetRandomPointInsideRoom();
                 GameObject enemy = SpawnManager.instance.SpawnEnemy(group.prefab, spawnPos, enemyHolder);
-
                 enemiesAlive++;
                 enemy.GetComponent<Enemy>().onEnemyDeath += OnEnemyDeath;
-
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
@@ -64,11 +60,9 @@ public class Room : MonoBehaviour
     private void OnEnemyDeath()
     {
         enemiesAlive--;
-
         if (enemiesAlive <= 0)
         {
             currentWave++;
-
             if (currentWave < waves.Count)
             {
                 Debug.Log($"[ROOM] Wave {currentWave} cleared → starting next wave");
@@ -84,7 +78,8 @@ public class Room : MonoBehaviour
 
     private void RoomCleared()
     {
-
+        gate.SetActive(true);
+        Debug.Log("Gate Open");
         PlayerBuffManager.instance.OnEnterNewRoom();
     }
 

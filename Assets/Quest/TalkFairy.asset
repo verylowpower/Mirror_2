@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894b22dad8c871c4e946ed7483084c4a, type: 3}
   m_Name: TalkFairy
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questId: TNPC2
+  questId: quest_unlock_skill
   questName: Fairy
   description: Talking with Fairy
   conditions:
@@ -20,4 +20,5 @@ MonoBehaviour:
     targetId: F1
     requiredAmount: 1
   nextQuest: {fileID: 0}
+  rewardSkillId: H1
   autoStartNext: 1

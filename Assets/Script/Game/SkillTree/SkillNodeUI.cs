@@ -21,6 +21,21 @@ public class SkillNodeUI : MonoBehaviour
         Refresh();
     }
 
+    void OnEnable()
+    {
+        if (SkillTreeManager.instance != null)
+        {
+            SkillTreeManager.instance.OnSkillTreeChanged += Refresh;
+            Refresh();
+        }
+    }
+
+    void OnDisable()
+    {
+        if (SkillTreeManager.instance != null)
+            SkillTreeManager.instance.OnSkillTreeChanged -= Refresh;
+    }
+
     void OnClick()
     {
         SkillTreeManager.instance.BuySkill(skillId);
@@ -29,15 +44,14 @@ public class SkillNodeUI : MonoBehaviour
     public void Refresh()
     {
         var mgr = SkillTreeManager.instance;
+        if (mgr == null) return;
 
         bool questUnlocked = mgr.IsQuestUnlocked(skillId);
         bool unlocked = mgr.IsSkillUnlocked(skillId);
         bool canBuy = mgr.CanBuy(skillId);
 
-        // LOCK
         lockOverlay.SetActive(!questUnlocked);
 
-        // ICON COLOR
         if (!questUnlocked)
             iconImage.color = lockedColor;
         else if (!unlocked)
@@ -45,14 +59,13 @@ public class SkillNodeUI : MonoBehaviour
         else
             iconImage.color = unlockedColor;
 
-        // BUTTON
-        button.interactable = canBuy;
+        button.interactable = questUnlocked && !unlocked && canBuy;
 
-        // POINT TEXT
-        if (pointText != null && mgr.skills != null)
+        if (pointText != null)
         {
-            var node = mgr.skills.Find(s => s.data.skillId == skillId);
-            pointText.text = unlocked ? "OWNED" : node.data.pointRequire.ToString();
+            var node = mgr.skills.Find(s => s.data != null && s.data.skillId == skillId);
+            pointText.text = unlocked ? "OWNED" : node != null ? node.data.pointRequire.ToString() : "";
         }
     }
+
 }

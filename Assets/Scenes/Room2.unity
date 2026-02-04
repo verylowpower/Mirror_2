@@ -188,10 +188,10 @@ MonoBehaviour:
   height: 38
   noiseScale: 0.1
   wallChance: 0.058
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 347746187}
   spawnSafeRadius: 5
   mapBound: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  startQuest: {fileID: 11400000, guid: 9688aec74cc09d5409241d5dcb1f62d2, type: 2}
+  startQuest: {fileID: 0}
 --- !u!4 &6355966
 Transform:
   m_ObjectHideFlags: 0
@@ -55820,7 +55820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1567147241
 Transform:
   m_ObjectHideFlags: 0
@@ -136914,6 +136914,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db27e7b7d7537594681023b09587d369, type: 2}
   spawnInterval: 10
   currentWave: 0
+  gate: {fileID: 1567147240}
 --- !u!61 &2072878365
 BoxCollider2D:
   m_ObjectHideFlags: 0

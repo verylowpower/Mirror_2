@@ -21,19 +21,15 @@ public class RandomSystem : MonoBehaviour
         foreach (var kvp in BuffLibrary.AllBuffs)
         {
             Buff buff = kvp.Value;
-
-            // if (!SkillTreeManager.Instance.IsSkillUnlocked(buff.ID))
-            //     continue;
+            if (!SkillTreeManager.instance.IsSkillUnlocked(buff.ID))
+                continue;
             if (PlayerBuffManager.instance.IsBuffActive(buff.ID))
                 continue;
-            if (PlayerBuffManager.instance.unlockedBuffs.Contains(buff.ID))
-                continue;
             if (!string.IsNullOrEmpty(buff.RequirementBuffID) &&
-                !PlayerBuffManager.instance.unlockedBuffs.Contains(buff.RequirementBuffID))
+                !SkillTreeManager.instance.IsSkillUnlocked(buff.RequirementBuffID))
                 continue;
             available.Add(buff);
         }
-
         if (available.Count == 0)
         {
             Debug.Log("No valid buffs available.");
@@ -41,18 +37,13 @@ public class RandomSystem : MonoBehaviour
             Time.timeScale = 1;
             return;
         }
-
-
         List<Buff> selected = PickWeightedBuffs(available, 3);
-
         string[] ids = selected.ConvertAll(b => b.ID).ToArray();
-
         buffUI.ShowBuffs(ids, selectedBuffID =>
         {
             OnBuffSelected(selectedBuffID);
         });
     }
-
 
     private List<Buff> PickWeightedBuffs(List<Buff> pool, int count)
     {
@@ -69,9 +60,7 @@ public class RandomSystem : MonoBehaviour
 
             int rnd = Random.Range(0, totalWeight);
             int sum = 0;
-
             Buff chosen = null;
-
             foreach (var b in temp)
             {
                 sum += b.Weight;
@@ -92,15 +81,13 @@ public class RandomSystem : MonoBehaviour
         return result;
     }
 
-
     private void OnBuffSelected(string selectedBuffID)
     {
         if (BuffLibrary.AllBuffs.TryGetValue(selectedBuffID, out Buff buff))
         {
             PlayerBuffManager.instance.AddBuff(buff.ID, buff);
-            PlayerBuffManager.instance.unlockedBuffs.Add(buff.ID);
+            MetaBuffManager.instance.unlockedBuffs.Add(buff.ID);
         }
-
         buffUI.HideAll();
         PlayerBuffManager.instance.buffUIActive = false;
         Time.timeScale = 1;

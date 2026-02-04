@@ -1,9 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillTreeManager : MonoBehaviour
 {
     public static SkillTreeManager instance;
+    public event System.Action OnSkillTreeChanged;
+
 
     [Header("Player Skill Points")]
     public int skillPoints;
@@ -16,7 +19,6 @@ public class SkillTreeManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        skillPoints = PointCounter.instance.point;
 
         foreach (var s in skills)
         {
@@ -25,6 +27,11 @@ public class SkillTreeManager : MonoBehaviour
         }
     }
 
+    IEnumerator Start()
+    {
+        yield return new WaitUntil(() => PointCounter.instance != null);
+        skillPoints = PointCounter.instance.point;
+    }
     public bool IsSkillUnlocked(string id)
     {
         return skillDict.ContainsKey(id) && skillDict[id].isUnlocked;
@@ -46,14 +53,13 @@ public class SkillTreeManager : MonoBehaviour
         if (!skillDict.ContainsKey(id)) return;
 
         skillDict[id].questUnlocked = true;
-        RefreshAllUI();
+        OnSkillTreeChanged?.Invoke();
     }
 
     public bool BuySkill(string id)
     {
-        if (!skillDict.ContainsKey(id)) return false;
-
-        SkillNode node = skillDict[id];
+        if (!skillDict.TryGetValue(id, out SkillNode node))
+            return false;
 
         if (!node.CanBuy())
             return false;
@@ -61,17 +67,12 @@ public class SkillTreeManager : MonoBehaviour
         skillPoints -= node.data.pointRequire;
         node.isUnlocked = true;
 
-        // Apply Buff
-        if (BuffLibrary.AllBuffs.TryGetValue(id, out Buff buff))
-            buff.ApplyEffect?.Invoke();
+        MetaBuffManager.instance.Unlock(id);
 
-        RefreshAllUI();
+        OnSkillTreeChanged?.Invoke();
         return true;
     }
 
-    public void RefreshAllUI()
-    {
-        foreach (var ui in FindObjectsOfType<SkillNodeUI>())
-            ui.Refresh();
-    }
+
+
 }

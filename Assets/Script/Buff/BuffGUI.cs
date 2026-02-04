@@ -74,11 +74,10 @@ public class Buff_GUI : MonoBehaviour
     private void OnNavigate(InputAction.CallbackContext ctx)
     {
         if (!isActive) return;
-        if (!HasAnyActiveSlot()) return;   // ✅ QUAN TRỌNG
-
+        if (!HasAnyActiveSlot()) return; 
         Vector2 dir = ctx.ReadValue<Vector2>();
 
-        if (dir.sqrMagnitude < 0.5f) return; // chống rung
+        if (dir.sqrMagnitude < 0.5f) return;
 
         if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
         {
