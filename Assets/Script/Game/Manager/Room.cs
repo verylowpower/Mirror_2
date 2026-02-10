@@ -8,6 +8,8 @@ public class Room : MonoBehaviour
     public static Room instance;
     public static event System.Action<int, int> OnWaveStarted;
 
+    [SerializeField] private GameObject summonPrefab;
+
     [Header("Room Area")]
     [SerializeField] private Collider2D roomArea;
     [SerializeField] private Transform enemyHolder;
@@ -33,8 +35,6 @@ public class Room : MonoBehaviour
         {
             activated = true;
             StartCoroutine(StartWave(currentWave));
-            //Debug.Log("SpawnManager.instance = " + SpawnManager.instance);
-
         }
     }
 
@@ -43,18 +43,33 @@ public class Room : MonoBehaviour
         if (waveIndex >= waves.Count) yield break;
         OnWaveStarted?.Invoke(waveIndex + 1, waves.Count);
         WaveData wave = waves[waveIndex];
-        //Debug.Log($"[ROOM] Start Wave {waveIndex + 1}");
+        //Debug.Log($"[ROOM] start Wave {waveIndex + 1}");
         foreach (var group in wave.groups)
         {
-            for (int i = 0; i < group.count; i++)
+            var g = group;
+            for (int i = 0; i < g.count; i++)
             {
                 Vector3 spawnPos = GetRandomPointInsideRoom();
-                GameObject enemy = SpawnManager.instance.SpawnEnemy(group.prefab, spawnPos, enemyHolder);
-                enemiesAlive++;
-                enemy.GetComponent<Enemy>().onEnemyDeath += OnEnemyDeath;
+                GameObject summon = Instantiate(summonPrefab, spawnPos, Quaternion.identity, enemyHolder);
+                summon.GetComponent<SummonEffect>().Init(() =>
+                {
+                    GameObject enemy = SpawnManager.instance.SpawnEnemy(g.prefab, spawnPos, enemyHolder);
+                    Enemy e = enemy.GetComponent<Enemy>();
+                    e.canTakeDamage = false;
+                    StartCoroutine(EnableAfterDelay(e, 1f));
+                    enemiesAlive++;
+                    e.onEnemyDeath += OnEnemyDeath;
+                });
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
+
+    }
+
+    IEnumerator EnableAfterDelay(Enemy e, float time) //enemy take dmg after summon animation
+    {
+        yield return new WaitForSeconds(time);
+        e.canTakeDamage = true;
     }
 
     private void OnEnemyDeath()

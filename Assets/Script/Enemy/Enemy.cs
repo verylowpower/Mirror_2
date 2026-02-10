@@ -35,6 +35,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int expDropMax = 3;
     [SerializeField] private GameObject expPrefab;
 
+    public bool canTakeDamage = false;
+
+    public void EnableAfterSummon()
+    {
+        canTakeDamage = true;
+    }
 
     protected virtual void Awake()
     {
@@ -53,14 +59,14 @@ public class Enemy : MonoBehaviour
 
     public virtual void ChangeHealth(float amount)
     {
+        if (!canTakeDamage) return;
         health -= amount;
-
-        if (amount > 0 && spriteRender != null)
+        if (amount > 0f && spriteRender != null)
             StartCoroutine(FlashHit());
-
         if (health <= 0f)
             KillEnemy();
     }
+
 
     public virtual void KillEnemy()
     {

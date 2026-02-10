@@ -28,6 +28,14 @@ public class PlayerAttack : MonoBehaviour
     public bool hasSpreadShot;
     public int pierceCount;
 
+    [Header("Melee")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private float meleeCooldown = 0.6f;
+    [SerializeField] private int meleeDamage = 15;
+    [SerializeField] private float meleeRange = 1.2f;
+    [SerializeField] private LayerMask enemyLayer;
+
+    private float nextMeleeTime;
 
     void Awake()
     {
@@ -46,17 +54,19 @@ public class PlayerAttack : MonoBehaviour
             GameObject holder = GameObject.Find("PlayerBullets");
             if (holder == null)
                 holder = new GameObject("PlayerBullets");
-
             bulletHolder = holder.transform;
         }
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
+        {
+            TryMelee();
+        }
+        if (Input.GetMouseButton(1))
         {
             IsAttacking = true;
-
             if (Time.time >= nextShootTime)
             {
                 nextShootTime = Time.time + (1f / fireRate);
@@ -67,6 +77,7 @@ public class PlayerAttack : MonoBehaviour
         {
             IsAttacking = false;
         }
+
     }
 
     public void Shoot()
@@ -80,10 +91,8 @@ public class PlayerAttack : MonoBehaviour
         {
             Camera cam = Camera.main;
             if (cam == null) return;
-
             Vector3 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0f;
-
             baseDir = (mouseWorld - transform.position).normalized;
         }
         List<IBulletBuff> buffs = new();
@@ -114,4 +123,25 @@ public class PlayerAttack : MonoBehaviour
         bullet.pierceRemaining = pierceCount;
         bullet.Initialize(bulletDamage, dir, false, bulletSpeed, buffs);
     }
+
+    void TryMelee()
+    {
+        if (Time.time < nextMeleeTime) return;
+        nextMeleeTime = Time.time + meleeCooldown;
+        animator.SetTrigger("Melee");
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, meleeRange);
+        foreach (var hit in hits)
+        {
+            Enemy enemy = hit.GetComponent<Enemy>();
+            if (enemy != null)
+                enemy.ChangeHealth(meleeDamage);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, meleeRange);
+    }
+
 }
