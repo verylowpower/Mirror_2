@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   groups:
   - prefab: {fileID: 58038812358715777, guid: 33e8af54782e01249a8ae962c7f0d6ce, type: 3}
-    count: 20
+    count: 5

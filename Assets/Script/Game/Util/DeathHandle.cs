@@ -18,12 +18,17 @@ public class DeathHandler : MonoBehaviour
         }
         instance = this;
     }
-
     public void HandlePlayerDeath()
     {
+        if (EndingManager.instance != null && EndingManager.instance.isBossFightActive)
+        {
+            Time.timeScale = 1f;
+            EndingManager.instance.TriggerPlayerDefeated();
+            return;
+        }
+
         deathScreen.SetActive(true);
         Time.timeScale = 0;
-
         StartCoroutine(DeathRoutine());
     }
 
@@ -31,17 +36,25 @@ public class DeathHandler : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(delayBeforeMenu);
 
+        Time.timeScale = 1f;
+
         CleanupPersistentObjects();
 
-        Time.timeScale = 1;
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        SceneManager.LoadScene("Hub", LoadSceneMode.Single);
     }
 
     private void CleanupPersistentObjects()
     {
         var persistents = FindObjectsOfType<PersistentObject>();
+
         foreach (var obj in persistents)
         {
+            if (obj.GetComponent<MetaBuffManager>() != null)
+                continue;
+
+            if (obj.GetComponent<SaveLoadManager>() != null)
+                continue;
+
             Destroy(obj.gameObject);
         }
     }

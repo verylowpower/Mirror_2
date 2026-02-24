@@ -10,12 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcb6f634467dfbd4d892fb4483fc6c12, type: 3}
-  m_Name: WaveData 1
+  m_Name: 10Slime R
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   groups:
-  - prefab: {fileID: 7692079736621992185, guid: 01d011aeda5136344ac622a382cd8671, type: 3}
-    count: 30
-  - prefab: {fileID: 58038812358715777, guid: 144a01e02dfcfb74883a06f762beb5bb, type: 3}
-    count: 25
-  - prefab: {fileID: 58038812358715777, guid: 144a01e02dfcfb74883a06f762beb5bb, type: 3}
-    count: 25
+  - prefab: {fileID: 58038812358715777, guid: 9a0c62c1b6d938a4094db913662e0eae, type: 3}
+    count: 10

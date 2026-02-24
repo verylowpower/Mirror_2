@@ -9,28 +9,24 @@ public class GUIController : MonoBehaviour
     public TextMeshProUGUI pointText;
     public TextMeshProUGUI waveText;
 
-    private float time;
+    private Coroutine waveRoutine;
 
     IEnumerator Start()
     {
         yield return new WaitUntil(() =>
             PlayerExperience.instance != null &&
-            GameController.instance != null
+            GameController.instance != null &&
+            PointCounter.instance != null
         );
-
         PlayerExperience.instance.OnLevelUp += UpdateLevelText;
         GameController.instance.TimeChange += UpdateGameTime;
         PointCounter.instance.OnPointChanged += UpdatePointText;
-        UpdatePointText();
-
-
         Room.OnWaveStarted += UpdateWaveText;
 
         UpdateLevelText(PlayerExperience.instance.GetLevel());
-        UpdatePointText();
         UpdateGameTime();
+        UpdatePointText();
     }
-
 
     void OnDestroy()
     {
@@ -38,36 +34,39 @@ public class GUIController : MonoBehaviour
             PlayerExperience.instance.OnLevelUp -= UpdateLevelText;
 
         if (GameController.instance != null)
-        {
             GameController.instance.TimeChange -= UpdateGameTime;
+
+        if (PointCounter.instance != null)
             PointCounter.instance.OnPointChanged -= UpdatePointText;
-        }
 
         Room.OnWaveStarted -= UpdateWaveText;
     }
 
-
     private void UpdateLevelText(int newLevel)
     {
-        levelText.text = $"Level: {newLevel}";
+        if (levelText != null)
+            levelText.text = $"Level: {newLevel}";
     }
 
     private void UpdateGameTime()
     {
-        time = GameController.instance.inGameTime;
+        if (GameController.instance == null || timeText == null)
+            return;
+
+        float time = GameController.instance.inGameTime;
 
         int minutes = Mathf.FloorToInt(time / 60f);
         int seconds = Mathf.FloorToInt(time % 60f);
 
         timeText.text = $"{minutes:00}:{seconds:00}";
     }
-
     private void UpdatePointText()
     {
+        if (PointCounter.instance == null || pointText == null)
+            return;
+
         pointText.text = $"Score: {PointCounter.instance.point}";
     }
-
-    private Coroutine waveRoutine;
 
     private void UpdateWaveText(int currentWave, int totalWave)
     {
@@ -79,6 +78,9 @@ public class GUIController : MonoBehaviour
 
     private IEnumerator ShowWaveText(int currentWave, int totalWave)
     {
+        if (waveText == null)
+            yield break;
+
         waveText.text = $"WAVE {currentWave}/{totalWave}";
         waveText.gameObject.SetActive(true);
 
@@ -86,5 +88,4 @@ public class GUIController : MonoBehaviour
 
         waveText.gameObject.SetActive(false);
     }
-
 }

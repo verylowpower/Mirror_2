@@ -49,7 +49,7 @@ public class QuestRewardSystem : MonoBehaviour
     void Reward_UnlockSkill(QuestData quest)
     {
         Debug.Log("Reward: Unlock new skill");
-        SkillTreeManager.instance.UnlockSkillByQuest(quest.rewardSkillId);
+        SkillTreeManager.instance.IsQuestUnlocked(quest.rewardSkillId);
     }
 
 }

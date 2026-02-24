@@ -47,24 +47,44 @@ public class SkillNodeUI : MonoBehaviour
         if (mgr == null) return;
 
         bool questUnlocked = mgr.IsQuestUnlocked(skillId);
-        bool unlocked = mgr.IsSkillUnlocked(skillId);
-        bool canBuy = mgr.CanBuy(skillId);
-
-        lockOverlay.SetActive(!questUnlocked);
+        bool skillUnlocked = mgr.IsSkillUnlocked(skillId);
 
         if (!questUnlocked)
-            iconImage.color = lockedColor;
-        else if (!unlocked)
-            iconImage.color = availableColor;
-        else
-            iconImage.color = unlockedColor;
-
-        button.interactable = questUnlocked && !unlocked && canBuy;
-
-        if (pointText != null)
         {
-            var node = mgr.skills.Find(s => s.data != null && s.data.skillId == skillId);
-            pointText.text = unlocked ? "OWNED" : node != null ? node.data.pointRequire.ToString() : "";
+            lockOverlay.SetActive(true);
+            iconImage.color = lockedColor;
+            button.interactable = false;
+
+            if (pointText != null)
+                pointText.text = "";
+
+            return;
+        }
+
+        lockOverlay.SetActive(false);
+
+        if (skillUnlocked)
+        {
+            iconImage.color = unlockedColor;
+            button.interactable = false;
+
+            if (pointText != null)
+                pointText.text = "OWNED";
+        }
+        else
+        {
+            iconImage.color = availableColor;
+            button.interactable = mgr.CanBuy(skillId);
+
+            if (pointText != null)
+            {
+                var node = mgr.skills
+                    .Find(s => s.data != null && s.data.skillId == skillId);
+
+                pointText.text = node != null
+                    ? node.data.pointRequire.ToString()
+                    : "";
+            }
         }
     }
 

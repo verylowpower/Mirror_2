@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
+  m_Name: QuestF1_I
+  m_EditorClassIdentifier: Assembly-CSharp::DialogData
+  sentences:
+  - That is all your skill you can get
+  - 'Collet point by defeat enemy and they soul will became your '
+  - Use point to unlock skill
+  - But only after you complete quest from me
+  - Now check your skill tree again
+  relatedQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
+  questState: 2
+  startQuestOnEnd: 0

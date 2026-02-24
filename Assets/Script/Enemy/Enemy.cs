@@ -104,5 +104,6 @@ public class Enemy : MonoBehaviour
            QuestType.KillEnemies,
            enemyId,
            1);
+        Debug.Log("EnemyQuestCounter called");
     }
 }

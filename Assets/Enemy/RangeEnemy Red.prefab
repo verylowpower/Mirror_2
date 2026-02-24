@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3963606410838025424}
   - component: {fileID: 3290301398978727132}
   m_Layer: 7
-  m_Name: RangeEnemy
+  m_Name: RangeEnemy Red
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6908314464923391357, guid: d6425ea694ac57244bf7125b00bcc8a9, type: 3}
+  m_Sprite: {fileID: -6131953650027157163, guid: 45112c73033983b4fbd6e0b1b294db72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   expDropMin: 1
   expDropMax: 3
   expPrefab: {fileID: 5134385481576080254, guid: c0ba6c0dd6445274ab7b174b18b2a44b, type: 3}
+  canTakeDamage: 0
   attackRange: 3
   stopDistance: 2
   attackCooldown: 1
@@ -264,7 +265,7 @@ Animator:
   m_GameObject: {fileID: 7692079736621992185}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3b74a3fdf9cee794d86a2340c923058e, type: 2}
+  m_Controller: {fileID: 3873906990746077963, guid: 45112c73033983b4fbd6e0b1b294db72, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

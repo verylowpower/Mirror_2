@@ -4,6 +4,7 @@ public class SkillTreeUI : MonoBehaviour
 {
     public static SkillTreeUI instance;
 
+
     void Awake()
     {
         instance = this;

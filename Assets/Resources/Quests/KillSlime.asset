@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 894b22dad8c871c4e946ed7483084c4a, type: 3}
-  m_Name: TalkFairy
+  m_Name: KillSlime
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questId: quest_unlock_skill
-  questName: Fairy
-  description: Talking with Fairy
+  questId: kill_slime
+  questName: Clear 1 Slime
+  description: Kill 1 Slime enemy
   conditions:
-  - type: 0
-    targetId: F1
+  - type: 1
+    targetId: 1
     requiredAmount: 1
   nextQuest: {fileID: 0}
-  rewardSkillId: H1
-  autoStartNext: 1
+  rewardSkillId: B1
+  autoStartNext: 0

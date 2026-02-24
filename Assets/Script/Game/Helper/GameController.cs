@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -12,18 +13,9 @@ public class GameController : MonoBehaviour
 
     public int enemyKilled;
 
-    // public delegate void EnemyDied();
-    // public event EnemyDied KilledEnemy;
-
-    // [Header("CharacterStat")]
-    // public int playerHealth;
-    // public long playerExp;
-    // public int playerLevel;
-    // public int playerPoint;
-
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
@@ -35,28 +27,22 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        inGameTime += Time.deltaTime;
-        TimeChange?.Invoke();
+        if (SceneManager.GetActiveScene().name != "Hub")
+        {
+            inGameTime += Time.deltaTime;
+            TimeChange?.Invoke();
+        }
     }
 
-    // public void AddKill(int point)
-    // {
-    //     enemyKilled += point;
-    //     KilledEnemy?.Invoke();
-    // }
+    public void ResetRun()
+    {
+        inGameTime = 0f;
+        enemyKilled = 0;
+    }
 
-
-    // public void SavePlayerStats()
-    // {
-    //     playerHealth = PlayerHealth.instance.currentHealth;
-    //     playerExp = PlayerExperience.instance.totalExp;
-    //     playerLevel = PlayerExperience.instance.level;
-    //     playerPoint = enemyKilled;
-    // }
-
-    // public void LoadPlayerStats()
-    // {
-    //     PlayerHealth.instance.SetHealth(playerHealth);
-    //     PlayerExperience.instance.SetData(playerExp, playerLevel);
-    // }
+    private void OnDestroy()
+    {
+        if (instance == this)
+            instance = null;
+    }
 }

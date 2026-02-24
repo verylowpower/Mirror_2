@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435a45c4ee90b424c8f511aae0f0b494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SummonEffect
-  summonDuration: 1.5
+  summonDuration: 1
 --- !u!212 &-1663014915343311044
 SpriteRenderer:
   m_ObjectHideFlags: 0

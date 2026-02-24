@@ -45,6 +45,7 @@ public class Boss : Enemy
     Animator animator;
     private float lastMeleeTime;
     private float lastRangeTime;
+    public bool isBossFightActive;
 
     protected override void Awake()
     {
@@ -59,6 +60,17 @@ public class Boss : Enemy
         base.Start();
         player = PlayerController.instance.transform;
         currentState = BossState.Chase;
+
+        if (EndingManager.instance != null)
+            EndingManager.instance.StartBossFight();
+    }
+
+    public override void KillEnemy()
+    {
+        base.KillEnemy();
+
+        if (EndingManager.instance != null)
+            EndingManager.instance.TriggerBossDefeated();
     }
 
     private void Update()

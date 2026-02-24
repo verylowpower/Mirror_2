@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
-  m_Name: NPC1
+  m_Name: QuestF1_C
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
-  dialogId: 1
   sentences:
-  - Quest start
-  startQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
-  completeQuestOnEnd: 0
+  - Now let's explore this forest
+  relatedQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
+  questState: 3
+  startQuestOnEnd: 0

@@ -369,11 +369,10 @@ MonoBehaviour:
   width: 69
   height: 38
   noiseScale: 0.1
-  wallChance: 0.004
-  spawnPoint: {fileID: 0}
+  wallChance: 0.002
+  spawnPoint: {fileID: 333383929}
   spawnSafeRadius: 5
   mapBound: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  startQuest: {fileID: 11400000, guid: 9688aec74cc09d5409241d5dcb1f62d2, type: 2}
 --- !u!4 &399647099
 Transform:
   m_ObjectHideFlags: 0
@@ -55530,12 +55529,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c95f82a27948f418670f315080f5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Room
+  summonPrefab: {fileID: 4280545960314044359, guid: c680282522a748945abc2300b88a4115, type: 3}
   roomArea: {fileID: 2072878365}
   enemyHolder: {fileID: 1381648108}
   waves:
   - {fileID: 11400000, guid: 3a990a5d843c5b04391383a8a3f17583, type: 2}
   spawnInterval: 1
   currentWave: 0
+  gate: {fileID: 0}
 --- !u!61 &2072878365
 BoxCollider2D:
   m_ObjectHideFlags: 0

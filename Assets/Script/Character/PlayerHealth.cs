@@ -59,6 +59,10 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             OnDeath?.Invoke();
+
+            if (EndingManager.instance != null)
+                EndingManager.instance.TriggerPlayerDefeated();
+
             DeathHandler.instance.HandlePlayerDeath();
         }
     }

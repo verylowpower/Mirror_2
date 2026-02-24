@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcb6f634467dfbd4d892fb4483fc6c12, type: 3}
-  m_Name: WaveData
+  m_Name: 10Slime G
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   groups:
-  - prefab: {fileID: 58038812358715777, guid: 144a01e02dfcfb74883a06f762beb5bb, type: 3}
-    count: 50
+  - prefab: {fileID: 58038812358715777, guid: f19eb9664844ff44f946f4af313ff011, type: 3}
+    count: 10

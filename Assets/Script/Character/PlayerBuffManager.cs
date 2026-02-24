@@ -16,11 +16,13 @@ public class PlayerBuffManager : MonoBehaviour
     {
         if (activeBuffs.TryGetValue(buffID, out ActiveBuff active))
         {
-            active.roomsLeft = buffData.Duration;
-            Debug.Log($"Buff {buffID} refreshed to {buffData.Duration} rooms");
+            active.wavesLeft = buffData.Duration;
+            Debug.Log($"Buff {buffID} refreshed to {buffData.Duration} waves");
             return;
         }
+
         buffData.ApplyEffect?.Invoke();
+
         if (buffData.Duration > 0)
         {
             activeBuffs[buffID] = new ActiveBuff(
@@ -29,17 +31,17 @@ public class PlayerBuffManager : MonoBehaviour
             );
         }
 
-        Debug.Log($"Buff {buffID} applied ({buffData.Duration} rooms)");
+        Debug.Log($"Buff {buffID} applied ({buffData.Duration} waves)");
     }
-    public void OnEnterNewRoom()
+    public void OnWaveCompleted()
     {
         List<string> expired = new();
 
         foreach (var kvp in activeBuffs)
         {
-            kvp.Value.roomsLeft--;
+            kvp.Value.wavesLeft--;
 
-            if (kvp.Value.roomsLeft <= 0)
+            if (kvp.Value.wavesLeft <= 0)
                 expired.Add(kvp.Key);
         }
 
@@ -64,12 +66,12 @@ public class PlayerBuffManager : MonoBehaviour
     }
     private class ActiveBuff
     {
-        public int roomsLeft;
+        public int wavesLeft;
         public System.Action onRemove;
 
-        public ActiveBuff(int rooms, System.Action remove)
+        public ActiveBuff(int waves, System.Action remove)
         {
-            roomsLeft = rooms;
+            wavesLeft = waves;
             onRemove = remove;
         }
     }

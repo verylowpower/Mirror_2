@@ -14,6 +14,9 @@ public class Menu : MonoBehaviour
     public Button firstButton;
 
     private PlayerInputAction input;
+    private GameProgress loadedProgress;
+
+
 
     private void Awake()
     {
@@ -52,11 +55,30 @@ public class Menu : MonoBehaviour
             btn.onClick.Invoke();
         }
     }
+
     public void StartButton()
     {
-        SceneManager.LoadScene(1);
         Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
     }
+
+    public void LoadButton()
+    {
+        PlayClick();
+        //LoadFromSnapshot();
+    }
+
+    // public void LoadFromSnapshot()
+    // {
+    //     SaveLoadManager save = FindObjectOfType<SaveLoadManager>();
+    //     if (save == null) return;
+    //     GameProgress progress = save.LoadProgress(1);
+    //     if (progress == null) return;
+    //     if (string.IsNullOrEmpty(progress.sceneEntryScene)) return;
+
+    //     SceneManager.LoadScene(progress.sceneEntryScene);
+    // }
+
 
     public void MenuButton()
     {

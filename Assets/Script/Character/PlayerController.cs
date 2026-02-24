@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -28,7 +27,6 @@ public class PlayerController : MonoBehaviour
         }
 
         instance = this;
-        //DontDestroyOnLoad(gameObject);
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -48,17 +46,20 @@ public class PlayerController : MonoBehaviour
         };
 
         inputActions.Input.Aim.canceled += _ =>
-        {
             aimInput = Vector2.zero;
+
+        inputActions.Input.Shoot.performed += _ =>
+        {
+            if (PlayerAttack.instance != null)
+                PlayerAttack.instance.Shoot();
         };
-
-        inputActions.Input.Shoot.performed += _ => PlayerAttack.instance.Shoot();
-
-
     }
-
     private void OnEnable() => inputActions.Enable();
-    private void OnDisable() => inputActions.Disable();
+    private void OnDisable()
+    {
+        if (inputActions != null)
+            inputActions.Disable();
+    }
 
     private void FixedUpdate()
     {

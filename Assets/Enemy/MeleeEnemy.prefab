@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMelee
   enemyId: 1
   health: 100
-  damage: 1
+  damage: 2
   bulletSpeed: 0
   point: 5
   spriteRender: {fileID: 4854916531184408208}
@@ -172,6 +172,7 @@ MonoBehaviour:
   expDropMin: 9
   expDropMax: 10
   expPrefab: {fileID: 5134385481576080254, guid: c0ba6c0dd6445274ab7b174b18b2a44b, type: 3}
+  canTakeDamage: 0
   attackRange: 1
   attackCooldown: 1
 --- !u!114 &6209130347478929699

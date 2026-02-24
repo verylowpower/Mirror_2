@@ -35,7 +35,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
 
-        SaveGame();
+
     }
 
     private void ResumeGame()
@@ -45,19 +45,5 @@ public class Pause : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
-    private void SaveGame()
-    {
-        GameProgress progress = new GameProgress
-        {
-            id = 1,
-            currentWave = Room.instance.currentWave,
-            //hasBuff = PlayerBuffManager.instance.buffUIActive,
-            currentLevel = PlayerExperience.instance.GetLevel(),
-            playerHealth = PlayerHealth.instance.currentHealth,
-            // bossDefeated = GameController.instance.BossDefeated,
-            playerPosition = PlayerController.instance.transform.position
-        };
 
-        saveLoad.SaveProgress(progress);
-    }
 }

@@ -15,9 +15,6 @@ public class TileMapGenerator : MonoBehaviour
 
     public Color mapBound = Color.yellow;
 
-    [Header("QuestData")]
-    [SerializeField] QuestData startQuest;
-
     public TileMapData Generate()
     {
         TileMapData mapData = new TileMapData(width, height);
@@ -43,7 +40,7 @@ public class TileMapGenerator : MonoBehaviour
                 }
                 else
                 {
-                    float noise = Mathf.PerlinNoise(tileWorldPos.x * noiseScale,tileWorldPos.y * noiseScale);
+                    float noise = Mathf.PerlinNoise(tileWorldPos.x * noiseScale, tileWorldPos.y * noiseScale);
                     walkable =
                         noise > 0.55f ||
                         Random.value > wallChance;
@@ -54,7 +51,7 @@ public class TileMapGenerator : MonoBehaviour
                     walkable = walkable
                 };
             }
-            //QuestManager.instance.StartQuest(startQuest);
+
         }
         return mapData;
     }

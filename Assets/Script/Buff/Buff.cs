@@ -6,8 +6,8 @@ public class Buff
     public string Name;
     public string Description;
     public Sprite Icon;
-    public int Duration;      
-    public int Weight;        
+    public int Duration;
+    public int Weight;
 
     public System.Action ApplyEffect;
     public System.Action RemoveEffect;

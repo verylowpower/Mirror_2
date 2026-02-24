@@ -12,7 +12,7 @@ public class PlayerExperience : MonoBehaviour
     public long totalExp = 0;
     public int level = 1;
 
-    public float collectRadius = 3f;
+    public float collectRadius = 7.6f;
 
     void Awake()
     {

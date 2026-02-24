@@ -1,39 +1,57 @@
-using Mono.Data.Sqlite;
-using System.Data;
 using UnityEngine;
-
+using Mono.Data.Sqlite;
+using System.IO;
 
 public class GameProgressDatabase : MonoBehaviour
 {
-    public static GameProgressDatabase instance;
-    public string dbPath;
+    public static GameProgressDatabase Instance { get; private set; }
 
-    private void Awake()
+    private const string TABLE_NAME = "GameProgress";
+
+    [SerializeField] private string dbName = "GameProgress.db";
+
+    public string DbPath { get; private set; }
+
+    void Awake()
     {
-        instance = this;
-        dbPath = "URI=file:" + Application.persistentDataPath + "/gameprogress.db";
-        CreateTable();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        InitializeDatabase();
     }
 
-    private void CreateTable()
+    void InitializeDatabase()
     {
-        using (var connection = new SqliteConnection(dbPath))
+        DbPath = "URI=file:" +
+            Path.Combine(Application.persistentDataPath, dbName);
+
+        using (var connection = new SqliteConnection(DbPath))
         {
             connection.Open();
+
             using (var command = connection.CreateCommand())
             {
                 command.CommandText =
-                @"CREATE TABLE IF NOT EXISTS GameProgress (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    currentWave INTEGER,
-                    hasBuff INTEGER,
-                    currentLevel INTEGER,
-                    playerHealth INTEGER,
-                    bossDefeated INTEGER,
-                    posX REAL,
-                    posY REAL,
-                    posZ REAL
-                );";
+                        $@"CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
+                            id INTEGER PRIMARY KEY,
+                            currentLevel INTEGER,
+                            playerHealth INTEGER,
+                            playerPoint INTEGER,
+                            meleeDamage INTEGER,
+                            collectRadius REAL,
+                            moveSpeed REAL,
+                            fireRate REAL,
+                            currentSceneIndex INTEGER,
+                            unlockedBuffsJson TEXT,
+                            completedQuestsJson TEXT,
+                            activeQuestJson TEXT
+                        );";
                 command.ExecuteNonQuery();
             }
         }

@@ -834,14 +834,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 126008948}
-  - component: {fileID: 126008949}
   m_Layer: 5
   m_Name: FallOffScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &126008948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -862,18 +861,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &126008949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126008947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 509eeab62d3b9464db84e701bb653498, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PersistentObject
 --- !u!213 &127565696
 Sprite:
   m_ObjectHideFlags: 0
@@ -3301,9 +3288,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 311176546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa4e5532a27429e41a100f41eb35bd16, type: 3}
+  m_Script: {fileID: 11500000, guid: 509eeab62d3b9464db84e701bb653498, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DontDestroyOnLoadObject
+  m_EditorClassIdentifier: Assembly-CSharp::PersistentObject
 --- !u!213 &315194930
 Sprite:
   m_ObjectHideFlags: 0
@@ -14946,52 +14933,6 @@ Sprite:
   m_Bones: []
   m_ScriptableObjects: []
   m_SpriteID: 
---- !u!1 &347061883
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 347061885}
-  - component: {fileID: 347061884}
-  m_Layer: 0
-  m_Name: QuestManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &347061884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347061883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94b76f16ffc50dd41838bc898ab42006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuestManager
-  IsQuestActive: 0
-  IsQuestCompleted: 0
---- !u!4 &347061885
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347061883}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.49034, y: -0.23284, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &354720883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18071,7 +18012,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: d24f353046710ec4c9996c8f3c8232de, type: 3}
+  m_Resource: {fileID: 8300000, guid: 3253b8924e9cbbc469e218e886f9ae0e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -58266,50 +58207,6 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
---- !u!1 &958670728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 958670730}
-  - component: {fileID: 958670729}
-  m_Layer: 0
-  m_Name: QuestReward
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &958670729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 958670728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcfc414e8e1d186448ab830dad47297b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuestRewardSystem
---- !u!4 &958670730
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 958670728}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.49034, y: -0.23284, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &969744070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61685,7 +61582,6 @@ MonoBehaviour:
   spawnPoint: {fileID: 216107787}
   spawnSafeRadius: 5
   mapBound: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  startQuest: {fileID: 11400000, guid: 9688aec74cc09d5409241d5dcb1f62d2, type: 2}
 --- !u!4 &1121893475
 Transform:
   m_ObjectHideFlags: 0
@@ -62792,10 +62688,9 @@ GameObject:
   - component: {fileID: 1214732195}
   - component: {fileID: 1214732199}
   - component: {fileID: 1214732198}
-  - component: {fileID: 1214732200}
+  - component: {fileID: 1214732204}
   - component: {fileID: 1214732201}
-  - component: {fileID: 1214732202}
-  - component: {fileID: 1214732203}
+  - component: {fileID: 1214732205}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -62875,20 +62770,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomSystem
   buffUI: {fileID: 1214732198}
---- !u!114 &1214732200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214732194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea2642e6d9bdd094da2e980cdfa481fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
-  deathScreen: {fileID: 126008947}
-  delayBeforeMenu: 3
 --- !u!82 &1214732201
 AudioSource:
   m_ObjectHideFlags: 0
@@ -62986,7 +62867,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1214732202
+--- !u!114 &1214732204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62998,7 +62879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509eeab62d3b9464db84e701bb653498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PersistentObject
---- !u!114 &1214732203
+--- !u!114 &1214732205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63007,10 +62888,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1214732194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c92c18c50a8320499d5dd9bb08dc1d4, type: 3}
+  m_Script: {fileID: 11500000, guid: ea2642e6d9bdd094da2e980cdfa481fc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PointCounter
-  point: 0
+  m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
+  deathScreen: {fileID: 2010501906}
+  delayBeforeMenu: 2
 --- !u!114 &1217207911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63650,7 +63532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1297505875
 Transform:
   m_ObjectHideFlags: 0
@@ -90753,6 +90635,7 @@ GameObject:
   - component: {fileID: 1753078720}
   - component: {fileID: 1753078721}
   - component: {fileID: 1753078722}
+  - component: {fileID: 1753078724}
   - component: {fileID: 1753078723}
   m_Layer: 8
   m_Name: Char
@@ -90985,7 +90868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   bulletPrefab: {fileID: 141672215420518351, guid: 9ed8e26cac847f540986e96dcc4679c7, type: 3}
   bulletHolder: {fileID: 6031226313521022464}
-  bulletDamage: 100
+  bulletDamage: 20
   bulletSpeed: 8
   fireRate: 2
   hasIceBuff: 0
@@ -91077,6 +90960,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509eeab62d3b9464db84e701bb653498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PersistentObject
+--- !u!114 &1753078724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753078706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de3647afec89de47b006b226256ed7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSnapshot
 --- !u!213 &1762241514
 Sprite:
   m_ObjectHideFlags: 0
@@ -94198,7 +94093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2010501907
 RectTransform:
   m_ObjectHideFlags: 0
@@ -95062,10 +94957,11 @@ MonoBehaviour:
   roomArea: {fileID: 2072878365}
   enemyHolder: {fileID: 1381648108}
   waves:
-  - {fileID: 11400000, guid: b3b7753b7d7a40b448578a99e685d5e6, type: 2}
-  spawnInterval: 3
+  - {fileID: 11400000, guid: 1d536870424d9d148bd63fe3a09fc7e7, type: 2}
+  - {fileID: 11400000, guid: 4ac377e47c076034397ddfd277f6ca9f, type: 2}
+  spawnInterval: 2
   currentWave: 0
-  gate: {fileID: 1297505874}
+  gate: {fileID: 648599813}
 --- !u!61 &2072878365
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95100,7 +94996,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.1577258, y: 1.0504961}
+  m_Offset: {x: 0.6997323, y: 1.562108}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -95110,7 +95006,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 14.540036, y: 11.056751}
+  m_Size: {x: 13.624049, y: 8.251137}
   m_EdgeRadius: 0
 --- !u!213 &2078388369
 Sprite:
@@ -96329,5 +96225,3 @@ SceneRoots:
   - {fileID: 216107787}
   - {fileID: 121534197}
   - {fileID: 1121893475}
-  - {fileID: 347061885}
-  - {fileID: 958670730}

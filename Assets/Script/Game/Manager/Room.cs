@@ -63,10 +63,9 @@ public class Room : MonoBehaviour
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
-
     }
 
-    IEnumerator EnableAfterDelay(Enemy e, float time) //enemy take dmg after summon animation
+    IEnumerator EnableAfterDelay(Enemy e, float time)
     {
         yield return new WaitForSeconds(time);
         e.canTakeDamage = true;
@@ -75,9 +74,12 @@ public class Room : MonoBehaviour
     private void OnEnemyDeath()
     {
         enemiesAlive--;
+
         if (enemiesAlive <= 0)
         {
+            PlayerBuffManager.instance.OnWaveCompleted();
             currentWave++;
+
             if (currentWave < waves.Count)
             {
                 Debug.Log($"[ROOM] Wave {currentWave} cleared → starting next wave");
@@ -93,9 +95,11 @@ public class Room : MonoBehaviour
 
     private void RoomCleared()
     {
-        gate.SetActive(true);
-        Debug.Log("Gate Open");
-        PlayerBuffManager.instance.OnEnterNewRoom();
+        if (gate != null)
+        {
+            gate.SetActive(true);
+            Debug.Log("Gate Open");
+        }
     }
 
     private Vector3 GetRandomPointInsideRoom()

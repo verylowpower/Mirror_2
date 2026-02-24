@@ -8,33 +8,27 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletHolder;
     public bool IsAttacking { get; private set; }
-
     [Header("Bullet Stats")]
     public int bulletDamage = 10;
     public float bulletSpeed;
-
     [Header("Fire Rate")]
     public float fireRate = 5f;
     private float nextShootTime = 0f;
-
     [Header("Bullet Buffs")]
     public bool hasIceBuff;
     public float slow;
     public float slowTime;
     public bool hasBurnBuff;
     public bool hasLightningBuff;
-
     [Header("Special Bullet Behavior")]
     public bool hasSpreadShot;
     public int pierceCount;
-
     [Header("Melee")]
     [SerializeField] private Animator animator;
     [SerializeField] private float meleeCooldown = 0.6f;
-    [SerializeField] private int meleeDamage = 15;
+    [SerializeField] public int meleeDamage = 15;
     [SerializeField] private float meleeRange = 1.2f;
     [SerializeField] private LayerMask enemyLayer;
-
     private float nextMeleeTime;
 
     void Awake()

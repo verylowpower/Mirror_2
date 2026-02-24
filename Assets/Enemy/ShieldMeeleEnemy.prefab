@@ -168,12 +168,13 @@ MonoBehaviour:
   spriteRender: {fileID: 4854916531184408208}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashTime: 0.2
-  moveSpeed: 1
+  moveSpeed: 2
   expDropMin: 9
   expDropMax: 10
   expPrefab: {fileID: 5134385481576080254, guid: c0ba6c0dd6445274ab7b174b18b2a44b, type: 3}
-  attackRange: 1
-  attackCooldown: 2
+  canTakeDamage: 0
+  attackRange: 2
+  attackCooldown: 1
 --- !u!114 &6209130347478929699
 MonoBehaviour:
   m_ObjectHideFlags: 0

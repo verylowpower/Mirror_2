@@ -1,13 +1,16 @@
-using UnityEngine;
-
 [System.Serializable]
 public class GameProgress
 {
     public int id;
-    public int currentWave;
-    public bool hasBuff;
     public int currentLevel;
     public int playerHealth;
-    public bool bossDefeated;
-    public Vector3 playerPosition;
+    public float collectRadius;
+    public float moveSpeed;
+    public int meleeDamage;
+    public float fireRate;
+    public int playerPoint;
+    public int currentSceneIndex;
+    public string unlockedBuffsJson;
+    public string completedQuestsJson;
+    public string activeQuestJson;
 }

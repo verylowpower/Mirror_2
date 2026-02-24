@@ -7,9 +7,8 @@ public class SkillTreeManager : MonoBehaviour
     public static SkillTreeManager instance;
     public event System.Action OnSkillTreeChanged;
 
-
-    [Header("Player Skill Points")]
-    public int skillPoints;
+    // [Header("Player Skill Points")]
+    // public int skillPoints;
 
     [Header("All Skill Nodes")]
     public List<SkillNode> skills = new();
@@ -19,7 +18,7 @@ public class SkillTreeManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-
+        DontDestroyOnLoad(gameObject);
         foreach (var s in skills)
         {
             if (s.data != null && !skillDict.ContainsKey(s.data.skillId))
@@ -30,16 +29,28 @@ public class SkillTreeManager : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitUntil(() => PointCounter.instance != null);
-        skillPoints = PointCounter.instance.point;
+        //skillPoints = PointCounter.instance.point;
     }
+
+
     public bool IsSkillUnlocked(string id)
     {
-        return skillDict.ContainsKey(id) && skillDict[id].isUnlocked;
+        return MetaBuffManager.instance.IsUnlocked(id);
     }
 
     public bool IsQuestUnlocked(string id)
     {
-        return skillDict.ContainsKey(id) && skillDict[id].questUnlocked;
+        if (!skillDict.ContainsKey(id))
+            return false;
+
+        var node = skillDict[id];
+
+        if (string.IsNullOrEmpty(node.data.requiredQuestId))
+            return true;
+
+        return QuestManager.instance != null &&
+               QuestManager.instance
+                   .IsQuestCompletedById(node.data.requiredQuestId);
     }
 
     public bool CanBuy(string id)
@@ -64,8 +75,8 @@ public class SkillTreeManager : MonoBehaviour
         if (!node.CanBuy())
             return false;
 
-        skillPoints -= node.data.pointRequire;
-        node.isUnlocked = true;
+        if (!PointCounter.instance.SpendPoint(node.data.pointRequire))
+            return false;
 
         MetaBuffManager.instance.Unlock(id);
 
@@ -73,6 +84,22 @@ public class SkillTreeManager : MonoBehaviour
         return true;
     }
 
+    public void SaveBuffData(GameProgress progress)
+    {
+        if (progress == null) return;
 
+        progress.unlockedBuffsJson =
+            MetaBuffManager.instance.GetSaveJson();
+    }
 
+    public void LoadBuffData(GameProgress progress)
+    {
+        if (progress == null) return;
+
+        MetaBuffManager.instance.LoadFromJson(
+            progress.unlockedBuffsJson
+        );
+
+        OnSkillTreeChanged?.Invoke();
+    }
 }
