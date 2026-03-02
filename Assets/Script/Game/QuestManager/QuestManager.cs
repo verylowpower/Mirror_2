@@ -8,6 +8,8 @@ public class QuestManager : MonoBehaviour
     HashSet<string> completedQuestIds = new();
     HashSet<string> completedDialogShown = new();
 
+    //bool _allQuestCompleted = false;
+
     Dictionary<string, QuestData> questLookup =
         new Dictionary<string, QuestData>();
 
@@ -34,8 +36,12 @@ public class QuestManager : MonoBehaviour
         foreach (var q in all)
         {
             if (!questLookup.ContainsKey(q.questId))
+            {
                 questLookup.Add(q.questId, q);
+            }
         }
+
+        Debug.Log($"Have {questLookup.Count} quest");
     }
 
     QuestData GetQuestById(string id)
@@ -118,7 +124,7 @@ public class QuestManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(wrapper);
 
-        progress.completedQuestsJson = json; // chỉ dùng 1 field
+        progress.completedQuestsJson = json;
     }
 
     public void LoadQuestData(GameProgress progress)
@@ -211,4 +217,12 @@ public class QuestManager : MonoBehaviour
 
         return completedQuestIds.Count == questLookup.Count;
     }
+
+    // public void AllQuestCompleted()
+    // {
+    //     if (questLookup.Count == 0)
+    //     {
+    //         _allQuestCompleted = true;
+    //     }
+    // }
 }

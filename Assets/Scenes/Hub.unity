@@ -1691,7 +1691,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dialog
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dd0cdefba992d8b4fa42e067a7c43d34, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9e2f8ceb574da045aead3fcff10c244, type: 2}
   m_sharedMaterial: {fileID: 8211861909608390727, guid: dd0cdefba992d8b4fa42e067a7c43d34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -9.497681, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &363336713
@@ -4635,8 +4635,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndingManager
   badEndingScene: BadEnding
-  goodEndingScene: GoodEnd
-  bestEndingScene: BestEnd
+  goodEndingScene: GoodEnding
+  bestEndingScene: BestEnding
+  overrideQuestCondition: 1
+  forceAllQuestDone: 1
+  overrideBuffCondition: 0
+  forceAllBuffBought: 0
   isBossFightActive: 0
   scene1Name: Hub
 --- !u!4 &698054599
@@ -5830,6 +5834,63 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.7093, y: -6.01144, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1023331293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1023331296}
+  - component: {fileID: 1023331295}
+  - component: {fileID: 1023331294}
+  m_Layer: 0
+  m_Name: AudioDelete
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1023331294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023331293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b159c494b693d394893c2b040f12687d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cleaner
+--- !u!114 &1023331295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023331293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e678c1b81575a144baf4c8170f3430a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuSceneCleaner
+--- !u!4 &1023331296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023331293}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.27008, y: 1.88637, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31802,7 +31863,7 @@ Transform:
   m_GameObject: {fileID: 1753078706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28, y: -4.2, z: 0}
+  m_LocalPosition: {x: -23.11, y: 4.37, z: 0}
   m_LocalScale: {x: 1.608387, y: 1.608387, z: 1.608387}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -36670,3 +36731,4 @@ SceneRoots:
   - {fileID: 1866826888}
   - {fileID: 1842223855}
   - {fileID: 698054599}
+  - {fileID: 1023331296}

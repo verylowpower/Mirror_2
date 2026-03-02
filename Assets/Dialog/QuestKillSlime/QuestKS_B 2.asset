@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: QuestKS_B 2
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - 'The forest breathes easier now.
-
-    Please, accept this blessing - may it guide
-    you through the darkness.'
+  - The soil feels lighter now. Thank you.
   relatedQuest: {fileID: 11400000, guid: 9688aec74cc09d5409241d5dcb1f62d2, type: 2}
   questState: 3
   startQuestOnEnd: 0

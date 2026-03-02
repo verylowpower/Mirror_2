@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: QuestKS_B 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - "The forest is still uneasy\u2026\nHave you gathered enough Slime Cores?"
+  - "The roots are still restless\u2026 the Slimes remain."
   relatedQuest: {fileID: 11400000, guid: 9688aec74cc09d5409241d5dcb1f62d2, type: 2}
   questState: 2
   startQuestOnEnd: 0

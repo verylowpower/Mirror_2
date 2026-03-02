@@ -13,18 +13,7 @@ MonoBehaviour:
   m_Name: QuestF1_B
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - "Hello, welcome to the wood.\nYou finally opened your eyes\u2026"
-  - 'This forest has been waiting for you.
-
-    The wind whispers your name, even
-    if you do not remember it.'
-  - "Do not be afraid of the darkness.\nIt is not your enemy\u2026 not yet."
-  - 'Move forward, little one.
-
-    With every step, you will remember who you truly
-    are.'
-  - "And when you fall\u2026\nI will be here to guide you again."
-  - Find the BlackSmith and check your Skill tree
+  - "Hello, little wanderer\u2026 Can you hear the forest breathing?"
   relatedQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
   questState: 1
   startQuestOnEnd: 1

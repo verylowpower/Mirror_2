@@ -3,6 +3,11 @@ using UnityEngine.EventSystems;
 
 public class Cleaner : MonoBehaviour
 {
+
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Awake()
     {
         var allListeners = FindObjectsByType<AudioListener>(FindObjectsSortMode.None);

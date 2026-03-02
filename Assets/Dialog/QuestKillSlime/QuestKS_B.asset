@@ -13,16 +13,7 @@ MonoBehaviour:
   m_Name: QuestKS_B
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - "Hello again, little wanderer.\nThe forest feels restless today\u2026 can you
-    sense it?"
-  - 'Small Slimes have been gathering near the old trees.
-
-    They may look harmless,
-    but too many of them will poison the roots.'
-  - 'Will you help me?
-
-    Bring me 10 Slime Cores, and I shall reward you with
-    a gift from the forest.'
+  - The Slimes multiply near the roots. Defeat 5 of them.
   relatedQuest: {fileID: 11400000, guid: 9688aec74cc09d5409241d5dcb1f62d2, type: 2}
   questState: 1
   startQuestOnEnd: 1

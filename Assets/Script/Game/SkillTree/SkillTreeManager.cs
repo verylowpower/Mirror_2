@@ -28,16 +28,22 @@ public class SkillTreeManager : MonoBehaviour
 
     IEnumerator Start()
     {
-        yield return new WaitUntil(() => PointCounter.instance != null);
-        //skillPoints = PointCounter.instance.point;
+        yield return new WaitUntil(() =>
+            PointCounter.instance != null &&
+            MetaBuffManager.instance != null
+        );
+
+        SyncFromMetaBuff();
     }
 
 
     public bool IsSkillUnlocked(string id)
     {
-        return MetaBuffManager.instance.IsUnlocked(id);
-    }
+        if (!skillDict.ContainsKey(id))
+            return false;
 
+        return skillDict[id].isUnlocked;
+    }
     public bool IsQuestUnlocked(string id)
     {
         if (!skillDict.ContainsKey(id))
@@ -78,6 +84,8 @@ public class SkillTreeManager : MonoBehaviour
         if (!PointCounter.instance.SpendPoint(node.data.pointRequire))
             return false;
 
+        node.isUnlocked = true;
+
         MetaBuffManager.instance.Unlock(id);
 
         OnSkillTreeChanged?.Invoke();
@@ -99,6 +107,18 @@ public class SkillTreeManager : MonoBehaviour
         MetaBuffManager.instance.LoadFromJson(
             progress.unlockedBuffsJson
         );
+
+        OnSkillTreeChanged?.Invoke();
+    }
+    public void SyncFromMetaBuff()
+    {
+        foreach (var node in skills)
+        {
+            if (node.data == null) continue;
+
+            node.isUnlocked =
+                MetaBuffManager.instance.IsUnlocked(node.data.skillId);
+        }
 
         OnSkillTreeChanged?.Invoke();
     }

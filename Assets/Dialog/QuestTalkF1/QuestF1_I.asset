@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: QuestF1_I
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - That is all your skill you can get
-  - 'Collet point by defeat enemy and they soul will became your '
-  - Use point to unlock skill
-  - But only after you complete quest from me
-  - Now check your skill tree again
+  - "You are still here\u2026 good. Do not lose yourself."
   relatedQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
   questState: 2
   startQuestOnEnd: 0

@@ -8,6 +8,12 @@ public class EndingManager : MonoBehaviour
     [SerializeField] private string goodEndingScene = "GoodEnd";
     [SerializeField] private string bestEndingScene = "BestEnd";
 
+    [Header("DEBUG OVERRIDE")]
+    [SerializeField] private bool overrideQuestCondition = false;
+    [SerializeField] private bool forceAllQuestDone = false;
+    [SerializeField] private bool overrideBuffCondition = false;
+    [SerializeField] private bool forceAllBuffBought = false;
+
     public bool isBossFightActive = false;
     [SerializeField] private string scene1Name = "Scene1";
 
@@ -45,8 +51,13 @@ public class EndingManager : MonoBehaviour
     {
         isBossFightActive = false;
 
-        bool allQuestDone = QuestManager.instance.AreAllQuestsCompleted();
-        bool allBuffBought = MetaBuffManager.instance.AreAllBuffsUnlocked();
+        bool allQuestDone = overrideQuestCondition
+            ? forceAllQuestDone
+            : QuestManager.instance.AreAllQuestsCompleted();
+
+        bool allBuffBought = overrideBuffCondition
+            ? forceAllBuffBought
+            : MetaBuffManager.instance.AreAllBuffsUnlocked();
 
         if (allQuestDone && allBuffBought)
         {
@@ -72,13 +83,13 @@ public class EndingManager : MonoBehaviour
                 SceneManager.LoadScene(badEndingScene);
                 break;
 
-            // case EndingType.Good:
-            //     SceneManager.LoadScene(goodEndingScene);
-            //     break;
+            case EndingType.Good:
+                SceneManager.LoadScene(goodEndingScene);
+                break;
 
-            // case EndingType.Best:
-            //     SceneManager.LoadScene(bestEndingScene);
-            //     break;
+            case EndingType.Best:
+                SceneManager.LoadScene(bestEndingScene);
+                break;
         }
     }
 }

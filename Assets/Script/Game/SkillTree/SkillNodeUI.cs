@@ -51,7 +51,9 @@ public class SkillNodeUI : MonoBehaviour
 
         if (!questUnlocked)
         {
-            lockOverlay.SetActive(true);
+            if (lockOverlay != null)
+                lockOverlay.SetActive(true);
+
             iconImage.color = lockedColor;
             button.interactable = false;
 
@@ -61,7 +63,8 @@ public class SkillNodeUI : MonoBehaviour
             return;
         }
 
-        lockOverlay.SetActive(false);
+        if (lockOverlay != null)
+            lockOverlay.SetActive(false);
 
         if (skillUnlocked)
         {
@@ -87,5 +90,4 @@ public class SkillNodeUI : MonoBehaviour
             }
         }
     }
-
 }

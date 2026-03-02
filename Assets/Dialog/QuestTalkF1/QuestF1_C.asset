@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: QuestF1_C
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - Now let's explore this forest
+  - You have taken your first step.
   relatedQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
   questState: 3
   startQuestOnEnd: 0
