@@ -105,39 +105,36 @@ public class SaveLoadManager : MonoBehaviour
         {
             if (scene.buildIndex >= 1)
             {
-                MetaBuffManager.instance?.LoadFromJson(metaProgress.unlockedBuffsJson);
-                SkillTreeManager.instance?.LoadBuffData(metaProgress);
-                QuestManager.instance?.LoadQuestData(metaProgress);
-
-                StartCoroutine(ApplyLoadedData());
+                StartCoroutine(FullLoadSequence());
             }
 
-            isLoadingGame = false;
             return;
         }
 
+        // Nếu không phải load game → auto save khi đổi scene
         if (scene.buildIndex >= 1)
         {
-            // StartCoroutine(DelayedSave());
             SaveGame();
         }
-
-        // IEnumerator DelayedSave()
-        // {
-        //     yield return null;
-        //     yield return null;
-        //     SaveGame();
-        // }
     }
 
-    private IEnumerator ApplyLoadedData()
+    private IEnumerator FullLoadSequence()
     {
+        // Đợi 1 frame cho tất cả singleton Awake/Start chạy xong
         yield return null;
 
-        if (metaProgress == null)
-            yield break;
+        // Load hệ thống meta trước
+        MetaBuffManager.instance?.LoadFromJson(metaProgress.unlockedBuffsJson);
+        SkillTreeManager.instance?.LoadBuffData(metaProgress);
+        QuestManager.instance?.LoadQuestData(metaProgress);
 
+        // Đợi thêm 1 frame để Player spawn hoàn toàn
+        yield return null;
+
+        // Apply stat cho player
         PlayerSnapshot.Instance?.LoadFromProgress(metaProgress);
+
+        Debug.Log("LOAD COMPLETE ✔");
 
         isLoadingGame = false;
     }
@@ -154,8 +151,8 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
 
-        metaProgress.currentSceneIndex =
-            SceneManager.GetActiveScene().buildIndex;
+        metaProgress.currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        metaProgress.totalExp = PlayerExperience.instance.totalExp;
 
         PlayerSnapshot.Instance?.ApplyToProgress(metaProgress);
 
@@ -193,6 +190,7 @@ public class SaveLoadManager : MonoBehaviour
                 @"INSERT OR REPLACE INTO GameProgress
                 (id,
                  currentLevel,
+                 totalExp,
                  playerHealth,
                  playerPoint,
                  meleeDamage,
@@ -204,12 +202,13 @@ public class SaveLoadManager : MonoBehaviour
                  completedQuestsJson,
                  activeQuestJson)
                 VALUES
-                (@id,@level,@health,@point,@damage,
+                (@id,@level,@totalExp,@health,@point,@damage,
                  @radius,@speed,@fireRate,@sceneIndex,
                  @buffs,@completed,@active);";
 
                 command.Parameters.AddWithValue("@id", progress.id);
                 command.Parameters.AddWithValue("@level", progress.currentLevel);
+                command.Parameters.AddWithValue("@totalExp", progress.totalExp);
                 command.Parameters.AddWithValue("@health", progress.playerHealth);
                 command.Parameters.AddWithValue("@point", progress.playerPoint);
                 command.Parameters.AddWithValue("@damage", progress.meleeDamage);
@@ -248,16 +247,17 @@ public class SaveLoadManager : MonoBehaviour
                         {
                             id = reader.GetInt32(0),
                             currentLevel = reader.GetInt32(1),
-                            playerHealth = reader.GetInt32(2),
-                            playerPoint = reader.GetInt32(3),
-                            meleeDamage = reader.GetInt32(4),
-                            collectRadius = (float)reader.GetDouble(5),
-                            moveSpeed = (float)reader.GetDouble(6),
-                            fireRate = (float)reader.GetDouble(7),
-                            currentSceneIndex = reader.GetInt32(8),
-                            unlockedBuffsJson = reader.IsDBNull(9) ? "" : reader.GetString(9),
-                            completedQuestsJson = reader.IsDBNull(10) ? "" : reader.GetString(10),
-                            activeQuestJson = reader.IsDBNull(11) ? "" : reader.GetString(11)
+                            totalExp = reader.GetInt64(2),
+                            playerHealth = reader.GetInt32(3),
+                            playerPoint = reader.GetInt32(4),
+                            meleeDamage = reader.GetInt32(5),
+                            collectRadius = (float)reader.GetDouble(6),
+                            moveSpeed = (float)reader.GetDouble(7),
+                            fireRate = (float)reader.GetDouble(8),
+                            currentSceneIndex = reader.GetInt32(9),
+                            unlockedBuffsJson = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                            completedQuestsJson = reader.IsDBNull(11) ? "" : reader.GetString(11),
+                            activeQuestJson = reader.IsDBNull(12) ? "" : reader.GetString(12)
                         };
                     }
                 }

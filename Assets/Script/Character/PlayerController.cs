@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public Vector2 aimInput;
     public bool usingGamepad;
 
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -85,4 +84,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("MoveX", lookDir.x);
         animator.SetFloat("MoveY", lookDir.y);
     }
+
+    
 }

@@ -19,12 +19,13 @@ public class PlayerUI : MonoBehaviour
 
     private void OnEnable()
     {
-        // Health
         health.OnHealthChanged += UpdateHealthUI;
 
-        // EXP
         exp.OnExpChanged += UpdateExpUI;
         exp.OnLevelUp += OnLevelUpUI;
+
+        UpdateHealthUI(health.currentHealth, health.maxHealth);
+        UpdateExpUI(exp.GetExp(), ExpTable.GetExpRequired(exp.GetLevel()));
     }
 
     private void OnDisable()

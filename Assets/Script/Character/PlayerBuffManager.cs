@@ -12,6 +12,7 @@ public class PlayerBuffManager : MonoBehaviour
     {
         instance = this;
     }
+    
     public void AddBuff(string buffID, Buff buffData)
     {
         if (activeBuffs.TryGetValue(buffID, out ActiveBuff active))

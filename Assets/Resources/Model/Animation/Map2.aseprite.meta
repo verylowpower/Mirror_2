@@ -149,7 +149,70 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: Sand_1
+  - name: Map2_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 36
+      width: 16
+      height: 16
+    spriteID: 9e3e82798af60ec46b1cb271896156f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Map2_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 36
+      width: 16
+      height: 16
+    spriteID: c13b9025cba305b43ba01a4328676be7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Map2_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 36
+      width: 16
+      height: 16
+    spriteID: ae06db9ca0c82564eb9c33310f92432e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Map2_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -161,7 +224,7 @@ ScriptedImporter:
       y: 20
       width: 16
       height: 16
-    spriteID: 1eb2d3acaf742c04d83634c74d1dbe15
+    spriteID: e60073e035f18074183b19fb9b1d2af8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,7 +233,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Sand_2
+  - name: Map2_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -182,7 +245,7 @@ ScriptedImporter:
       y: 20
       width: 16
       height: 16
-    spriteID: 04b221dbcc204dd40b90a154ec8df739
+    spriteID: 73450e9e874de544b8d7612362b710a3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -191,72 +254,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Catus
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 36
-      y: 20
-      width: 16
-      height: 16
-    spriteID: f95a7107bd4da29468f383ad07be99c7
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline:
-    - outline:
-      - {x: 3, y: -7}
-      - {x: 2, y: -7}
-      - {x: 2, y: -4}
-      - {x: 4, y: -4}
-      - {x: 4, y: -3}
-      - {x: 5, y: -3.0059052}
-      - {x: 5, y: -2}
-      - {x: 6, y: -2}
-      - {x: 6, y: 1}
-      - {x: 7, y: 1}
-      - {x: 7, y: 2}
-      - {x: 6, y: 3}
-      - {x: 5, y: 4}
-      - {x: 4, y: 4}
-      - {x: 3, y: 3}
-      - {x: 3, y: -1}
-      - {x: 2, y: -1}
-      - {x: 2, y: 5}
-      - {x: 3, y: 5}
-      - {x: 3, y: 6}
-      - {x: 2, y: 6}
-      - {x: 2, y: 7}
-      - {x: 1, y: 8}
-      - {x: -1, y: 8}
-      - {x: -2, y: 7}
-      - {x: -2, y: 3}
-      - {x: -3, y: 3}
-      - {x: -3, y: 5}
-      - {x: -4, y: 6}
-      - {x: -5, y: 6}
-      - {x: -6, y: 5}
-      - {x: -6, y: 1}
-      - {x: -5, y: 0}
-      - {x: -3, y: -1}
-      - {x: -2, y: -1}
-      - {x: -2, y: -3}
-      - {x: -3, y: -3}
-      - {x: -3, y: -4}
-      - {x: -2, y: -4}
-      - {x: -2, y: -7}
-      - {x: -3, y: -7}
-      - {x: -3, y: -8}
-      - {x: 3, y: -8}
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Sand_3
+  - name: Map2_5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -268,7 +266,28 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 16
-    spriteID: 8d518e9a9c5430d448467c9e4f173a12
+    spriteID: 4c30f61ac933864458090513e7beba15
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Map2_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 4
+      width: 16
+      height: 16
+    spriteID: 3abe35d792b9b794daf63d645200238b
     spriteBone: []
     spriteOutline: []
     vertices: []

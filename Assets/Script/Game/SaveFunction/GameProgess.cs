@@ -3,6 +3,7 @@ public class GameProgress
 {
     public int id;
     public int currentLevel;
+    public long totalExp;
     public int playerHealth;
     public float collectRadius;
     public float moveSpeed;

@@ -171,7 +171,7 @@ MonoBehaviour:
   decorTilemap: {fileID: 269710585}
   groundTile: {fileID: 11400000, guid: 571ae7843294e1b4c95152affb452de5, type: 2}
   wallTile: {fileID: 11400000, guid: d6daa32dc2ca14b4ea4b4a8cd13ae043, type: 2}
-  decorTile: {fileID: 11400000, guid: 4a1b1e0bca6e8a14a9787fa17e76e927, type: 2}
+  decorTile: {fileID: 11400000, guid: fdb33ac649310954a9b5a22acd9f8d59, type: 2}
 --- !u!114 &6355965
 MonoBehaviour:
   m_ObjectHideFlags: 0

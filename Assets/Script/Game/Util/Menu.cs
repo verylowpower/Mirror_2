@@ -10,13 +10,11 @@ public class Menu : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip clickSound;
 
-    [Header("First Selected Button")]
+    [Header("Buttons")]
     public Button firstButton;
+    public Button loadButton;
 
     private PlayerInputAction input;
-    private GameProgress loadedProgress;
-
-
 
     private void Awake()
     {
@@ -30,11 +28,26 @@ public class Menu : MonoBehaviour
 
         if (firstButton != null)
             EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
+
+        UpdateLoadButtonVisibility();
     }
 
     private void OnDisable()
     {
         input.Disable();
+    }
+
+    private void UpdateLoadButtonVisibility()
+    {
+        if (loadButton == null)
+            return;
+
+        bool hasSave = System.IO.File.Exists(
+            System.IO.Path.Combine(
+                Application.persistentDataPath,
+                "GameProgress.db"));
+
+        loadButton.gameObject.SetActive(hasSave);
     }
 
     private void PlayClick()
@@ -56,8 +69,10 @@ public class Menu : MonoBehaviour
         }
     }
 
+
     public void StartButton()
     {
+        PlayClick();
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
@@ -65,20 +80,16 @@ public class Menu : MonoBehaviour
     public void LoadButton()
     {
         PlayClick();
-        //LoadFromSnapshot();
+
+        if (SaveLoadManager.Instance == null)
+        {
+            Debug.LogError("SaveLoadManager not found!");
+            return;
+        }
+
+        Time.timeScale = 1f;
+        SaveLoadManager.Instance.LoadGame();
     }
-
-    // public void LoadFromSnapshot()
-    // {
-    //     SaveLoadManager save = FindObjectOfType<SaveLoadManager>();
-    //     if (save == null) return;
-    //     GameProgress progress = save.LoadProgress(1);
-    //     if (progress == null) return;
-    //     if (string.IsNullOrEmpty(progress.sceneEntryScene)) return;
-
-    //     SceneManager.LoadScene(progress.sceneEntryScene);
-    // }
-
 
     public void MenuButton()
     {

@@ -41,6 +41,7 @@ public class GameProgressDatabase : MonoBehaviour
                         $@"CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
                             id INTEGER PRIMARY KEY,
                             currentLevel INTEGER,
+                            totalExp INTEGER,
                             playerHealth INTEGER,
                             playerPoint INTEGER,
                             meleeDamage INTEGER,

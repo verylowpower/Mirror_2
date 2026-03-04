@@ -43,10 +43,6 @@ public class PlayerSnapshot : MonoBehaviour
         progress.currentLevel = PlayerExperience.instance.level;
     }
 
-    // =========================================================
-    // LOAD
-    // =========================================================
-
     public void LoadFromProgress(GameProgress progress)
     {
         if (progress == null) return;
@@ -67,6 +63,12 @@ public class PlayerSnapshot : MonoBehaviour
         {
             PlayerAttack.instance.meleeDamage = progress.meleeDamage;
             PlayerAttack.instance.fireRate = progress.fireRate;
+        }
+
+        if (PlayerExperience.instance != null)
+        {
+            PlayerExperience.instance.SetData(progress.totalExp, progress.currentLevel
+            );
         }
     }
 }
