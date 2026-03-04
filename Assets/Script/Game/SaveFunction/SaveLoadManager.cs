@@ -10,7 +10,7 @@ public class SaveLoadManager : MonoBehaviour
     public static SaveLoadManager Instance;
 
     public GameProgress metaProgress;
-
+    private bool isLoadingGame = false;
     void Awake()
     {
         if (Instance != null)
@@ -21,6 +21,13 @@ public class SaveLoadManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // metaProgress = LoadProgress(1);
+
+        // if (metaProgress == null)
+        // {
+        //     Debug.Log("No save found. Waiting for StartNewGame.");
+        // }
     }
 
     void OnEnable()
@@ -39,6 +46,7 @@ public class SaveLoadManager : MonoBehaviour
 
         if (metaProgress == null)
         {
+            StartNewGame();
             Debug.Log("Auto create new save");
         }
     }
@@ -49,6 +57,8 @@ public class SaveLoadManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        isLoadingGame = true;
+
         metaProgress = new GameProgress
         {
             id = 1,
@@ -68,15 +78,15 @@ public class SaveLoadManager : MonoBehaviour
         SaveProgress(metaProgress);
         SceneManager.LoadScene(metaProgress.currentSceneIndex);
     }
-
     // =========================================================
     // LOAD GAME
     // =========================================================
 
     public void LoadGame()
     {
-        if (metaProgress == null)
-            metaProgress = LoadProgress(1);
+        isLoadingGame = true;
+
+        metaProgress = LoadProgress(1);
 
         if (metaProgress == null)
         {
@@ -89,45 +99,47 @@ public class SaveLoadManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
         if (metaProgress == null) return;
 
-        if (scene.buildIndex >= 2)
+        if (isLoadingGame)
         {
+            if (scene.buildIndex >= 1)
+            {
+                MetaBuffManager.instance?.LoadFromJson(metaProgress.unlockedBuffsJson);
+                SkillTreeManager.instance?.LoadBuffData(metaProgress);
+                QuestManager.instance?.LoadQuestData(metaProgress);
+
+                StartCoroutine(ApplyLoadedData());
+            }
+
+            isLoadingGame = false;
+            return;
+        }
+
+        if (scene.buildIndex >= 1)
+        {
+            // StartCoroutine(DelayedSave());
             SaveGame();
         }
 
-        MetaBuffManager.instance?.LoadFromJson(
-            metaProgress.unlockedBuffsJson
-        );
-
-        SkillTreeManager.instance?.LoadBuffData(metaProgress);
-
-        QuestManager.instance?.LoadQuestData(metaProgress);
-
-        if (PointCounter.instance != null)
-        {
-            PointCounter.instance.SetPoint(metaProgress.playerPoint);
-        }
-
-        StartCoroutine(ApplyLoadedData());
+        // IEnumerator DelayedSave()
+        // {
+        //     yield return null;
+        //     yield return null;
+        //     SaveGame();
+        // }
     }
 
     private IEnumerator ApplyLoadedData()
     {
         yield return null;
 
-        if (metaProgress == null) yield break;
+        if (metaProgress == null)
+            yield break;
 
-        int index = metaProgress.currentSceneIndex;
+        PlayerSnapshot.Instance?.LoadFromProgress(metaProgress);
 
-        if (PointCounter.instance != null)
-            PointCounter.instance.SetPoint(metaProgress.playerPoint);
-
-        if (index >= 2 && PlayerSnapshot.instance != null)
-        {
-            PlayerSnapshot.instance.LoadFromProgress(metaProgress);
-        }
+        isLoadingGame = false;
     }
 
     // =========================================================
@@ -142,17 +154,14 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
 
-        int index = SceneManager.GetActiveScene().buildIndex;
-        metaProgress.currentSceneIndex = index;
+        metaProgress.currentSceneIndex =
+            SceneManager.GetActiveScene().buildIndex;
 
-        if (index >= 2 && PlayerSnapshot.instance != null)
-        {
-            PlayerSnapshot.instance.ApplyToProgress(metaProgress);
-        }
+        PlayerSnapshot.Instance?.ApplyToProgress(metaProgress);
 
         SaveProgress(metaProgress);
-
-        Debug.Log("Saved scene: " + index);
+        Debug.Log("Saving health: " + PlayerHealth.instance?.currentHealth);
+        Debug.Log("Game Saved ✔ Scene: " + metaProgress.currentSceneIndex);
     }
 
     public void UpdatePoint(int newPoint)
@@ -246,9 +255,9 @@ public class SaveLoadManager : MonoBehaviour
                             moveSpeed = (float)reader.GetDouble(6),
                             fireRate = (float)reader.GetDouble(7),
                             currentSceneIndex = reader.GetInt32(8),
-                            unlockedBuffsJson = reader.GetString(9),
-                            completedQuestsJson = reader.GetString(10),
-                            activeQuestJson = reader.GetString(11)
+                            unlockedBuffsJson = reader.IsDBNull(9) ? "" : reader.GetString(9),
+                            completedQuestsJson = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                            activeQuestJson = reader.IsDBNull(11) ? "" : reader.GetString(11)
                         };
                     }
                 }

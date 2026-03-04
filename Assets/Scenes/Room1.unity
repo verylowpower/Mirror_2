@@ -90962,7 +90962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa87ec55cb2a2804585a8b2c71a43401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
+  maxHealth: 20
   iFrameTime: 0.3
   spriteRenderer: {fileID: 1753078707}
   flashColor: {r: 1, g: 0.17174748, b: 0, a: 1}

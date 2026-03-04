@@ -95,13 +95,9 @@ public class QuestManager : MonoBehaviour
 
         Debug.Log($"Quest completed: {quest.data.questName}");
 
-        if (!string.IsNullOrEmpty(quest.data.rewardSkillId))
-        {
-            SkillTreeManager.instance?.UnlockSkillByQuest(
-                quest.data.rewardSkillId
-            );
-        }
         SaveSystem();
+
+        SkillTreeManager.instance?.NotifySkillTreeChanged();
     }
 
 
@@ -209,6 +205,10 @@ public class QuestManager : MonoBehaviour
     {
         return completedQuestIds.Contains(id);
     }
+    // public bool IsQuestCompletedById(string questId)
+    // {
+    //     return false;
+    // }
 
     public bool AreAllQuestsCompleted()
     {

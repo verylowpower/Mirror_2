@@ -13,6 +13,8 @@ public class SkillTreeManager : MonoBehaviour
     [Header("All Skill Nodes")]
     public List<SkillNode> skills = new();
 
+    [SerializeField] private bool debugUnlockAllSkills = false;
+
     private Dictionary<string, SkillNode> skillDict = new();
 
     void Awake()
@@ -44,33 +46,41 @@ public class SkillTreeManager : MonoBehaviour
 
         return skillDict[id].isUnlocked;
     }
-    public bool IsQuestUnlocked(string id)
+
+    public bool IsQuestUnlocked(string skillId)
     {
-        if (!skillDict.ContainsKey(id))
+        if (!skillDict.ContainsKey(skillId))
             return false;
 
-        var node = skillDict[id];
+        if (debugUnlockAllSkills)
+        {
+            Debug.LogWarning("⚠ DEBUG MODE: Bỏ qua kiểm tra quest");
+            return true;
+        }
+
+        var node = skillDict[skillId];
+
+        Debug.Log($"Skill: {skillId} | RequiredQuestId: '{node.data.requiredQuestId}'");
 
         if (string.IsNullOrEmpty(node.data.requiredQuestId))
+        {
+            Debug.Log($"[Quest Check] Skill {skillId} has NO quest requirement");
             return true;
+        }
 
-        return QuestManager.instance != null &&
-               QuestManager.instance
-                   .IsQuestCompletedById(node.data.requiredQuestId);
+        bool completed = QuestManager.instance != null &&
+                         QuestManager.instance
+                             .IsQuestCompletedById(node.data.requiredQuestId);
+
+        Debug.Log($"[Quest Check] Skill {skillId} requires quest {node.data.requiredQuestId} -> Completed: {completed}");
+
+        return completed;
     }
 
     public bool CanBuy(string id)
     {
         if (!skillDict.ContainsKey(id)) return false;
         return skillDict[id].CanBuy();
-    }
-
-    public void UnlockSkillByQuest(string id)
-    {
-        if (!skillDict.ContainsKey(id)) return;
-
-        skillDict[id].questUnlocked = true;
-        OnSkillTreeChanged?.Invoke();
     }
 
     public bool BuySkill(string id)
@@ -120,6 +130,11 @@ public class SkillTreeManager : MonoBehaviour
                 MetaBuffManager.instance.IsUnlocked(node.data.skillId);
         }
 
+        OnSkillTreeChanged?.Invoke();
+    }
+
+    public void NotifySkillTreeChanged()
+    {
         OnSkillTreeChanged?.Invoke();
     }
 }

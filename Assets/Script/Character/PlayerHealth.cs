@@ -22,20 +22,16 @@ public class PlayerHealth : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        if (currentHealth <= 0)
+            currentHealth = maxHealth;
     }
 
     private void Start()
     {
         originalColor = spriteRenderer.color;
 
-        // if (GameController.instance != null && GameController.instance.playerHealth > 0)
-        // {
-        //     SetHealth((int)GameController.instance.playerHealth);
-        // }
-        // else
-        // {
-        currentHealth = maxHealth;
-        //}
+        // currentHealth = maxHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }

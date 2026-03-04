@@ -16,28 +16,27 @@ public class PlayerSpawner : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        StartCoroutine(SpawnAndLoad(scene.buildIndex));
+        StartCoroutine(SpawnAtPoint());
     }
 
-    IEnumerator SpawnAndLoad(int sceneIndex)
+    IEnumerator SpawnAtPoint()
     {
+        // Đợi Player và SpawnPoint init xong
         yield return null;
 
-        if (PlayerController.instance == null ||
-            SpawnPoint.instance == null)
+        if (PlayerController.instance == null)
+        {
+            Debug.LogWarning("PlayerController not found.");
             yield break;
+        }
+
+        if (SpawnPoint.instance == null)
+        {
+            Debug.LogWarning("SpawnPoint not found in scene.");
+            yield break;
+        }
 
         PlayerController.instance.transform.position =
             SpawnPoint.instance.transform.position;
-        if (sceneIndex >= 2)
-        {
-            var progress = SaveLoadManager.Instance.GetProgress();
-
-            if (progress != null && PlayerSnapshot.instance != null)
-                PlayerSnapshot.instance.LoadFromProgress(progress);
-
-            if (progress != null && PointCounter.instance != null)
-                PointCounter.instance.SetPoint(progress.playerPoint);
-        }
     }
 }
