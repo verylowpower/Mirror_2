@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
-  m_Name: New Dialog Data 2
+  m_Name: KillRangeEnemy_3
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - Even silence can be dangerous.
-  relatedQuest: {fileID: 0}
+  - The silence returns.
+  relatedQuest: {fileID: 11400000, guid: fd61ed453d732ca4da4833d670ccd6a6, type: 2}
   questState: 3
   startQuestOnEnd: 0

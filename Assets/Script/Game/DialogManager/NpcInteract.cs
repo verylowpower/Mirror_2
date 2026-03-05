@@ -35,7 +35,6 @@ public class NPCInteract : MonoBehaviour
                 NPCQuestCounter();
             }
         }
-
     }
 
     void ToggleSkillTree()

@@ -9,6 +9,8 @@ public class GUIController : MonoBehaviour
     public TextMeshProUGUI pointText;
     public TextMeshProUGUI waveText;
 
+    public TextMeshProUGUI currentWaveText;
+
     private Coroutine waveRoutine;
 
     IEnumerator Start()
@@ -26,6 +28,17 @@ public class GUIController : MonoBehaviour
         UpdateLevelText(PlayerExperience.instance.GetLevel());
         UpdateGameTime();
         UpdatePointText();
+
+        if (Room.instance != null)
+        {
+            int total = Room.instance.TotalWave;
+            int currentDisplay = Room.instance.currentWave + 1;
+
+            if (Room.instance.currentWave == 0)
+                currentDisplay = 0;
+
+            currentWaveText.text = $"Wave: {currentDisplay}/{total}";
+        }
     }
 
     void OnDestroy()
@@ -70,6 +83,9 @@ public class GUIController : MonoBehaviour
 
     private void UpdateWaveText(int currentWave, int totalWave)
     {
+        if (currentWaveText != null)
+            currentWaveText.text = $"Wave: {currentWave}/{totalWave}";
+
         if (waveRoutine != null)
             StopCoroutine(waveRoutine);
 

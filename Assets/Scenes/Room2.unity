@@ -136913,7 +136913,9 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: db27e7b7d7537594681023b09587d369, type: 2}
   - {fileID: 11400000, guid: ef75c7e04fa3d8a4db5b1667f9da4455, type: 2}
-  spawnInterval: 10
+  - {fileID: 11400000, guid: 5ece9f1164f4ad54b9f28b775a5b79b7, type: 2}
+  - {fileID: 11400000, guid: e6c4c8050588dd046b5109b62c643567, type: 2}
+  spawnInterval: 2
   currentWave: 0
   gate: {fileID: 1567147240}
 --- !u!61 &2072878365

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public enum DialogQuestState
 {
-    None,           // Dialog bình thường
-    BeforeQuest,    // Trước khi nhận quest
-    InProgress,     // Đang làm quest
-    Completed       // Hoàn thành quest (special)
+    None,           
+    BeforeQuest,   
+    InProgress,    
+    Completed 
 }
 
 [CreateAssetMenu(menuName = "Dialog/Dialog Data")]

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
-  m_Name: New Dialog Data
+  m_Name: Shield1
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - Archers hide in the mist. Bring down 3 of them.
-  relatedQuest: {fileID: 0}
-  questState: 1
+  - Their defenses remain unbroken.
+  relatedQuest: {fileID: 11400000, guid: 1742e96b9f8fdaa47a00f494dcba0a17, type: 2}
+  questState: 2
   startQuestOnEnd: 0

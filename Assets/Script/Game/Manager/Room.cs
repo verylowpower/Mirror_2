@@ -22,6 +22,9 @@ public class Room : MonoBehaviour
     private int enemiesAlive = 0;
     private bool activated = false;
 
+    public int TotalWave => waves.Count;
+    public int CurrentWaveDisplay => currentWave + 1;
+
     [Header("Gate")]
     public GameObject gate;
 

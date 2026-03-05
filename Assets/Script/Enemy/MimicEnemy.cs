@@ -20,11 +20,10 @@ public class MimicEnemy : Enemy
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
-        // Ban đầu là rương → không di chuyển
         agent.isStopped = true;
         canTakeDamage = false;
 
-        anim.SetBool("isAttack", false); // Idle
+        anim.SetBool("isAttack", false);
     }
 
     void Update()
@@ -51,7 +50,7 @@ public class MimicEnemy : Enemy
         interacted = true;
         canTakeDamage = true;
 
-        anim.SetBool("isAttack", true); // chuyển sang Attack loop
+        anim.SetBool("isAttack", true);
 
         agent.isStopped = false;
         canChase = true;

@@ -21,22 +21,17 @@ public class PlayerSpawner : MonoBehaviour
 
     IEnumerator SpawnAtPoint()
     {
-        // Đợi Player và SpawnPoint init xong
         yield return null;
-
         if (PlayerController.instance == null)
         {
             Debug.LogWarning("PlayerController not found.");
             yield break;
         }
-
         if (SpawnPoint.instance == null)
         {
             Debug.LogWarning("SpawnPoint not found in scene.");
             yield break;
         }
-
-        PlayerController.instance.transform.position =
-            SpawnPoint.instance.transform.position;
+        PlayerController.instance.transform.position = SpawnPoint.instance.transform.position;
     }
 }

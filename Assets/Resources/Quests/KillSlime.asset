@@ -18,7 +18,7 @@ MonoBehaviour:
   conditions:
   - type: 1
     targetId: 1
-    requiredAmount: 1
+    requiredAmount: 3
   nextQuest: {fileID: 0}
-  rewardSkillId: B1
+  rewardSkillId: BD1
   autoStartNext: 0

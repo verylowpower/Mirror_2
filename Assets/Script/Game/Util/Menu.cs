@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    [Header("Sound")]
-    public AudioSource audioSource;
-    public AudioClip clickSound;
-
     [Header("Buttons")]
     public Button firstButton;
     public Button loadButton;
@@ -43,17 +39,15 @@ public class Menu : MonoBehaviour
             return;
 
         bool hasSave = System.IO.File.Exists(
-            System.IO.Path.Combine(
-                Application.persistentDataPath,
-                "GameProgress.db"));
+            System.IO.Path.Combine(Application.persistentDataPath, "GameProgress.db"));
 
         loadButton.gameObject.SetActive(hasSave);
     }
 
     private void PlayClick()
     {
-        if (audioSource && clickSound)
-            audioSource.PlayOneShot(clickSound);
+        if (AudioManager.instance != null)
+            AudioManager.instance.PlayClick();
     }
 
     private void OnConfirm(InputAction.CallbackContext ctx)
@@ -68,7 +62,6 @@ public class Menu : MonoBehaviour
             btn.onClick.Invoke();
         }
     }
-
 
     public void StartButton()
     {
@@ -91,21 +84,20 @@ public class Menu : MonoBehaviour
         SaveLoadManager.Instance.LoadGame();
     }
 
-    public void MenuButton()
-    {
-        SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
-    }
-
     public void ResumeButton()
     {
-        SceneManager.UnloadSceneAsync("Menu");
-        Pause.instance.isPaused = false;
-        Pause.instance.pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        AudioListener.pause = false;
+
+        if (Pause.instance != null)
+            Pause.instance.isPaused = false;
+
+        SceneManager.UnloadSceneAsync("Menu");
     }
 
     public void QuitButton()
     {
+        Time.timeScale = 1f;
         Application.Quit();
     }
 }

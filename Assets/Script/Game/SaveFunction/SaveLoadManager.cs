@@ -50,11 +50,6 @@ public class SaveLoadManager : MonoBehaviour
             Debug.Log("Auto create new save");
         }
     }
-
-    // =========================================================
-    // NEW GAME
-    // =========================================================
-
     public void StartNewGame()
     {
         isLoadingGame = true;
@@ -78,9 +73,6 @@ public class SaveLoadManager : MonoBehaviour
         SaveProgress(metaProgress);
         SceneManager.LoadScene(metaProgress.currentSceneIndex);
     }
-    // =========================================================
-    // LOAD GAME
-    // =========================================================
 
     public void LoadGame()
     {
@@ -111,7 +103,6 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
 
-        // Nếu không phải load game → auto save khi đổi scene
         if (scene.buildIndex >= 1)
         {
             SaveGame();
@@ -120,28 +111,20 @@ public class SaveLoadManager : MonoBehaviour
 
     private IEnumerator FullLoadSequence()
     {
-        // Đợi 1 frame cho tất cả singleton Awake/Start chạy xong
         yield return null;
 
-        // Load hệ thống meta trước
         MetaBuffManager.instance?.LoadFromJson(metaProgress.unlockedBuffsJson);
         SkillTreeManager.instance?.LoadBuffData(metaProgress);
         QuestManager.instance?.LoadQuestData(metaProgress);
 
-        // Đợi thêm 1 frame để Player spawn hoàn toàn
         yield return null;
 
-        // Apply stat cho player
         PlayerSnapshot.Instance?.LoadFromProgress(metaProgress);
 
-        Debug.Log("LOAD COMPLETE ✔");
+        Debug.Log("LOAD COMPLETE");
 
         isLoadingGame = false;
     }
-
-    // =========================================================
-    // SAVE GAME
-    // =========================================================
 
     public void SaveGame()
     {
@@ -152,13 +135,13 @@ public class SaveLoadManager : MonoBehaviour
         }
 
         metaProgress.currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        metaProgress.totalExp = PlayerExperience.instance.totalExp;
+        //metaProgress.totalExp = PlayerExperience.instance.totalExp;
 
         PlayerSnapshot.Instance?.ApplyToProgress(metaProgress);
 
         SaveProgress(metaProgress);
         Debug.Log("Saving health: " + PlayerHealth.instance?.currentHealth);
-        Debug.Log("Game Saved ✔ Scene: " + metaProgress.currentSceneIndex);
+        Debug.Log("Game Saved Scene: " + metaProgress.currentSceneIndex);
     }
 
     public void UpdatePoint(int newPoint)
@@ -172,10 +155,6 @@ public class SaveLoadManager : MonoBehaviour
         metaProgress.playerPoint = newPoint;
         SaveProgress(metaProgress);
     }
-
-    // =========================================================
-    // DATABASE
-    // =========================================================
 
     private void SaveProgress(GameProgress progress)
     {

@@ -5,7 +5,7 @@ public static class ExpTable
 {
     private static readonly List<long> expChart = new()
     {
-        // exp needed for each level (index = level)
+        // exp needed for each level
         1, 10, 22, 34, 48, 56, 73, 105, 145, 192,  // 1 - 10
         252, 326, 410, 505, 610, 750, 910, 1150, 1420, 1710, // 11 - 20
         2020, 2350, 2700, 3100, 3530, 3985, 4480, 5030, 5610, 6216, // 21 - 30

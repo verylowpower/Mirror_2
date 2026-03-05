@@ -47,7 +47,6 @@ public class NPCDialog : MonoBehaviour
                     break;
 
                 case DialogQuestState.Completed:
-                    // 🔥 chỉ hiện 1 lần
                     if (completed && !completedDialogShown)
                         return dialog;
                     break;

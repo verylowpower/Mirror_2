@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
-  m_Name: New Dialog Data
+  m_Name: Mimic
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
   - A silent mimic walks among us. Find it.
-  relatedQuest: {fileID: 0}
+  relatedQuest: {fileID: 11400000, guid: 98ac5aa470a3ed94aafafa84381632a5, type: 2}
   questState: 1
   startQuestOnEnd: 0

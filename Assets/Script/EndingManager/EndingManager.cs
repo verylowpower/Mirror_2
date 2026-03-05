@@ -70,6 +70,7 @@ public class EndingManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(scene1Name);
+            //CleanupPersistentObjects();
         }
     }
 
@@ -80,16 +81,35 @@ public class EndingManager : MonoBehaviour
         switch (type)
         {
             case EndingType.Bad:
+                CleanupPersistentObjects();
                 SceneManager.LoadScene(badEndingScene);
                 break;
 
             case EndingType.Good:
+                CleanupPersistentObjects();
                 SceneManager.LoadScene(goodEndingScene);
                 break;
 
             case EndingType.Best:
+                CleanupPersistentObjects();
                 SceneManager.LoadScene(bestEndingScene);
                 break;
+        }
+    }
+
+    private void CleanupPersistentObjects()
+    {
+        var persistents = FindObjectsOfType<PersistentObject>();
+
+        foreach (var obj in persistents)
+        {
+            if (obj.GetComponent<MetaBuffManager>() != null)
+                continue;
+
+            if (obj.GetComponent<SaveLoadManager>() != null)
+                continue;
+
+            Destroy(obj.gameObject);
         }
     }
 }

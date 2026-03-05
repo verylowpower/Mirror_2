@@ -6,6 +6,9 @@ public class RandomSystem : MonoBehaviour
     public static RandomSystem instance;
     public Buff_GUI buffUI;
 
+    // Buff cooldown dictionary
+    private Dictionary<string, int> buffCooldown = new();
+
     void Awake()
     {
         instance = this;
@@ -15,21 +18,34 @@ public class RandomSystem : MonoBehaviour
     {
         Time.timeScale = 0;
 
+        List<string> keys = new List<string>(buffCooldown.Keys);
+        foreach (var key in keys)
+        {
+            buffCooldown[key]--;
+
+            if (buffCooldown[key] <= 0)
+                buffCooldown.Remove(key);
+        }
 
         List<Buff> available = new();
 
         foreach (var kvp in BuffLibrary.AllBuffs)
         {
             Buff buff = kvp.Value;
+
             if (!SkillTreeManager.instance.IsSkillUnlocked(buff.ID))
                 continue;
-            if (PlayerBuffManager.instance.IsBuffActive(buff.ID))
+
+            if (buffCooldown.ContainsKey(buff.ID))
                 continue;
+
             if (!string.IsNullOrEmpty(buff.RequirementBuffID) &&
                 !SkillTreeManager.instance.IsSkillUnlocked(buff.RequirementBuffID))
                 continue;
+
             available.Add(buff);
         }
+
         if (available.Count == 0)
         {
             Debug.Log("No valid buffs available.");
@@ -37,8 +53,11 @@ public class RandomSystem : MonoBehaviour
             Time.timeScale = 1;
             return;
         }
+
         List<Buff> selected = PickWeightedBuffs(available, 3);
+
         string[] ids = selected.ConvertAll(b => b.ID).ToArray();
+
         buffUI.ShowBuffs(ids, selectedBuffID =>
         {
             OnBuffSelected(selectedBuffID);
@@ -48,7 +67,6 @@ public class RandomSystem : MonoBehaviour
     private List<Buff> PickWeightedBuffs(List<Buff> pool, int count)
     {
         List<Buff> result = new();
-
         List<Buff> temp = new(pool);
 
         for (int i = 0; i < count && temp.Count > 0; i++)
@@ -59,11 +77,14 @@ public class RandomSystem : MonoBehaviour
                 totalWeight += b.Weight;
 
             int rnd = Random.Range(0, totalWeight);
+
             int sum = 0;
             Buff chosen = null;
+
             foreach (var b in temp)
             {
                 sum += b.Weight;
+
                 if (rnd < sum)
                 {
                     chosen = b;
@@ -87,7 +108,10 @@ public class RandomSystem : MonoBehaviour
         {
             PlayerBuffManager.instance.AddBuff(buff.ID, buff);
             MetaBuffManager.instance.unlockedBuffs.Add(buff.ID);
+
+            buffCooldown[selectedBuffID] = 2;
         }
+
         buffUI.HideAll();
         PlayerBuffManager.instance.buffUIActive = false;
         Time.timeScale = 1;
