@@ -218,6 +218,15 @@ public class QuestManager : MonoBehaviour
 
         return completedQuestIds.Count == questLookup.Count;
     }
+    
+    public QuestData GetCurrentQuest()
+    {
+        if (activeQuests.Count > 0)
+            return activeQuests[0].data;
+
+        return null;
+    }
+
 
     // public void AllQuestCompleted()
     // {
