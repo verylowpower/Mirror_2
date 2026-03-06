@@ -1,0 +1,22 @@
+questId,questName,description,enemyType,killCount,rewardSkillId,nextQuest,autoStartNext
+Q01,First Blood,Defeat blue slimes in the forest,1,5,B1,Q02,FALSE
+Q02,Slime Hunter,Hunt more blue slimes,1,8,B2,Q03,FALSE
+Q03,Slime Exterminator,Clear the forest of blue slimes,1,12,B3,Q04,FALSE
+Q04,Crimson Slime,Defeat red slimes,1.4,5,BD1,Q05,FALSE
+Q05,Burning Slime,Eliminate stronger red slimes,1.4,8,BD2,Q06,FALSE
+Q06,Slime Overload,Destroy the red slime swarm,1.4,12,BD3,Q07,FALSE
+Q07,Wings in the Mist,Hunt blue butterflies,2.4,6,BURN1,Q08,FALSE
+Q08,Silent Wings,Eliminate the flying threat,2.4,10,CR1,Q09,FALSE
+Q09,Storm of Wings,Destroy the butterfly swarm,2.4,15,CR2,Q10,FALSE
+Q10,Living Chest,Defeat a mimic,8,1,CR3,Q11,FALSE
+Q11,Greedy Trap,Destroy more mimics,8,2,H1,Q12,FALSE
+Q12,Hunter of Mimics,Become a mimic hunter,8,3,H2,Q13,FALSE
+Q13,Sand Slime,Defeat dirt slimes in the ruins,3,6,H3,Q14,FALSE
+Q14,Buried Threat,Destroy more dirt slimes,3,10,ICE1,Q15,FALSE
+Q15,Desert Predator,Clear the ruins of dirt slimes,3,14,LIGHT1,Q16,FALSE
+Q16,Green Slime,Defeat green slimes,1.5,6,PIERCE1,Q17,FALSE
+Q17,Forest Cleaner,Clear the forest of green slimes,1.5,10,S1,Q18,FALSE
+Q18,Venom Wings,Hunt green butterflies,2.5,6,S2,Q19,FALSE
+Q19,Sky Hunter,Eliminate more green butterflies,2.5,10,S3,Q20,FALSE
+Q20,Crimson Wings,Hunt red butterflies,2,6,SPREAD1,Q21,FALSE
+Q21,Last Swarm,Destroy the final butterfly swarm,2,12,B1,,FALSE

@@ -18,3 +18,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 8d25024490a48fe499757a63fabcef21, type: 3}
   requiredSkills: []
   pointRequire: 200
+  requiredQuestId: Q16

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: QuestF1_I
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - "You are still here\u2026 good. Do not lose yourself."
-  relatedQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
-  questState: 2
+  - Do not wander too far, little one.
+  - The forest is not kind to those who walk without purpose.
+  - "Come speak with me\u2026 there is something you must know."
+  relatedQuest: {fileID: 0}
+  questState: 0
   startQuestOnEnd: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
+  m_Name: Kill3Red
+  m_EditorClassIdentifier: Assembly-CSharp::DialogData
+  sentences:
+  - The forest grows more unstable with each passing moment.
+  - The blue slimes were only the beginning.
+  - "Now another kind has appeared\u2026 red slimes."
+  - They burn with a strange heat, as if something within the forest has ignited
+    them.
+  - If these creatures continue to spread, the woods may suffer greatly.
+  - Go, little wanderer. Defeat the red slimes and return to me.
+  relatedQuest: {fileID: 11400000, guid: 5666a084eed4fe2429dae7458cb6ddd6, type: 2}
+  questState: 1
+  startQuestOnEnd: 0

@@ -1,8 +1,28 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 public class NPCDialog : MonoBehaviour
 {
-    [SerializeField] private DialogData[] dialogs;
+    [SerializeField] private string npcId;
+
+    private DialogData[] allDialogs;
+    private int currentQuestIndex = 1;
+
+    void Awake()
+    {
+        LoadDialogs();
+    }
+
+    void LoadDialogs()
+    {
+        allDialogs = Resources.LoadAll<DialogData>($"Dialogs/{npcId}");
+
+        if (allDialogs == null || allDialogs.Length == 0)
+        {
+            Debug.LogWarning($"No dialogs found for NPC: {npcId}");
+        }
+    }
 
     public void Interact()
     {
@@ -22,11 +42,15 @@ public class NPCDialog : MonoBehaviour
 
     DialogData GetValidDialog()
     {
-        foreach (var dialog in dialogs)
-        {
-            if (dialog.relatedQuest == null)
-                return dialog;
+        string questId = $"Q{currentQuestIndex:D2}";
 
+        var questDialogs = allDialogs
+            .Where(d => d.relatedQuest != null &&
+                        d.relatedQuest.questId == questId)
+            .ToArray();
+
+        foreach (var dialog in questDialogs)
+        {
             var quest = dialog.relatedQuest;
 
             bool hasQuest = QuestManager.instance.HasQuest(quest);
@@ -61,6 +85,7 @@ public class NPCDialog : MonoBehaviour
         if (dialog.questState == DialogQuestState.Completed)
         {
             QuestManager.instance.MarkCompletedDialogShown(dialog.relatedQuest);
+            currentQuestIndex++;
         }
 
         if (dialog.startQuestOnEnd && dialog.relatedQuest != null)

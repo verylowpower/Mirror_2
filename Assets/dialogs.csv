@@ -1,0 +1,64 @@
+questId,questState,startQuestOnEnd,sentences
+Q01,BeforeQuest,TRUE,The forest stirs as you arrive|Small slimes gather nearby|Defeat them and prove your strength
+Q01,InProgress,FALSE,The slimes are weak but relentless|Stay alert
+Q01,Completed,FALSE,Well done|The forest acknowledges your first victory
+Q02,BeforeQuest,TRUE,More slimes crawl from the shadows|Their numbers are growing
+Q02,InProgress,FALSE,Do not let them surround you
+Q02,Completed,FALSE,You grow stronger with each battle
+Q03,BeforeQuest,TRUE,These slimes are different|Their color marks a stronger corruption
+Q03,InProgress,FALSE,Strike quickly before they overwhelm you
+Q03,Completed,FALSE,The forest breathes easier now
+Q04,BeforeQuest,TRUE,Red slimes carry a volatile energy|Be cautious
+Q04,InProgress,FALSE,Keep moving|Their attacks are fierce
+Q04,Completed,FALSE,You handled their fury well
+Q05,BeforeQuest,TRUE,Butterflies wander through the mist|But these creatures are not harmless
+Q05,InProgress,FALSE,Their attacks come from afar|Watch the skies
+Q05,Completed,FALSE,Even beauty can hide danger
+Q06,BeforeQuest,TRUE,Green butterflies swarm deeper in the forest|They move unpredictably
+Q06,InProgress,FALSE,Their wings hide deadly power
+Q06,Completed,FALSE,Your reflexes grow sharper
+Q07,BeforeQuest,TRUE,Red butterflies guard this path|Their aggression is unmistakable
+Q07,InProgress,FALSE,Do not underestimate their speed
+Q07,Completed,FALSE,The forest path opens before you
+Q08,BeforeQuest,TRUE,Some chests in this forest are alive|They mimic treasures
+Q08,InProgress,FALSE,Strike before they strike you
+Q08,Completed,FALSE,Deception no longer fools you
+Q09,BeforeQuest,TRUE,The forest grows quieter|But danger still lurks
+Q09,InProgress,FALSE,Stay vigilant
+Q09,Completed,FALSE,You move through the forest like a true hunter
+Q10,BeforeQuest,TRUE,You are nearing the edge of the forest|The air changes
+Q10,InProgress,FALSE,Something new awaits beyond
+Q10,Completed,FALSE,Your journey continues
+Q11,BeforeQuest,TRUE,The desert ruins are harsh and unforgiving|Strange slimes crawl through the sand
+Q11,InProgress,FALSE,Their bodies blend with the earth
+Q11,Completed,FALSE,You adapt quickly to this new land
+Q12,BeforeQuest,TRUE,These dirt slimes move slowly|But their numbers are dangerous
+Q12,InProgress,FALSE,Keep control of the battlefield
+Q12,Completed,FALSE,Your mastery grows
+Q13,BeforeQuest,TRUE,The ruins whisper of forgotten battles
+Q13,InProgress,FALSE,Enemies gather in the silence
+Q13,Completed,FALSE,The desert yields to your strength
+Q14,BeforeQuest,TRUE,Corruption spreads even here
+Q14,InProgress,FALSE,Do not falter now
+Q14,Completed,FALSE,You push deeper into the ruins
+Q15,BeforeQuest,TRUE,The path back to the forest reveals itself
+Q15,InProgress,FALSE,Your trials are not over
+Q15,Completed,FALSE,The forest awaits your return
+Q16,BeforeQuest,TRUE,The forest feels different now|Something ancient watches
+Q16,InProgress,FALSE,You are being tested
+Q16,Completed,FALSE,The forest recognizes you
+Q17,BeforeQuest,TRUE,Creatures grow more hostile as you approach the heart
+Q17,InProgress,FALSE,Stand firm
+Q17,Completed,FALSE,You are close to the truth
+Q18,BeforeQuest,TRUE,The corruption thickens here
+Q18,InProgress,FALSE,Push forward
+Q18,Completed,FALSE,Your determination shines
+Q19,BeforeQuest,TRUE,Only the strongest reach this place
+Q19,InProgress,FALSE,Do not turn back
+Q19,Completed,FALSE,Your strength is undeniable
+Q20,BeforeQuest,TRUE,The final guardians appear
+Q20,InProgress,FALSE,Defeat them and the path will open
+Q20,Completed,FALSE,Nothing stands between you and the forest core
+Q21,BeforeQuest,TRUE,The forest's heart beats before you|Your destiny awaits
+Q21,InProgress,FALSE,This is the final trial
+Q21,Completed,FALSE,The forest has chosen its new guardian

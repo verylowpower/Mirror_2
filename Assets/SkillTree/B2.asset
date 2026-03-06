@@ -16,5 +16,7 @@ MonoBehaviour:
   displayName: 
   description: 
   icon: {fileID: 21300000, guid: 758d4d782c9a84940842a7a3e689dc9d, type: 3}
-  requiredSkills: []
+  requiredSkills:
+  - B1
   pointRequire: 50
+  requiredQuestId: Q02

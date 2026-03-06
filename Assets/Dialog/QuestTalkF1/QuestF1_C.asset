@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: QuestF1_C
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - You have taken your first step.
-  relatedQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
-  questState: 3
+  - "So\u2026 you chose to listen."
+  - That is rare among those who enter this forest.
+  - There is a power sleeping deep within these woods.
+  - "Lately, something has begun to stir\u2026 something ancient."
+  - "And for reasons I cannot yet understand\u2026 the forest has chosen you."
+  - Your journey has only just begun.
+  relatedQuest: {fileID: 0}
+  questState: 0
   startQuestOnEnd: 0

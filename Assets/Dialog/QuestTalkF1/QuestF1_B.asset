@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
   - "Hello, little wanderer\u2026 Can you hear the forest breathing?"
-  relatedQuest: {fileID: 11400000, guid: 7c7666bd329c75c43b2c734cac482002, type: 2}
-  questState: 1
+  - "Strange\u2026 you were not here before, yet the forest knows you."
+  - "These woods are old\u2026 older than the kingdoms beyond the horizon."
+  - Many enter seeking power, but few ever leave.
+  - Come closer. I have been waiting for someone like you.
+  relatedQuest: {fileID: 0}
+  questState: 0
   startQuestOnEnd: 1

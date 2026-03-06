@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
+  m_Name: DirtSlime2
+  m_EditorClassIdentifier: Assembly-CSharp::DialogData
+  sentences:
+  - "You have survived your first encounter with the creatures of this wasteland.\nThe
+    desert tests strength in a different way than the forest.\nHere, nothing grows\u2026
+    yet something still stirs beneath the ruins.\nI fear this place may hold secrets
+    just as dangerous as the forest."
+  relatedQuest: {fileID: 11400000, guid: 1742e96b9f8fdaa47a00f494dcba0a17, type: 2}
+  questState: 3
+  startQuestOnEnd: 0

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
+  m_Name: Kill3Red2
+  m_EditorClassIdentifier: Assembly-CSharp::DialogData
+  sentences:
+  - "The heat in the air has faded\u2026 I can feel it. You have defeated the red
+    slimes. Impressive. Few travelers would dare face them so soon."
+  - Creatures like these do not form without a cause. Something deeper in the forest
+    continues to awaken.
+  relatedQuest: {fileID: 11400000, guid: 5666a084eed4fe2429dae7458cb6ddd6, type: 2}
+  questState: 3
+  startQuestOnEnd: 0

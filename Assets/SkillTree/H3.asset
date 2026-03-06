@@ -19,3 +19,4 @@ MonoBehaviour:
   requiredSkills:
   - H2
   pointRequire: 100
+  requiredQuestId: Q13

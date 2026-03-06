@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894b22dad8c871c4e946ed7483084c4a, type: 3}
+  m_Name: Q18
+  m_EditorClassIdentifier: Assembly-CSharp::QuestData
+  questId: Q18
+  questName: Venom Wings
+  description: Hunt green butterflies
+  conditions:
+  - type: 1
+    targetId: 2.5
+    requiredAmount: 6
+  nextQuest: {fileID: 11400000, guid: 4ae1707d7981c484ea458ce0dc5ba3a6, type: 2}
+  rewardSkillId: S2
+  autoStartNext: 0

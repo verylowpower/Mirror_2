@@ -19,3 +19,4 @@ MonoBehaviour:
   requiredSkills:
   - BD1
   pointRequire: 50
+  requiredQuestId: Q05
