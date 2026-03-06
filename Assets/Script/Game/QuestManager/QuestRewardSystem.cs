@@ -15,41 +15,31 @@ public class QuestRewardSystem : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
     public void GiveReward(QuestData quest)
     {
         Debug.Log($"Give reward for quest: {quest.questName}");
 
-        switch (quest.questId)
+        if (!string.IsNullOrEmpty(quest.rewardSkillId))
         {
-            case "quest_kill":
-                Reward_Kill();
-                break;
+            MetaBuffManager.instance.Unlock(quest.rewardSkillId);
+            SkillTreeManager.instance.SyncFromMetaBuff();
 
-            case "quest_unlock_skill":
-                Reward_UnlockSkill(quest);
-                break;
-
-            // case "quest_spawn_boss":
-            //     Reward_SpawnBoss();
-            //     break;
-
-            default:
-                Debug.Log("No reward logic for this quest");
-                break;
+            Debug.Log("Unlocked skill: " + quest.rewardSkillId);
         }
     }
 
-    void Reward_Kill()
-    {
-        Debug.Log("Reward: Increase player damage");
+    // void Reward_Kill()
+    // {
+    //     Debug.Log("Reward: Increase player damage");
 
-        PlayerAttack.instance.bulletDamage += 2;
-    }
+    //     PlayerAttack.instance.bulletDamage += 2;
+    // }
 
-    void Reward_UnlockSkill(QuestData quest)
-    {
-        Debug.Log("Reward: Unlock new skill");
-        SkillTreeManager.instance.IsQuestUnlocked(quest.rewardSkillId);
-    }
+    // void Reward_UnlockSkill(QuestData quest)
+    // {
+    //     Debug.Log("Reward: Unlock new skill");
 
+    //     SkillTreeManager.instance.NotifySkillTreeChanged();
+    // }
 }

@@ -6,6 +6,7 @@ public class MetaBuffManager : MonoBehaviour
     public static MetaBuffManager instance;
 
     public HashSet<string> unlockedBuffs = new();
+    public HashSet<string> questUnlockedBuffs = new();
 
     void Awake()
     {
@@ -22,6 +23,22 @@ public class MetaBuffManager : MonoBehaviour
         {
             LoadFromJson(progress.unlockedBuffsJson);
             Debug.Log("Buff loaded in MetaBuffManager Awake");
+        }
+    }
+
+    public bool IsQuestUnlocked(string id)
+    {
+        return questUnlockedBuffs.Contains(id);
+    }
+
+    public void UnlockByQuest(string id)
+    {
+        if (string.IsNullOrEmpty(id)) return;
+
+        if (questUnlockedBuffs.Add(id))
+        {
+            SaveBuffs();
+            Debug.Log($"Buff {id} unlocked by quest");
         }
     }
 
@@ -48,13 +65,17 @@ public class MetaBuffManager : MonoBehaviour
 
         SaveLoadManager.Instance.SaveGame();
     }
+
     public void ClearAll()
     {
         unlockedBuffs.Clear();
     }
+    
     public string GetSaveJson()
     {
-        BuffSaveWrapper wrapper = new BuffSaveWrapper(unlockedBuffs);
+        BuffSaveWrapper wrapper =
+            new BuffSaveWrapper(unlockedBuffs, questUnlockedBuffs);
+
         return JsonUtility.ToJson(wrapper);
     }
 
@@ -65,15 +86,24 @@ public class MetaBuffManager : MonoBehaviour
         BuffSaveWrapper wrapper =
             JsonUtility.FromJson<BuffSaveWrapper>(json);
 
-        if (wrapper == null || wrapper.buffIds == null) return;
+        if (wrapper == null) return;
 
         unlockedBuffs.Clear();
+        questUnlockedBuffs.Clear();
 
-        foreach (var id in wrapper.buffIds)
+        if (wrapper.buffIds != null)
         {
-            unlockedBuffs.Add(id);
+            foreach (var id in wrapper.buffIds)
+                unlockedBuffs.Add(id);
+        }
+
+        if (wrapper.questUnlockedIds != null)
+        {
+            foreach (var id in wrapper.questUnlockedIds)
+                questUnlockedBuffs.Add(id);
         }
     }
+
     public bool AreAllBuffsUnlocked()
     {
         foreach (var skill in SkillTreeManager.instance.skills)

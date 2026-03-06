@@ -5,29 +5,25 @@ public class SkillNode
 {
     public SkillNodeData data;
     public bool isUnlocked;
+    public bool questUnlocked;
 
     public bool CanBuy()
     {
         var mgr = SkillTreeManager.instance;
 
-        bool questUnlocked = mgr.IsQuestUnlocked(data.skillId);
+        bool questUnlocked = MetaBuffManager.instance.IsQuestUnlocked(data.skillId);
 
         Debug.Log($"[Skill Check] Skill: {data.skillId}");
-        // Debug.Log($"   Required Quest: {data.requiredQuestId}");
-        // Debug.Log($"   Quest Completed: {questUnlocked}");
-        // Debug.Log($"   IsUnlocked: {isUnlocked}");
-        // Debug.Log($"   Player Point: {PointCounter.instance.point}");
-        // Debug.Log($"   Require Point: {data.pointRequire}");
 
         if (!questUnlocked)
         {
-            Debug.Log("   ❌ Cannot buy: Quest not completed");
+            Debug.Log("Quest not completed");
             return false;
         }
 
         if (isUnlocked)
         {
-            Debug.Log("   ❌ Cannot buy: Already unlocked");
+            Debug.Log("Already unlocked");
             return false;
         }
 
@@ -35,7 +31,7 @@ public class SkillNode
         {
             if (!mgr.IsSkillUnlocked(req))
             {
-                Debug.Log($"   ❌ Missing required skill: {req}");
+                Debug.Log($"Missing required skill: {req}");
                 return false;
             }
         }
@@ -44,11 +40,11 @@ public class SkillNode
 
         if (!enoughPoint)
         {
-            Debug.Log("   ❌ Not enough points");
+            Debug.Log("Not enough points");
             return false;
         }
 
-        Debug.Log("   ✅ Can buy");
+        Debug.Log("Can buy");
         return true;
     }
 }

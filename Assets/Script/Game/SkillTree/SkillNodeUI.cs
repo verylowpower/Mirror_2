@@ -46,8 +46,13 @@ public class SkillNodeUI : MonoBehaviour
         var mgr = SkillTreeManager.instance;
         if (mgr == null) return;
 
-        bool questUnlocked = mgr.IsQuestUnlocked(skillId);
-        bool skillUnlocked = mgr.IsSkillUnlocked(skillId);
+        var node = mgr.skills
+            .Find(s => s.data != null && s.data.skillId == skillId);
+
+        if (node == null) return;
+
+        bool questUnlocked = node.questUnlocked;
+        bool skillUnlocked = node.isUnlocked;
 
         if (!questUnlocked)
         {
@@ -80,14 +85,7 @@ public class SkillNodeUI : MonoBehaviour
             button.interactable = mgr.CanBuy(skillId);
 
             if (pointText != null)
-            {
-                var node = mgr.skills
-                    .Find(s => s.data != null && s.data.skillId == skillId);
-
-                pointText.text = node != null
-                    ? node.data.pointRequire.ToString()
-                    : "";
-            }
+                pointText.text = node.data.pointRequire.ToString();
         }
     }
 }

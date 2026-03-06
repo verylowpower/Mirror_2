@@ -54,7 +54,7 @@ public class SkillTreeManager : MonoBehaviour
 
         if (debugUnlockAllSkills)
         {
-            Debug.LogWarning("⚠ DEBUG MODE: Bỏ qua kiểm tra quest");
+            Debug.LogWarning("Bỏ qua kiểm tra quest");
             return true;
         }
 
@@ -68,9 +68,7 @@ public class SkillTreeManager : MonoBehaviour
             return true;
         }
 
-        bool completed = QuestManager.instance != null &&
-                         QuestManager.instance
-                             .IsQuestCompletedById(node.data.requiredQuestId);
+        bool completed = QuestManager.instance != null && QuestManager.instance.IsQuestCompletedById(node.data.requiredQuestId);
 
         Debug.Log($"[Quest Check] Skill {skillId} requires quest {node.data.requiredQuestId} -> Completed: {completed}");
 
@@ -133,8 +131,32 @@ public class SkillTreeManager : MonoBehaviour
         OnSkillTreeChanged?.Invoke();
     }
 
+    public void SyncQuestUnlock()
+    {
+        foreach (var node in skills)
+        {
+            if (node.data == null) continue;
+
+            node.questUnlocked =
+                MetaBuffManager.instance.IsQuestUnlocked(node.data.skillId);
+        }
+
+        OnSkillTreeChanged?.Invoke();
+    }
+
     public void NotifySkillTreeChanged()
     {
         OnSkillTreeChanged?.Invoke();
     }
+
+    public void UnlockSkillsFromQuest(string skillId)
+    {
+        if (skillDict.ContainsKey(skillId))
+        {
+            skillDict[skillId].questUnlocked = true;
+
+            Debug.Log($"Skill {skillId} unlocked from quest");
+        }
+    }
+
 }

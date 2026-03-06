@@ -95,11 +95,12 @@ public class QuestManager : MonoBehaviour
 
         Debug.Log($"Quest completed: {quest.data.questName}");
 
+        SkillTreeManager.instance.UnlockSkillsFromQuest(quest.data.questId);
+
         SaveSystem();
 
         SkillTreeManager.instance?.NotifySkillTreeChanged();
     }
-
 
     public void SaveQuestData(GameProgress progress)
     {

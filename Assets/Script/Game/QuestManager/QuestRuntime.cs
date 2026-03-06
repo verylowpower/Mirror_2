@@ -18,15 +18,11 @@ public class QuestRuntime
             progress[c] = 0;
     }
 
-    // =====================================
-    // SAVE SUPPORT
-    // =====================================
 
     public List<int> GetProgressList()
     {
         List<int> list = new List<int>();
 
-        // Quan trọng: phải theo đúng thứ tự data.conditions
         foreach (var c in data.conditions)
         {
             list.Add(progress[c]);

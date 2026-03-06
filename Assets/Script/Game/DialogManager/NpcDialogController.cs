@@ -85,6 +85,14 @@ public class NPCDialog : MonoBehaviour
         if (dialog.questState == DialogQuestState.Completed)
         {
             QuestManager.instance.MarkCompletedDialogShown(dialog.relatedQuest);
+
+            if (!string.IsNullOrEmpty(dialog.relatedQuest.rewardSkillId))
+            {
+                MetaBuffManager.instance.UnlockByQuest(dialog.relatedQuest.rewardSkillId);
+
+                SkillTreeManager.instance.SyncQuestUnlock();
+            }
+
             currentQuestIndex++;
         }
 
