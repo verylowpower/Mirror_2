@@ -2,10 +2,10 @@ using UnityEngine;
 
 public enum DialogQuestState
 {
-    None,           
-    BeforeQuest,   
-    InProgress,    
-    Completed 
+    Normal,
+    BeforeQuest,
+    InProgress,
+    Completed
 }
 
 [CreateAssetMenu(menuName = "Dialog/Dialog Data")]

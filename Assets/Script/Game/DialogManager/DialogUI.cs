@@ -10,6 +10,8 @@ public class DialogUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogText;
     [SerializeField] Button nextButton;
 
+    bool canNext;
+
     string[] sentences;
     int index;
     System.Action onFinish;
@@ -31,6 +33,14 @@ public class DialogUI : MonoBehaviour
 
         dialogPanel.SetActive(true);
         dialogText.text = sentences[index];
+
+        canNext = false;
+        Invoke(nameof(EnableNext), 0.1f);
+    }
+
+    void EnableNext()
+    {
+        canNext = true;
     }
 
     public void NextSentence()
@@ -40,6 +50,8 @@ public class DialogUI : MonoBehaviour
 
     void Next()
     {
+        if (!canNext) return;
+
         index++;
 
         if (index >= sentences.Length)

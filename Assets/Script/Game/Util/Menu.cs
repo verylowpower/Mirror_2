@@ -68,6 +68,8 @@ public class Menu : MonoBehaviour
         PlayClick();
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
+        CleanupPersistentObjects();
+        AudioListener.pause = false;
     }
 
     public void LoadButton()
@@ -84,20 +86,37 @@ public class Menu : MonoBehaviour
         SaveLoadManager.Instance.LoadGame();
     }
 
-    public void ResumeButton()
+   public void ResumeButton()
+{
+    if (Pause.instance != null)
     {
-        Time.timeScale = 1f;
-        AudioListener.pause = false;
-
-        if (Pause.instance != null)
-            Pause.instance.isPaused = false;
-
-        SceneManager.UnloadSceneAsync("Menu");
+        Pause.instance.ResumeGame();
     }
 
+    if (SceneManager.GetSceneByName("Menu").isLoaded)
+    {
+        SceneManager.UnloadSceneAsync("Menu");
+    }
+}
     public void QuitButton()
     {
         Time.timeScale = 1f;
         Application.Quit();
+    }
+
+    private void CleanupPersistentObjects()
+    {
+        var persistents = FindObjectsOfType<PersistentObject>();
+
+        foreach (var obj in persistents)
+        {
+            if (obj.GetComponent<MetaBuffManager>() != null)
+                continue;
+
+            if (obj.GetComponent<SaveLoadManager>() != null)
+                continue;
+
+            Destroy(obj.gameObject);
+        }
     }
 }

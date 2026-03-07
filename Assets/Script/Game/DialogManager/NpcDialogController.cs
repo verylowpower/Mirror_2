@@ -7,6 +7,7 @@ public class NPCDialog : MonoBehaviour
     [SerializeField] private string npcId;
 
     private DialogData[] allDialogs;
+    HashSet<DialogData> shownNormalDialogs = new HashSet<DialogData>();
 
     void Awake()
     {
@@ -16,6 +17,13 @@ public class NPCDialog : MonoBehaviour
     void LoadDialogs()
     {
         allDialogs = Resources.LoadAll<DialogData>($"Dialogs/{npcId}");
+
+        Debug.Log($"Loaded dialogs: {allDialogs.Length}");
+
+        foreach (var d in allDialogs)
+        {
+            Debug.Log($"Dialog: {d.name}");
+        }
 
         if (allDialogs == null || allDialogs.Length == 0)
         {
@@ -41,13 +49,30 @@ public class NPCDialog : MonoBehaviour
 
     DialogData GetValidDialog()
     {
+        Debug.Log($"Total dialogs: {allDialogs.Length}");
+
+        foreach (var d in allDialogs)
+        {
+            Debug.Log($"Check dialog {d.name} | quest = {d.relatedQuest}");
+        }
+
+        var normalDialog = allDialogs.FirstOrDefault(d => d.questState == DialogQuestState.Normal &&
+        !shownNormalDialogs.Contains(d));
+
+        if (normalDialog != null)
+        {
+            Debug.Log("Returning NORMAL dialog");
+            return normalDialog;
+        }
+
+        Debug.Log("No normal dialog");
+
         int currentQuestIndex = GetCurrentQuestIndex();
         string questId = $"Q{currentQuestIndex:D2}";
 
-        var questDialogs = allDialogs
-            .Where(d => d.relatedQuest != null &&
-                        d.relatedQuest.questId == questId)
-            .ToArray();
+        Debug.Log($"Current quest id: {questId}");
+
+        var questDialogs = allDialogs.Where(d => d.relatedQuest != null && d.relatedQuest.questId == questId).ToArray();
 
         if (questDialogs.Length == 0)
             return null;
@@ -56,14 +81,14 @@ public class NPCDialog : MonoBehaviour
 
         bool hasQuest = QuestManager.instance.HasQuest(quest);
         bool completed = QuestManager.instance.IsQuestCompleted(quest);
-        bool completedDialogShown =
-        QuestManager.instance.IsCompletedDialogShown(quest);
+        bool completedDialogShown = QuestManager.instance.IsCompletedDialogShown(quest);
 
         if (!hasQuest && !completed)
         {
             return questDialogs.FirstOrDefault(d =>
                 d.questState == DialogQuestState.BeforeQuest);
         }
+
         if (hasQuest && !completed)
         {
             return questDialogs.FirstOrDefault(d =>
@@ -81,7 +106,7 @@ public class NPCDialog : MonoBehaviour
 
     int GetCurrentQuestIndex()
     {
-        int index = 1;
+        int index = 0;
 
         while (true)
         {
@@ -103,8 +128,15 @@ public class NPCDialog : MonoBehaviour
             index++;
         }
     }
+
     void OnDialogFinish(DialogData dialog)
     {
+        if (dialog.questState == DialogQuestState.Normal)
+        {
+            shownNormalDialogs.Add(dialog);
+            return;
+        }
+
         if (dialog.questState == DialogQuestState.Completed)
         {
             QuestManager.instance.MarkCompletedDialogShown(dialog.relatedQuest);
@@ -112,7 +144,6 @@ public class NPCDialog : MonoBehaviour
             if (!string.IsNullOrEmpty(dialog.relatedQuest.rewardSkillId))
             {
                 MetaBuffManager.instance.UnlockByQuest(dialog.relatedQuest.rewardSkillId);
-
                 SkillTreeManager.instance.SyncQuestUnlock();
             }
         }
@@ -122,4 +153,6 @@ public class NPCDialog : MonoBehaviour
             QuestManager.instance.StartQuest(dialog.relatedQuest);
         }
     }
+
+
 }
