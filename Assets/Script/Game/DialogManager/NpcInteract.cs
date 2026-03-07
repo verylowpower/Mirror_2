@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NPCInteract : MonoBehaviour
 {
@@ -9,31 +10,51 @@ public class NPCInteract : MonoBehaviour
     public SkillTreeUI skillTreeUI;
 
     NPCDialog dialog;
+
     bool isPlayerNearby;
     bool skillUIOpen;
+
+    PlayerInputAction input;
 
     void Awake()
     {
         dialog = GetComponent<NPCDialog>();
+        input = new PlayerInputAction();
     }
 
-    void Update()
+    void OnEnable()
     {
+        input.Enable();
+        input.Input.Confirm.performed += OnConfirm;
+    }
+
+    void OnDisable()
+    {
+        input.Input.Confirm.performed -= OnConfirm;
+        input.Disable();
+    }
+
+    void OnConfirm(InputAction.CallbackContext ctx)
+    {
+        // nếu dialog đang mở → tiếp tục hội thoại
+        if (DialogUI.Instance != null && DialogUI.Instance.IsShowing)
+        {
+            DialogUI.Instance.NextSentence();
+            return;
+        }
+
         if (!isPlayerNearby) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log($"Press Space on NPC: {iD}, skillTreeUI = {skillTreeUI}");
+        Debug.Log($"Interact with NPC: {iD}");
 
-            if (iD == "BS" && skillTreeUI != null)
-            {
-                ToggleSkillTree();
-            }
-            else
-            {
-                dialog?.Interact();
-                NPCQuestCounter();
-            }
+        if (iD == "BS" && skillTreeUI != null)
+        {
+            ToggleSkillTree();
+        }
+        else
+        {
+            dialog?.Interact();
+            NPCQuestCounter();
         }
     }
 

@@ -14,6 +14,8 @@ public class DialogUI : MonoBehaviour
     int index;
     System.Action onFinish;
 
+    public bool IsShowing => dialogPanel.activeSelf;
+
     void Awake()
     {
         Instance = this;
@@ -29,6 +31,11 @@ public class DialogUI : MonoBehaviour
 
         dialogPanel.SetActive(true);
         dialogText.text = sentences[index];
+    }
+
+    public void NextSentence()
+    {
+        Next();
     }
 
     void Next()

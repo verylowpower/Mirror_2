@@ -421,47 +421,68 @@ MonoBehaviour:
   skills:
   - data: {fileID: 11400000, guid: 86971c082da337149ab9820c35848bac, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 44d5b5881474d774e969dfcca513a8f5, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: b962e7d08fa538943ba25ebb98c45e11, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 2452a0cd331e35e4e93d9c85c4906217, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 86400c0b0d6456d40971f6234504bbaa, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 926a2d369d94d9d42aa8f19349d86521, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 1298dea10c7a73a41beb2e1a67dcf772, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 7fde5945bfdb6264db082719faf3b6f4, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 482a822c3e6fb2f419072b65e8b3a2c5, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 3fa24596684be534a93c850db93c0635, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 2c3b2471d8bba6f4aa6d258e5342feca, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: d118da5a256890f4b8f571312fdcf04e, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 0f0d2a2f64b81404ab53303efc7d640f, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 4a6b8ef5047b0754596485427ce4eeb7, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: cc8101488e1a8004bbc1c21cb93e1804, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: cc8101488e1a8004bbc1c21cb93e1804, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: a6bea07eaa41f6941b141cf36686c607, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: bfef7c4ee506d54429464411ab0f3742, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: ab90014282485d94e8ca63cf3c43f0fb, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: d59db14d19fc2de40b1ad8758d5e68e5, type: 2}
     isUnlocked: 0
+    questUnlocked: 0
   - data: {fileID: 11400000, guid: 1c7cda95e3e3d6149afbfebeb839dcd5, type: 2}
     isUnlocked: 0
-  debugUnlockAllSkills: 0
+    questUnlocked: 0
+  debugUnlockAllSkills: 1
 --- !u!4 &451139689
 Transform:
   m_ObjectHideFlags: 0

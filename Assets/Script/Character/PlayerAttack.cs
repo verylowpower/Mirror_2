@@ -29,6 +29,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] public int meleeDamage = 15;
     [SerializeField] private float meleeRange = 1.2f;
     [SerializeField] private LayerMask enemyLayer;
+
+    private bool isHoldingShoot;
     private float nextMeleeTime;
 
     void Awake()
@@ -54,13 +56,10 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            TryMelee();
-        }
-        if (Input.GetMouseButton(1))
+        if (isHoldingShoot)
         {
             IsAttacking = true;
+
             if (Time.time >= nextShootTime)
             {
                 nextShootTime = Time.time + (1f / fireRate);
@@ -71,7 +70,16 @@ public class PlayerAttack : MonoBehaviour
         {
             IsAttacking = false;
         }
+    }
 
+    public void StartAttack()
+    {
+        isHoldingShoot = true;
+    }
+
+    public void StopAttack()
+    {
+        isHoldingShoot = false;
     }
 
     public void Shoot()
@@ -118,7 +126,7 @@ public class PlayerAttack : MonoBehaviour
         bullet.Initialize(bulletDamage, dir, false, bulletSpeed, buffs);
     }
 
-    void TryMelee()
+    public void TryMelee()
     {
         if (Time.time < nextMeleeTime) return;
         nextMeleeTime = Time.time + meleeCooldown;

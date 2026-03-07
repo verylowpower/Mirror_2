@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class SkillNodeUI : MonoBehaviour
+public class SkillNodeUI : MonoBehaviour, ISelectHandler
 {
     public string skillId;
 
@@ -87,5 +88,10 @@ public class SkillNodeUI : MonoBehaviour
             if (pointText != null)
                 pointText.text = node.data.pointRequire.ToString();
         }
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        Debug.Log("Selected skill: " + skillId);
     }
 }

@@ -1,18 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class Pause : MonoBehaviour
 {
     public static Pause instance;
 
-    public GameObject pausePanel;   // Panel UI pause
+    public GameObject pausePanel;
     public bool isPaused;
+
+    [Header("First Selected Button")]
+    public Button firstButton;
 
     [Header("Audio Sliders")]
     public Slider masterSlider;
     public Slider musicSlider;
     public Slider sfxSlider;
+
+    PlayerInputAction input;
 
     private void Awake()
     {
@@ -20,6 +27,20 @@ public class Pause : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        input = new PlayerInputAction();
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Input.Pause.performed += OnPause;
+    }
+
+    private void OnDisable()
+    {
+        input.Input.Pause.performed -= OnPause;
+        input.Disable();
     }
 
     private void Start()
@@ -35,15 +56,12 @@ public class Pause : MonoBehaviour
         sfxSlider.onValueChanged.AddListener(AudioManager.instance.SetSFXVolume);
     }
 
-    private void Update()
+    void OnPause(InputAction.CallbackContext ctx)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!isPaused)
-                PauseGame();
-            else
-                ResumeGame();
-        }
+        if (!isPaused)
+            PauseGame();
+        else
+            ResumeGame();
     }
 
     public void PauseGame()
@@ -53,7 +71,10 @@ public class Pause : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0f;
         AudioListener.pause = true;
+
         pausePanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
     }
 
     public void ResumeGame()
@@ -63,6 +84,7 @@ public class Pause : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         AudioListener.pause = false;
+
         pausePanel.SetActive(false);
     }
 
@@ -70,10 +92,10 @@ public class Pause : MonoBehaviour
     {
         if (!SceneManager.GetSceneByName("Menu").isLoaded)
         {
-            SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Menu");
         }
     }
-    
+
     public void QuitButton()
     {
         Time.timeScale = 1f;

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 894b22dad8c871c4e946ed7483084c4a, type: 3}
-  m_Name: Q21
+  m_Name: Q22
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questId: Q21
-  questName: Last Swarm
-  description: Destroy the final butterfly swarm
+  questId: Q22
+  questName: Boss
+  description: Kill the Boss
   conditions:
   - type: 1
-    targetId: 2
-    requiredAmount: 12
-  nextQuest: {fileID: 11400000, guid: a57d89798922b364caf0d265ca2a530d, type: 2}
+    targetId: 4
+    requiredAmount: 1
+  nextQuest: {fileID: 0}
   rewardSkillId: 
   autoStartNext: 0

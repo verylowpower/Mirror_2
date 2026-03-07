@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de3a755748fe6b74f9cd3eb850d7aa7c, type: 3}
-  m_Name: Q21_BeforeQuest
+  m_Name: Q22_BeforeQuest
   m_EditorClassIdentifier: Assembly-CSharp::DialogData
   sentences:
-  - The forest's heart beats before you
-  - Kill that swarm and find your soul
-  relatedQuest: {fileID: 11400000, guid: da56140e651bdb542af7be281b591109, type: 2}
+  - So this is the last mission
+  - Your destiny awaits
+  relatedQuest: {fileID: 11400000, guid: a57d89798922b364caf0d265ca2a530d, type: 2}
   questState: 1
   startQuestOnEnd: 1

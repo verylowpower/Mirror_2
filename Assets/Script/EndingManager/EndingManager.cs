@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class EndingManager : MonoBehaviour
 {
     public static EndingManager instance;
+
     [SerializeField] private string badEndingScene = "BadEnd";
     [SerializeField] private string goodEndingScene = "GoodEnd";
     [SerializeField] private string bestEndingScene = "BestEnd";
@@ -11,6 +12,7 @@ public class EndingManager : MonoBehaviour
     [Header("DEBUG OVERRIDE")]
     [SerializeField] private bool overrideQuestCondition = false;
     [SerializeField] private bool forceAllQuestDone = false;
+
     [SerializeField] private bool overrideBuffCondition = false;
     [SerializeField] private bool forceAllBuffBought = false;
 
@@ -51,13 +53,33 @@ public class EndingManager : MonoBehaviour
     {
         isBossFightActive = false;
 
-        bool allQuestDone = overrideQuestCondition
-            ? forceAllQuestDone
-            : QuestManager.instance.AreAllQuestsCompleted();
+        bool allQuestDone;
+        bool allBuffBought;
 
-        bool allBuffBought = overrideBuffCondition
-            ? forceAllBuffBought
-            : MetaBuffManager.instance.AreAllBuffsUnlocked();
+        // DEBUG QUEST
+        if (overrideQuestCondition)
+        {
+            allQuestDone = forceAllQuestDone;
+            Debug.Log("DEBUG QUEST OVERRIDE: " + allQuestDone);
+        }
+        else
+        {
+            allQuestDone = QuestManager.instance.AreAllQuestsCompleted();
+        }
+
+        // DEBUG BUFF
+        if (overrideBuffCondition)
+        {
+            allBuffBought = forceAllBuffBought;
+            Debug.Log("DEBUG BUFF OVERRIDE: " + allBuffBought);
+        }
+        else
+        {
+            allBuffBought = MetaBuffManager.instance.AreAllBuffsUnlocked();
+        }
+
+        Debug.Log("Quest Done: " + allQuestDone);
+        Debug.Log("Buff Bought: " + allBuffBought);
 
         if (allQuestDone && allBuffBought)
         {
@@ -70,28 +92,26 @@ public class EndingManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(scene1Name);
-            //CleanupPersistentObjects();
         }
     }
 
     void ShowEnding(EndingType type)
     {
-        Debug.Log("ENDING: " + type.ToString());
+        Debug.Log("ENDING: " + type);
+
+        CleanupPersistentObjects();
 
         switch (type)
         {
             case EndingType.Bad:
-                CleanupPersistentObjects();
                 SceneManager.LoadScene(badEndingScene);
                 break;
 
             case EndingType.Good:
-                CleanupPersistentObjects();
                 SceneManager.LoadScene(goodEndingScene);
                 break;
 
             case EndingType.Best:
-                CleanupPersistentObjects();
                 SceneManager.LoadScene(bestEndingScene);
                 break;
         }
@@ -103,11 +123,8 @@ public class EndingManager : MonoBehaviour
 
         foreach (var obj in persistents)
         {
-            if (obj.GetComponent<MetaBuffManager>() != null)
-                continue;
-
-            if (obj.GetComponent<SaveLoadManager>() != null)
-                continue;
+            if (obj.GetComponent<MetaBuffManager>() != null) continue;
+            if (obj.GetComponent<SaveLoadManager>() != null) continue;
 
             Destroy(obj.gameObject);
         }

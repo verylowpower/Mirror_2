@@ -25,6 +25,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Melee",
+                    "type": "Button",
+                    "id": "d3ebe690-74a5-4fa8-83d5-05b10eb2f7ab",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Navigate",
                     "type": "Value",
                     "id": "b2e5e13a-0547-4a03-abac-d1c98a8e2999",
@@ -37,6 +46,15 @@
                     "name": "Confirm",
                     "type": "Button",
                     "id": "93bf8ab4-6e91-4549-8efd-42cd757e0fcf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "8950fe3c-5ad1-4dc1-8998-3799cf1d0ba8",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -184,6 +202,39 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "cf2abb2f-edb5-4893-a5dd-afa7b3d6a7b0",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49821fdc-3d76-4494-bea0-0c700494cc8f",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "327177b3-a3bb-4318-9997-f9e6e2378585",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "2D Vector",
                     "id": "31206eef-d3d8-4e3e-b202-d2efb6d20312",
                     "path": "2DVector",
@@ -246,6 +297,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65a4bcdb-52f1-4721-b31b-a7804ed08ac1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8864db21-cdcf-41a8-8c1f-df23540f1810",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a62f302-04dd-4e8d-b7eb-9bf9ad26bde4",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

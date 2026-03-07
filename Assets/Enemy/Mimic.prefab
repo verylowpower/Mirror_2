@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8060522165038795305}
   - component: {fileID: 5980599320715616140}
   - component: {fileID: 5599514183328726630}
+  - component: {fileID: 3876482275751274832}
   - component: {fileID: 6637646085936799170}
   - component: {fileID: 8004754957638019955}
   - component: {fileID: 2710248020696304907}
@@ -18,7 +19,7 @@ GameObject:
   - component: {fileID: 5174472837586722594}
   m_Layer: 0
   m_Name: Mimic
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +88,18 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3876482275751274832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366608358147868400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e39f6090724e4a4a8aadeb042afa2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Extensions.AgentOverride2d
 --- !u!212 &6637646085936799170
 SpriteRenderer:
   m_ObjectHideFlags: 0

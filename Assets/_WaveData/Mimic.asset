@@ -15,5 +15,3 @@ MonoBehaviour:
   groups:
   - prefab: {fileID: 6366608358147868400, guid: ea9a8d2e06b89a748a2bd3f02b2b5829, type: 3}
     count: 4
-  - prefab: {fileID: 6191735027991247124, guid: a6adc83f371b002448f49a1b4e775431, type: 3}
-    count: 4

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 635740007b25c2f4c9dcad90c0453c74
+guid: b1b0ce3bed560aa48a67bcf149dea2df
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 32
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -72,7 +72,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -87,7 +87,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639085123527967043
+  platformSettingsDirtyTick: 639085133036222781
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: DirectionArrow
+  - name: Volumn
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 9
-      height: 6
-    spriteID: bd9247484552a3840bf0aa73e7d8950d
+      width: 227
+      height: 35
+    spriteID: 79312c482a46542409e5d3d55d0094e9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,30 +148,93 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  spriteSheetImportData: []
+  spriteSheetImportData:
+  - name: Volumn_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 28
+      width: 182
+      height: 11
+    spriteID: 383a27ddb82c65b499e221c6d7446419
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Volumn_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 182
+      height: 11
+    spriteID: ae919bd330c864444be743fdb8700af3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Volumn_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 216
+      y: 12
+      width: 15
+      height: 15
+    spriteID: 3de8876e11e1383409b4574a2ab02881
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1694612440
+      value0: 2658674119
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: DirectionArrow
+    name: Volumn
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: DirectionArrow
+    - name: Volumn
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 3
-        y: 5
-        width: 9
-        height: 6
-      spriteId: bd9247484552a3840bf0aa73e7d8950d
+        x: 45
+        y: 10
+        width: 227
+        height: 35
+      spriteId: 79312c482a46542409e5d3d55d0094e9
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -217,5 +280,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 32, y: 16}
+  canvasSize: {x: 355, y: 50}
+  previousTextureSize: {x: 256, y: 64}
