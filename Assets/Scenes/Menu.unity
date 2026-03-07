@@ -1783,8 +1783,8 @@ MonoBehaviour:
   badEndingScene: BadEnding
   goodEndingScene: GoodEnding
   bestEndingScene: BestEnding
-  overrideQuestCondition: 1
-  forceAllQuestDone: 1
+  overrideQuestCondition: 0
+  forceAllQuestDone: 0
   overrideBuffCondition: 0
   forceAllBuffBought: 0
   isBossFightActive: 0
